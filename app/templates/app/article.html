@@ -89,7 +89,9 @@
 					</div>
           
          <div class="space-20"></div>
-         {{ object.content|safe }}
+         {% if content_display %}
+            {{ object.content|safe }}
+         {% endif %}
          <div class="space-80"></div>
           
 					<div class="next_prev">
