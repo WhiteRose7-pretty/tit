@@ -611,16 +611,18 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12 col-lg-10 m-auto">
-					<form action="#">
+					<form action="/comment/" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input name="article_id" type="hidden" value="{{ object.id }}">
 						<div class="row">
 							<div class="col-md-12">
-								<input type="text" placeholder="Full name">
+								<input name="full_name" type="text" placeholder="Full name" required>
 							</div>
 							<div class="col-12">
-								<textarea name="messege" id="messege" cols="30" rows="5" placeholder="Tell us about your opinion…"></textarea>
+								<textarea name="content" id="messege" cols="30" rows="5" placeholder="Tell us about your opinion…" required></textarea>
 							</div>
 							<div class="col-12">
-								<input type="button" value="POST OPINION" class="cbtn2">
+								<input type="submit" value="POST OPINION" class="cbtn2">
 							</div>
 						</div>
 					</form>
@@ -630,77 +632,30 @@
 			<div class="comment_list">
 				<div class="row">
 					<div class="col-12 col-lg-10 m-auto">
-						<h3>Our latest news</h3>
-						<div class="single_comment">
-							<div class="comment_img">
-								<img src="{% static 'assets/img/author/author2.png' %}" alt="">
-							</div>
-							<div class="row">
-								<div class="col-sm-6">	<a href="#">QuomodoSoft</a>
-								</div>
-								<div class="col-sm-6">
-									<div class="replay text-right">	<a href="#">replay</a>
-									</div>
-								</div>
-							</div>
-							<div class="space-5"></div>
-							<p>We’ve invested every aspect of how we serve our users over the past Pellentesque rutrum ante in nulla suscipit, vel posuere leo tristique.</p>
-						</div>
-						<div class="space-15"></div>
-						<div class="border_black"></div>
-						<div class="space-15"></div>
-						<div class="single_comment">
-							<div class="comment_img">
-								<img src="{% static 'assets/img/author/author2.png' %}" alt="">
-							</div>
-							<div class="row">
-								<div class="col-sm-6">	<a href="#">QuomodoSoft</a>
-								</div>
-								<div class="col-sm-6">
-									<div class="replay text-right">	<a href="#">replay</a>
-									</div>
-								</div>
-							</div>
-							<div class="space-5"></div>
-							<p>We’ve invested every aspect of how we serve our users over the past Pellentesque rutrum ante in nulla suscipit, vel posuere leo tristique.</p>
-						</div>
-						<div class="space-15"></div>
-						<div class="border_black"></div>
-						<div class="space-15"></div>
-						<div class="single_comment">
-							<div class="comment_img">
-								<img src="{% static 'assets/img/author/author2.png' %}" alt="">
-							</div>
-							<div class="row">
-								<div class="col-sm-6">	<a href="#">QuomodoSoft</a>
-								</div>
-								<div class="col-sm-6">
-									<div class="replay text-right">	<a href="#">replay</a>
-									</div>
-								</div>
-							</div>
-							<div class="space-5"></div>
-							<p>We’ve invested every aspect of how we serve our users over the past Pellentesque rutrum ante in nulla suscipit, vel posuere leo tristique.</p>
-						</div>
-						<div class="space-15"></div>
-						<div class="border_black"></div>
-						<div class="space-15"></div>
-						<div class="single_comment inner_cm">
-							<div class="comment_img">
-								<img src="{% static 'assets/img/author/author2.png' %}" alt="">
-							</div>
-							<div class="row">
-								<div class="col-sm-6">	<a href="#">QuomodoSoft</a>
-								</div>
-								<div class="col-sm-6">
-									<div class="replay text-right">	<a href="#">replay</a>
-									</div>
-								</div>
-							</div>
-							<div class="space-5"></div>
-							<p>We’ve invested every aspect of how we serve our users over the past Pellentesque rutrum ante in nulla suscipit, vel posuere leo tristique.</p>
-						</div>
-						<div class="space-40"></div>	<a href="#" class="cbtn2">Load More</a>
+						<h3 id="comment_list">Our latest news</h3>
+                        {% for comment in object.comments.all %}
+                            <div class="single_comment">
+                                <div class="comment_img">
+                                    <img src="{% static 'assets/img/author/author2.png' %}" alt="">
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">	<a href="#comment_list">{{ comment.name }}</a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="replay text-right">	<a href="#">replay</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="space-5"></div>
+                                <p>{{ comment.content}}</p>
+                            </div>
+                            <div class="space-15"></div>
+                            <div class="border_black"></div>
+                            <div class="space-15"></div>
+                        {% endfor %}
+
+
+{#						<div class="space-40"></div>	<a href="#" class="cbtn2">Load More</a>#}
 					</div>
 				</div>
 			</div>
