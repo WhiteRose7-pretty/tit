@@ -1,4 +1,4 @@
-.premium-text{
+.premium-text p{
     display: -webkit-box;
     overflow: hidden;
     -webkit-line-clamp: 4;

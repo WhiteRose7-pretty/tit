@@ -94,29 +94,29 @@
             {{ object.content|safe }}
          {% else %}
             <div class="premium-text">
-                {{ object.content|safe }}
-                <img class="premium-img" src="{% static 'assets/img/blur.jpg' %}" alt="">
+                {{ object.content|safe|slice:":400"}}
             </div>
+            <img class="premium-img" src="{% static 'assets/img/blur.jpg' %}" alt="">
             <a href="#" class="btn btn-primary get-premium" >Please register as premium user to read premium content.</a>
          {% endif %}
          <div class="space-80"></div>
           
-					<div class="next_prev">
-						<div class="row">
-							<div class="col-lg-6 align-self-center">
-								<div class="next_prv_single border_left3">
-									<p>PREVIOUS NEWS</p>
-									<h3><a href="#">Kushner puts himself in middle of white house’s chaotic coronavirus response.</a></h3>
-								</div>
-							</div>
-							<div class="col-lg-6 align-self-center">
-								<div class="next_prv_single border_left3">
-									<p>NEXT NEWS</p>
-									<h3><a href="#">C.I.A. Hunts for authentic virus totals in china, dismissing government tallies</a></h3>
-								</div>
-							</div>
-						</div>
-					</div>
+            <div class="next_prev">
+                <div class="row">
+                    <div class="col-lg-6 align-self-center">
+                        <div class="next_prv_single border_left3">
+                            <p>PREVIOUS NEWS</p>
+                            <h3><a href="#">Kushner puts himself in middle of white house’s chaotic coronavirus response.</a></h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 align-self-center">
+                        <div class="next_prv_single border_left3">
+                            <p>NEXT NEWS</p>
+                            <h3><a href="#">C.I.A. Hunts for authentic virus totals in china, dismissing government tallies</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
 				
         
         </div>
