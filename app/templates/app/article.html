@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.css' %}">
 	<link rel="stylesheet" href="{% static 'assets/css/plugins/slick.css' %}">
 	<link rel="stylesheet" href="{% static 'assets/css/theme.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
 </head>
 
 <body class="theme-1">
@@ -91,6 +92,12 @@
          <div class="space-20"></div>
          {% if content_display %}
             {{ object.content|safe }}
+         {% else %}
+            <div class="premium-text">
+                {{ object.content|safe }}
+                <img class="premium-img" src="{% static 'assets/img/blur.jpg' %}" alt="">
+            </div>
+            <a href="#" class="btn btn-primary get-premium" >Please register as premium user to read premium content.</a>
          {% endif %}
          <div class="space-80"></div>
           

@@ -1,0 +1,14 @@
+.premium-text{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.premium-img{
+    width: 100%;
+}
+
+.get-premium{
+    width: 100%;
+}
