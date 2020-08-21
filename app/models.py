@@ -77,7 +77,7 @@ class Comment(models.Model):
                              null=True,
                              verbose_name='Jeżeli dodawał zalogowany użytkownik')
     content = models.TextField()
-    display = models.BooleanField(default=False)
+    display = models.BooleanField(default=False, verbose_name='Widoczny komentarz')
 
     class Meta:
         verbose_name = 'Komentarze użytkowników'
