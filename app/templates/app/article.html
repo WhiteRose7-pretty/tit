@@ -63,7 +63,11 @@
 							<div class="author">
 								<div class="author_img">
 									<div class="author_img_wrap">
-										<img src="{% static 'assets/img/author/author2.png' %}" alt="">
+                    {% if object.owner.show_img %}
+										<img src="{{ object.owner.img.url }}" alt="">
+                    {% else %}
+                    <img src="{% static 'assets/img/author/author2.png' %}" alt="">
+                    {% endif %}
 									</div>
 								</div>	<a href="#">{{ object.owner.name }}</a>
 								<ul>
@@ -110,7 +114,7 @@
             <div class="premium-frm mt-2">
                 <div class="premium-header">
                     <img class="d-inline" src="{% static 'assets/img/diamond.svg' %}" width="20px" alt="">
-                    <span>You can read this and other texts by Wyborcza thanks to the subscription</span>
+                    <span>You can read this and other texts by Tomaszow-TIT-Mazowiecki thanks to the subscription</span>
                 </div>
                 <div class="premium-frm-content">
                     <div class="premium-body-container">
@@ -676,6 +680,9 @@
 							<div class="col-12">
 								<textarea name="content" id="messege" cols="30" rows="5" placeholder="Treść dodawanego komentarza..." required></textarea>
 							</div>
+              <div class="col-12">
+                <small class="mb-2">*Komentarz pokaże się po zatwierdzeniu przez administratora</small>
+              </div>
 							<div class="col-12">
 								<input type="submit" value="Dodaj komentarz" class="cbtn2">
 							</div>
@@ -688,7 +695,8 @@
 			  <div class="row">
 			    <div class="col-12 col-lg-10 m-auto">
 			      <h3 id="comment_list">Najnowsze komentarze</h3>
-			      {% for comment in object.comments.all %}
+            {% if comments %}
+			      {% for comment in comments %}
 			      <div class="single_comment">
 			        <div class="comment_img">
 			          <img src="{% static 'assets/img/author/author2.png' %}" alt="">
@@ -708,6 +716,10 @@
 			      <div class="border_black"></div>
 			      <div class="space-15"></div>
 			      {% endfor %}
+            
+            {% else %}
+            <h6 class="text-primary">Nikt jeszcze nie skomentował artykułu<h6>
+            {% endif %}
 
 
 			    </div>

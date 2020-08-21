@@ -28,8 +28,9 @@ class Autor(models.Model):
                               processors=[ResizeToFill(400, 400)],
                               format='JPEG',
                               options={'quality': 100},
-                              verbose_name='Zdjęcie (proferowany format 730x450)')
+                              verbose_name='Zdjęcie (proferowany format 400x400)')
     description = models.TextField(null=True, verbose_name='Opis (opcjonalnie)')
+    show_img = models.BooleanField(default=False, verbose_name='Pokaż zdjęcie użytkownika')
 
     class Meta:
         verbose_name = 'Autorzy'
@@ -74,6 +75,7 @@ class Comment(models.Model):
     name = models.CharField(max_length=30, verbose_name='Imie lub pseudonim')
     user = models.ForeignKey(CustomUser,
                              on_delete=models.CASCADE,
+                             blank=True,
                              null=True,
                              verbose_name='Jeżeli dodawał zalogowany użytkownik')
     content = models.TextField(verbose_name='Treść dodawanej opinii')
