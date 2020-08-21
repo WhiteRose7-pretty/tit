@@ -76,7 +76,7 @@ class Comment(models.Model):
                              on_delete=models.CASCADE,
                              null=True,
                              verbose_name='Jeżeli dodawał zalogowany użytkownik')
-    content = models.TextField()
+    content = models.TextField(verbose_name='Treść dodawanej opinii')
     display = models.BooleanField(default=False, verbose_name='Widoczny komentarz')
 
     class Meta:
