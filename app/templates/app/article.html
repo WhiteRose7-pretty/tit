@@ -88,20 +88,67 @@
 						</div>
 					</div>
           
-         <div class="space-20"></div>
-         {% if content_display %}
+            <div class="space-20"></div>
+            {% if content_display %}
             {{ object.content|safe }}
-         {% else %}
-            <div class="premium-text">
-                {{ object.content|safe|slice:":400"}}
+            {% else %}
+            <div class="premium-text-show">
+                {{ object.content|safe|slice:":800"}}
             </div>
-            <img class="premium-img" src="{% static 'assets/img/blur.jpg' %}" alt="">
-            <a href="#" class="btn btn-primary get-premium" >Zostań użytkownikiem preium i czytaj pozostałą część artykułu.</a>
-         {% endif %}
-         <div class="space-80"></div>
+            <div class="premium-text fade-out-article">
+                {{ object.content|safe|slice:"400:600"}}
+            </div>
 
-         <div class="next_prev">
-           <div class="row">
+            <div class="text-left mt-4">
+                 <div class="text-left-desc"><font style="vertical-align: inherit;"><font
+                         style="vertical-align: inherit; color: #000; font-size:14px; font-weight: bold;">86% of the text remains</font></font></div>
+                 <div class="text-left-bar">
+                     <div class="text-left-bar-bkg"></div>
+                     <div class="text-left-bar-progress" style="width: 14%"></div>
+                 </div>
+            </div>
+            <div class="premium-frm mt-2">
+                <div class="premium-header">
+                    <img class="d-inline" src="{% static 'assets/img/diamond.svg' %}" width="20px" alt="">
+                    <span>You can read this and other texts by Wyborcza thanks to the subscription</span>
+                </div>
+                <div class="premium-frm-content">
+                    <div class="premium-body-container">
+                        <div class="body-header">
+                            <h3>Now for PLN 1 for the first month (then PLN 19.90 / month).</h3>
+                        </div>
+
+                        <div class="body-content">
+                            <p>
+                                Know what is happening in the country and the world. We provide reliable information and in-depth analyzes, and we reveal more scandals.
+                            </p>
+                        </div>
+
+                        <div class="body-action">
+                            <a href="#" class="btn btn-primary get-premium" >Zostań użytkownikiem preium i czytaj pozostałą część artykułu.</a>
+                        </div>
+
+                        <div class="body-footer">
+                            <ul>
+                                <li>
+                                    <a href="#">SIGN&nbsp;IN</a>
+                                </li>
+                                <li>
+                                    <a href="#">CONTACT</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            {#            <a href="#" class="btn btn-primary get-premium" >Zostań użytkownikiem preium i czytaj pozostałą część artykułu.</a>#}
+            {% endif %}
+            <div class="space-80"></div>
+
+            <div class="next_prev">
+            <div class="row">
              <div class="col-lg-6 align-self-center">
                <div class="next_prv_single border_left3">
                  <p>PREVIOUS NEWS</p>
@@ -114,8 +161,8 @@
                  <h3><a href="#">C.I.A. Hunts for authentic virus totals in china, dismissing government tallies</a></h3>
                </div>
              </div>
-           </div>
-         </div>
+            </div>
+            </div>
 
 
         </div>
