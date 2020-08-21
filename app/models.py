@@ -45,7 +45,7 @@ class Article(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Kategoria artykułu')
     title = models.CharField(max_length=100, verbose_name='Tytuł artykułu')
     subtitle = models.TextField(verbose_name='Rozszerzenie tytulu artykulu')
-    slug = models.SlugField(verbose_name="URL artykułu: http//domain.com/...", unique=True)
+    slug = models.SlugField(verbose_name="URL artykułu (zmieniać w ramach konieczności):", unique=True)
     img = ProcessedImageField(upload_to='profile-pictures',
                               processors=[ResizeToFill(730, 450)],
                               format='JPEG',
@@ -67,8 +67,22 @@ class Article(models.Model):
 
 
 class Comment(models.Model):
-    owner = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='comments')
-    name = models.CharField(max_length=30)
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
+    owner = models.ForeignKey(Article,
+                              on_delete=models.CASCADE,
+                              related_name='comments',
+                              verbose_name='Artykuł')
+    name = models.CharField(max_length=30, verbose_name='Imie lub pseudonim')
+    user = models.ForeignKey(CustomUser,
+                             on_delete=models.CASCADE,
+                             null=True,
+                             verbose_name='Jeżeli dodawał zalogowany użytkownik')
     content = models.TextField()
+    display = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = 'Komentarze użytkowników'
+        verbose_name_plural = 'Komentarze użytkowników'
+
+    def __str__(self):
+        return '%s - %s | Widoczny: %s'% (self.name, self.owner.title, self.display)
 

@@ -1,9 +1,9 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
-	<title>Post 1</title>
+	<title>{{ object.title }} - TIT - Tomaszowski Informator Tygodniowy</title>
 	<!-- META -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -44,8 +44,7 @@
 						<div class="col-8 text-right">
 							<div class="page_comments">
 								<ul class="inline">
-									<li><i class="fas fa-comment"></i>563</li>
-									<li><i class="fas fa-fire"></i>536</li>
+									<li><i class="fas fa-comment"></i>{{ object.comments.all.count }}</li>
 								</ul>
 							</div>
 						</div>
@@ -97,28 +96,28 @@
                 {{ object.content|safe|slice:":400"}}
             </div>
             <img class="premium-img" src="{% static 'assets/img/blur.jpg' %}" alt="">
-            <a href="#" class="btn btn-primary get-premium" >Please register as premium user to read premium content.</a>
+            <a href="#" class="btn btn-primary get-premium" >Zostań użytkownikiem preium i czytaj pozostałą część artykułu.</a>
          {% endif %}
          <div class="space-80"></div>
-          
-            <div class="next_prev">
-                <div class="row">
-                    <div class="col-lg-6 align-self-center">
-                        <div class="next_prv_single border_left3">
-                            <p>PREVIOUS NEWS</p>
-                            <h3><a href="#">Kushner puts himself in middle of white house’s chaotic coronavirus response.</a></h3>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 align-self-center">
-                        <div class="next_prv_single border_left3">
-                            <p>NEXT NEWS</p>
-                            <h3><a href="#">C.I.A. Hunts for authentic virus totals in china, dismissing government tallies</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-				
-        
+
+         <div class="next_prev">
+           <div class="row">
+             <div class="col-lg-6 align-self-center">
+               <div class="next_prv_single border_left3">
+                 <p>PREVIOUS NEWS</p>
+                 <h3><a href="#">Kushner puts himself in middle of white house’s chaotic coronavirus response.</a></h3>
+               </div>
+             </div>
+             <div class="col-lg-6 align-self-center">
+               <div class="next_prv_single border_left3">
+                 <p>NEXT NEWS</p>
+                 <h3><a href="#">C.I.A. Hunts for authentic virus totals in china, dismissing government tallies</a></h3>
+               </div>
+             </div>
+           </div>
+         </div>
+
+
         </div>
         
         
@@ -530,16 +529,16 @@
 					</div>
           <!--:::::: POST TYPE 4 END :::::::-->
 					<div class="box widget news_letter mb30">
-						<h2 class="widget-title">News Letter</h2>
-						<p>Your email address will not be this published. Required fields are News Today.</p>
+						<h2 class="widget-title">Newsletter</h2>
+						<p>Powiadomimy cię o nowych artykułach pojawiających się na łamach naszego tygodnika.</p>
 						<div class="space-20"></div>
 						<div class="signup_form">
 							<form action="index.html">
-								<input class="signup" type="email" placeholder="Your email address">
-								<input type="button" class="cbtn" value="sign up">
+								<input class="signup" type="email" placeholder="Twój adres email">
+								<input type="button" class="cbtn" value="Zapisz">
 							</form>
 							<div class="space-10"></div>
-							<p>We hate spam as much as you do</p>
+							<p>Podając adres email, akceptujesz regulamin i politykę prywatności.</p>
 						</div>
 					</div>
 				</div>
@@ -619,19 +618,19 @@
 	<div class="comment_form">
 		<div class="container">
 			<div class="row">
-				<div class="col-12 col-lg-10 m-auto">
+				<div class="col-12 col-lg-10 m-auto" id="formularzKomentarzy">
 					<form action="/comment/" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <input name="article_id" type="hidden" value="{{ object.id }}">
+            {% csrf_token %}
+            <input name="article_id" type="hidden" value="{{ object.id }}">
 						<div class="row">
 							<div class="col-md-12">
-								<input name="full_name" type="text" placeholder="Full name" required>
+								<input name="full_name" type="text" placeholder="Imię lub pseudonim" required>
 							</div>
 							<div class="col-12">
-								<textarea name="content" id="messege" cols="30" rows="5" placeholder="Tell us about your opinion…" required></textarea>
+								<textarea name="content" id="messege" cols="30" rows="5" placeholder="Treść dodawanego komentarza..." required></textarea>
 							</div>
 							<div class="col-12">
-								<input type="submit" value="POST OPINION" class="cbtn2">
+								<input type="submit" value="Dodaj komentarz" class="cbtn2">
 							</div>
 						</div>
 					</form>
@@ -639,34 +638,33 @@
 			</div>
 			<div class="space-60"></div>
 			<div class="comment_list">
-				<div class="row">
-					<div class="col-12 col-lg-10 m-auto">
-						<h3 id="comment_list">Our latest news</h3>
-                        {% for comment in object.comments.all %}
-                            <div class="single_comment">
-                                <div class="comment_img">
-                                    <img src="{% static 'assets/img/author/author2.png' %}" alt="">
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">	<a href="#comment_list">{{ comment.name }}</a>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="replay text-right">	<a href="#">replay</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="space-5"></div>
-                                <p>{{ comment.content}}</p>
-                            </div>
-                            <div class="space-15"></div>
-                            <div class="border_black"></div>
-                            <div class="space-15"></div>
-                        {% endfor %}
+			  <div class="row">
+			    <div class="col-12 col-lg-10 m-auto">
+			      <h3 id="comment_list">Najnowsze komentarze</h3>
+			      {% for comment in object.comments.all %}
+			      <div class="single_comment">
+			        <div class="comment_img">
+			          <img src="{% static 'assets/img/author/author2.png' %}" alt="">
+			        </div>
+			        <div class="row">
+			          <div class="col-sm-6"> <a href="#comment_list">{{ comment.name }}</a>
+			          </div>
+			          <div class="col-sm-6">
+			            <div class="replay text-right"> <a href="#formularzKomentarzy">Odpowiedz</a>
+			            </div>
+			          </div>
+			        </div>
+			        <div class="space-5"></div>
+			        <p>{{ comment.content}}</p>
+			      </div>
+			      <div class="space-15"></div>
+			      <div class="border_black"></div>
+			      <div class="space-15"></div>
+			      {% endfor %}
 
 
-{#						<div class="space-40"></div>	<a href="#" class="cbtn2">Load More</a>#}
-					</div>
-				</div>
+			    </div>
+			  </div>
 			</div>
 		</div>
 	</div>

@@ -20,8 +20,10 @@ def article(request, slug):
     else:
         content_display = True
 
-    context = {'object': object, 'content_display': content_display}
+    context = {'object': object,
+               'content_display': content_display}
     return render(request, 'app/article.html', context)
+
 
 
 def comment(request):
