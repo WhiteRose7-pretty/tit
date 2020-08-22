@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Article, Comment
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
-
+import html2text
 
 def home(request):
     return render(request, 'app/home.html')
@@ -19,6 +19,15 @@ def article(request, slug):
                 content_display = True
     else:
         content_display = True
+    if not content_display:
+        h = html2text.HTML2Text()
+        h.escape_all = True
+        h.ignore_links = True
+        h.ignore_emphasis = True
+        h.ignore_images = True
+        h.ignore_tables = True
+        h.hide_strikethrough = True
+        object.content_text = h.handle(object.content)
 
     context = {'object': object,
                'content_display': content_display}
