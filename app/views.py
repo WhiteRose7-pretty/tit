@@ -11,7 +11,7 @@ def home(request):
 
 def article(request, slug):
     object = get_object_or_404(Article, slug=slug)
-    comments = Comment.objects.filter(owner=object)
+    comments = Comment.objects.filter(owner=object, display=True)
     content_display = False
     if object.premium:
         if request.user.is_authenticated:
@@ -30,7 +30,8 @@ def article(request, slug):
         object.content_text = h.handle(object.content)
 
     context = {'object': object,
-               'content_display': content_display}
+               'content_display': content_display,
+               'comments': comments,}
     return render(request, 'app/article.html', context)
 
 
