@@ -99,10 +99,10 @@
                     {{ object.content|safe }}
                 {% else %}
                     <div class="premium-text-show">
-                        {{ object.content|safe|slice:":800" }}
+                        {{ object.content_text|safe|slice:":800" }}
                     </div>
                     <div class="premium-text fade-out-article">
-                        {{ object.content|safe|slice:"400:600" }}
+                        {{ object.content_text|safe|slice:"400:600" }}
                     </div>
 
                     <div class="text-left mt-4">
