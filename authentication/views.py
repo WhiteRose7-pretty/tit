@@ -1,3 +1,12 @@
 from django.shortcuts import render
+from allauth.account.views import LoginView, SignupView
 
-# Create your views here.
+
+
+class LogIn(LoginView):
+    template_name = 'authentication/login.html'
+
+
+
+class SignUp(SignupView):
+    template_name = 'authentication/signup.html'

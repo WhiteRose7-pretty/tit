@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls', namespace='app')),
-    path('profil/', include('authentication.urls', namespace='authentication')),
+    path('uwierzytelnienie/', include('authentication.urls', namespace='authentication')),
+    path('cms/', include('simple_cms.urls', namespace='simple_cms')),
     path('accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

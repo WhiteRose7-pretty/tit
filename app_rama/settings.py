@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'authentication',
+    'simple_cms',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -160,3 +162,5 @@ ACCOUNT_UNIQUE_EMAIL = True
 # ocpjonalnie emaillogin_project/settings.py
 LOGIN_REDIRECT_URL = 'app:home' #redirect
 ACCOUNT_LOGOUT_REDIRECT_URL = 'app:home' #rediect
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

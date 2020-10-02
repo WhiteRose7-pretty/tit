@@ -13975,7 +13975,7 @@ a.up_btn {
 }
 
 .slider_arrow:hover {
-  background: #1091FF;
+  background: #17222b;
   color: #fff;
   transition: all 0.3s;
 }
@@ -14453,15 +14453,15 @@ span.tranding {
 
 /*POST TYPE-5*/
 .post_type5 {
-  margin-right: 20px;
-  padding-left: 95px;
+  margin-right: 10px;
+  padding-left: 85px;
 }
 .post_type5 .single_post_text p {
   font-size: 15px;
   font-weight: 300;
   opacity: 0.85;
   line-height: 21px;
-  margin-top: 5px;
+  margin-top: 8px;
 }
 .post_type5 .post_img {
   width: 80px;
@@ -14469,7 +14469,7 @@ span.tranding {
 }
 .post_type5 .post_img img {
   width: 80px;
-  height: 70px;
+  height: 80px;
 }
 
 .nav_style2 .owl-nav div {
@@ -14489,7 +14489,7 @@ span.tranding {
   transition: all 0.3s;
 }
 .nav_style2 .owl-nav div:hover {
-  background: #1091FF;
+  background: #17222b;
   color: #FFFFFF;
   transition: all 0.3s;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
@@ -14921,7 +14921,7 @@ span.tranding {
   padding: 70px 0 40px;
 }
 .footer .cta .social2 {
-  margin-top: 35px;
+  margin-top: 0px;
 }
 .footer .cta .social2 ul {
   margin: 0;

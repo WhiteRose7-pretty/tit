@@ -1,7 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.utils.text import slugify
-from imagekit.models import ProcessedImageField
+from imagekit.models import ProcessedImageField, ImageSpecField
 from imagekit.processors import ResizeToFill
 from authentication.models import CustomUser
 import datetime
@@ -52,6 +52,22 @@ class Article(models.Model):
                               format='JPEG',
                               options={'quality': 100},
                               verbose_name='Zdjęcie (proferowany format 730x450)')
+    basic_img = ImageSpecField(source='img',
+                                      processors=[ResizeToFill(1460, 1000)],
+                                      format='JPEG',
+                                      options={'quality': 80})
+    img_95x70 = ImageSpecField(source='img',
+                                      processors=[ResizeToFill(95, 70)],
+                                      format='JPEG',
+                                      options={'quality': 80})
+    img_190x140 = ImageSpecField(source='img',
+                                      processors=[ResizeToFill(190, 140)],
+                                      format='JPEG',
+                                      options={'quality': 80})
+    img_200x154 = ImageSpecField(source='img',
+                                      processors=[ResizeToFill(200, 154)],
+                                      format='JPEG',
+                                      options={'quality': 80})
     date_of_publication = models.DateTimeField(verbose_name='Data publikacji')
     content = RichTextField(verbose_name='Treść artykułu')
     premium = models.BooleanField(default=True, verbose_name='Widoczne tylko dla PREMIUM')
@@ -87,4 +103,8 @@ class Comment(models.Model):
 
     def __str__(self):
         return '%s - %s | Widoczny: %s'% (self.name, self.owner.title, self.display)
+
+
+class Add(models.Model):
+    name = models.CharField(max_length=100)
 

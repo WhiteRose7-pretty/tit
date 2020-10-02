@@ -1,15 +1,19 @@
 from django.shortcuts import render
-from .models import Article, Comment
+from .models import Article, Comment, Category
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 import html2text
 
 def home(request):
-    return render(request, 'app/home.html')
+    categories = Category.objects.filter(menu=True)
+
+    context = {'categories': categories}
+    return render(request, 'app/home.html', context)
 
 
 
 def article(request, slug):
+    request.session['latest_reed'] = slug
     object = get_object_or_404(Article, slug=slug)
     comments = Comment.objects.filter(owner=object, display=True)
     content_display = False
@@ -30,6 +34,7 @@ def article(request, slug):
         object.content_text = h.handle(object.content)
 
     context = {'object': object,
+               'slug': slug,
                'content_display': content_display,
                'comments': comments,}
     return render(request, 'app/article.html', context)
