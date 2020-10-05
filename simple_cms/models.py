@@ -87,6 +87,17 @@ class HomePage(models.Model):
     section_footer_10 = models.ForeignKey(Article, related_name='section_footer_10', on_delete=models.CASCADE, blank=True, null=True)
     section_footer_11 = models.ForeignKey(Article, related_name='section_footer_11', on_delete=models.CASCADE, blank=True, null=True)
     section_footer_12 = models.ForeignKey(Article, related_name='section_footer_12', on_delete=models.CASCADE, blank=True, null=True)
+    button_1 = models.CharField(max_length=11, blank=True)
+    button_2 = models.CharField(max_length=11, blank=True)
+    button_3 = models.CharField(max_length=11, blank=True)
+    section_1 = models.CharField(max_length=50, blank=True)
+    section_2 = models.CharField(max_length=50, blank=True)
+    section_3 = models.CharField(max_length=50, blank=True)
+    section_4 = models.CharField(max_length=50, blank=True)
+    section_5 = models.CharField(max_length=50, blank=True)
+    section_6 = models.CharField(max_length=50, blank=True)
+    section_7 = models.CharField(max_length=50, blank=True)
+    section_8 = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
         return self.name

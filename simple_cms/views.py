@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import NewPostForm, FindArticleForm, UploadImageForm
+from .forms import NewPostForm, FindArticleForm, UploadImageForm, ChangeLabelOnPage
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from .models import HomePage
@@ -32,6 +32,27 @@ def home(request):
 
 def edit_page(request, id):
     object = get_object_or_404(HomePage, pk=id)
+
+    #edit labels
+    if request.method == 'POST' and 'submit_section_labels' in request.POST:
+        label_form = ChangeLabelOnPage(request.POST)
+        if label_form.is_valid():
+            cd = label_form.cleaned_data
+            object.button_1 = cd['button_1']
+            object.button_2 = cd['button_2']
+            object.button_3 = cd['button_3']
+            object.section_1 = cd['section_1']
+            object.section_2 = cd['section_2']
+            object.section_3 = cd['section_3']
+            object.section_4 = cd['section_4']
+            object.section_5 = cd['section_5']
+            object.section_6 = cd['section_6']
+            object.section_7 = cd['section_7']
+            object.section_8 = cd['section_8']
+            object.save()
+            return HttpResponseRedirect(reverse('simple_cms:edit_page', args=[object.id]))
+    else:
+        label_form = ChangeLabelOnPage()
 
     #image edit
     if request.method == 'POST' and 'submit_img' in request.POST:
@@ -190,5 +211,6 @@ def edit_page(request, id):
 
     context = {'object': object,
                'form': form,
+               'label_form': label_form,
                'form_img': form_img}
     return render(request, 'simple_cms/edit_page.html', context)

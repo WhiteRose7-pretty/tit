@@ -135,7 +135,7 @@
 				<div class="col-md-6 col-lg-4 align-self-center">
 					<div class="top_date_social text-right">
 						<div class="paper_date">
-							<p><button class="btn btn-sm btn-danger">Dodaj ogłoszenie</button></p>
+							<p><button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalEditLabels">Edytuj etykiety</button></p>
 						</div>
 						<div class="social1">
 							<ul class="inline">
@@ -871,11 +871,11 @@
                   <button class="btn btn-dark" style="margin-left: 10px;">Popularne</button>
                   <button class="btn btn-dark" style="margin-left: 10px;">Wydarzenia</button>-->
 
-									<li style="background-color:#17222b;"><a style="background-color:#17222b;" data-toggle="tab" href="#post1">Nowości</a>
+									<li style="background-color:#17222b;"><a style="background-color:#17222b;" data-toggle="tab" href="#post1">{% if object.button_1 %}{{ object.button_1 }}{% else %}Przycisk_1{% endif %}</a>
 									</li>
-									<li style="background-color:#17222b;"><a data-toggle="tab" href="#post2" style="background-color:#17222b;">Popularne</a>
+									<li style="background-color:#17222b;"><a data-toggle="tab" href="#post2" style="background-color:#17222b;">{% if object.button_2 %}{{ object.button_2 }}{% else %}Przycisk_2{% endif %}</a>
 									</li>
-									<li style="background-color:#17222b;"><a data-toggle="tab" href="#post3" style="background-color:#17222b;">Wydarzenia</a>
+									<li style="background-color:#17222b;"><a data-toggle="tab" href="#post3" style="background-color:#17222b;">{% if object.button_3 %}{{ object.button_3 }}{% else %}Przycisk_3{% endif %}</a>
 									</li>
 								</ul>
 								<div class="tab-content">
@@ -1151,7 +1151,7 @@
 	<div class="container mb40">
 		<div class="row">
 			<div class="col-lg-6 col-lg-8">
-				<h2 class="widget-title">Informacje rynkowe</h2>
+				<h2 class="widget-title">{% if object.section_1 %}{{ object.section_1 }}{% else %}Sekcja_1{% endif %}</h2>
 				<div class="carousel_post2_type3 nav_style1 owl-carousel">
 					<!--CAROUSEL START-->
           
@@ -1366,7 +1366,7 @@
 			</div>
 			<div class="col-md-12 col-lg-4">
 				<div class="follow_box widget mb30 mt-md-60">
-					<h2 class="widget-title">Sponsorowane</h2>
+					<h2 class="widget-title">{% if object.section_2 %}{{ object.section_2 }}{% else %}Sekcja_2{% endif %}</h2>
           {% if object.add_navbar_sponsorowane %}
 					<div class="social_shares openModalClass" onclick="passDataFunction('add_navbar_sponsorowane')">
 						<img src="{{ object.add_navbar_sponsorowane.img_360x115.url }}" alt="">
@@ -1379,7 +1379,7 @@
 				</div>
 				<!--:::::: POST TYPE 2 START :::::::-->
 				<div class="widget tab_widgets mb30">
-					<h2 class="widget-title">Video relacje</h2>
+					<h2 class="widget-title">{% if object.section_3 %}{{ object.section_3 }}{% else %}Sekcja_3{% endif %}</h2>
 					<div class="post_type2_carousel owl-carousel nav_style1">
 						<!--CAROUSEL START-->
 						<div class="single_post2_carousel">
@@ -1887,7 +1887,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="heading white">
-						<h2 class="widget-title">Z miasta</h2>
+						<h2 class="widget-title">{% if object.section_4 %}{{ object.section_4 }}{% else %}Sekcja_4{% endif %}</h2>
 					</div>
 				</div>
 			</div>
@@ -1935,7 +1935,7 @@
           
 					<div class="col-lg-4">
 						<div class="popular_carousel_area mb30 md-mt-30">
-							<h2 class="widget-title">Popularne</h2>
+							<h2 class="widget-title">{% if object.section_5 %}{{ object.section_5 }}{% else %}Sekcja_5{% endif %}</h2>
 							<div class="popular_carousel owl-carousel nav_style1">
 								<!--CAROUSEL START-->
 								<div class="popular_items">
@@ -2137,7 +2137,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="heading">
-						<h2 class="widget-title openModalClass" onclick="passDataFunction('test')">Towarzyskie</h2>
+						<h2 class="widget-title openModalClass" onclick="passDataFunction('test')">{% if object.section_6 %}{{ object.section_6 }}{% else %}Sekcja_6{% endif %}</h2>
 					</div>
 				</div>
 			</div>
@@ -2296,7 +2296,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="heading">
-						<h2 class="widget-title">Turystyczne</h2>
+						<h2 class="widget-title">{% if object.section_7 %}{{ object.section_7 }}{% else %}Sekcja_7{% endif %}</h2>
 					</div>
 				</div>
 			</div>
@@ -2455,7 +2455,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="heading">
-						<h2 class="widget-title">Naukowe</h2>
+						<h2 class="widget-title">{% if object.section_8 %}{{ object.section_8 }}{% else %}Sekcja_8{% endif %}</h2>
 					</div>
 				</div>
 			</div>
@@ -2840,6 +2840,35 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
             <button type="submit" class="btn btn-success" name="submit_img">Zapisz zmiany</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modalEditLabels" tabindex="-1" role="dialog" aria-labelledby="modalEditLabels" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edycja głownych etykiet</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                {{ label_form.as_p }}
+              </div>
+            </div>
+          </div>
+          <!-- hiden field -->
+          <input type="hidden" name="field_name" value="fdsfsda" id="field_name"/>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
+            <button type="submit" class="btn btn-success" name="submit_section_labels">Zapisz zmiany</button>
           </div>
         </form>
       </div>
