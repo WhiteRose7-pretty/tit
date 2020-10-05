@@ -5,6 +5,7 @@ from imagekit.models import ProcessedImageField, ImageSpecField
 from imagekit.processors import ResizeToFill
 from authentication.models import CustomUser
 import datetime
+from imagekit.processors import ResizeToFit
 
 
 
@@ -47,32 +48,71 @@ class Article(models.Model):
     title = models.CharField(max_length=100, verbose_name='Tytuł artykułu')
     subtitle = models.TextField(verbose_name='Rozszerzenie tytulu artykulu')
     slug = models.SlugField(verbose_name="URL artykułu (zmieniać w ramach konieczności):", unique=True)
-    img = ProcessedImageField(upload_to='profile-pictures',
+    img_classic = ProcessedImageField(upload_to='profile-pictures',
+                                      verbose_name = 'Zdjęcie (proferowany format 730x450)',
+                                      processors=[ResizeToFit(1920, 1920)],
+                                      format='JPEG',
+                                      options={'quality': 100})
+    img = ImageSpecField(source='img_classic',
                               processors=[ResizeToFill(730, 450)],
                               format='JPEG',
-                              options={'quality': 100},
-                              verbose_name='Zdjęcie (proferowany format 730x450)')
-    basic_img = ImageSpecField(source='img',
+                              options={'quality': 100})
+    basic_img = ImageSpecField(source='img_classic',
                                       processors=[ResizeToFill(1460, 1000)],
                                       format='JPEG',
                                       options={'quality': 80})
-    img_95x70 = ImageSpecField(source='img',
+    img_95x70 = ImageSpecField(source='img_classic',
                                       processors=[ResizeToFill(95, 70)],
                                       format='JPEG',
                                       options={'quality': 80})
-    img_190x140 = ImageSpecField(source='img',
+    img_190x140 = ImageSpecField(source='img_classic',
                                       processors=[ResizeToFill(190, 140)],
                                       format='JPEG',
                                       options={'quality': 80})
-    img_200x154 = ImageSpecField(source='img',
+    img_200x154 = ImageSpecField(source='img_classic',
                                       processors=[ResizeToFill(200, 154)],
                                       format='JPEG',
                                       options={'quality': 80})
+    img_728x90 = ImageSpecField(source='img_classic',
+                                      processors=[ResizeToFill(728, 90)],
+                                      format='JPEG',
+                                      options={'quality': 80})
+    img_700x500 = ImageSpecField(source='img_classic',
+                                      processors=[ResizeToFill(700, 500)],
+                                      format='JPEG',
+                                      options={'quality': 80})
+    img_360x115 = ImageSpecField(source='img_classic',
+                                 processors=[ResizeToFill(360, 115)],
+                                 format='JPEG',
+                                 options={'quality': 80})
+    img_160x128 = ImageSpecField(source='img_classic',
+                                 processors=[ResizeToFill(160, 128)],
+                                 format='JPEG',
+                                 options={'quality': 80})
+    img_1080x840 = ImageSpecField(source='img_classic',
+                                  processors=[ResizeToFill(1080, 840)],
+                                  format='JPEG',
+                                  options={'quality': 80})
+    img_1460x822 = ImageSpecField(source='img_classic',
+                                  processors=[ResizeToFill(1460, 822)],
+                                  format='JPEG',
+                                  options={'quality': 80})
+    img_200x113 = ImageSpecField(source='img_classic',
+                                 processors=[ResizeToFill(200, 113)],
+                                 format='JPEG',
+                                 options={'quality': 80})
+    img_540x640 = ImageSpecField(source='img_classic',
+                                 processors=[ResizeToFill(540, 640)],
+                                 format='JPEG',
+                                 options={'quality': 80})
+
     date_of_publication = models.DateTimeField(verbose_name='Data publikacji')
     content = RichTextField(verbose_name='Treść artykułu')
     premium = models.BooleanField(default=True, verbose_name='Widoczne tylko dla PREMIUM')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    add = models.BooleanField(default=False, verbose_name='Czy artykuł jest reklamą?')
+    url = models.URLField(blank=True, null=True, verbose_name='Adres URL reklamy')
 
     class Meta:
         verbose_name = 'Artykuły'
