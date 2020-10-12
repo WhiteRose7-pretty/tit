@@ -3,8 +3,7 @@
 <html lang="pl">
 
 <head>
-
-	<title>NewsPrk</title>
+	<title>Tomaszów Mazowiecki - TIT - Tomaszowski Informator Tygodniowy</title>
 	<!-- META -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,97 +36,119 @@
 					<div class="mb40 mt30 ">
 						<!--CAROUSEL START-->
             <div class="carousel_posts1 owl-carousel nav_style2 d-none d-md-block">
+            
+            {% if object.small_article_basic_section_1 %}
 						<div class="single_post widgets_small post_type5">
 							<div class="post_img">
 								<div class="img_wrap">
 									<a href="#">
-										<img src="{% static 'assets/img/header/slider/190x140.jpg' %}" alt="">
+										<img src="{{ object.small_article_basic_section_1.img_190x140.url }}" alt="">
 									</a>
 								</div>
 							</div>
 							<div class="single_post_text">
-								<h4><a href="post1.html">1Po desce na strych</a></h4>
-								<p>Nie mogę się doprosić dosłownie o nic. Mam drugą grupę inwalidzką...</p>
+								<h4><a href="#">{{ object.small_article_basic_section_1.title|truncatechars:24 }}</a></h4>
+								<p><a href="#">{{ object.small_article_basic_section_1.subtitle|truncatechars:50 }}</a></p>
 							</div>
 						</div>
+            {% endif %}
+            
+            {% if object.small_article_basic_section_2 %}
 						<div class="single_post widgets_small post_type5">
 							<div class="post_img">
 								<div class="img_wrap">
 									<a href="#">
-										<img src="{% static 'assets/img/header/slider/190x140.jpg' %}" alt="">
+										<img src="{{ object.small_article_basic_section_2.img_190x140.url }}" alt="">
 									</a>
 								</div>
 							</div>
 							<div class="single_post_text">
-								<h4><a href="post1.html">2Chwalimy się chwalimy</a></h4>
-								<p>Miło otrzymywać listy, w których chwali się miasto i nas. A taki otr...</p>
+								<h4><a href="#">{{ object.small_article_basic_section_2.title|truncatechars:24 }}</a></h4>
+								<p><a href="#">{{ object.small_article_basic_section_2.subtitle|truncatechars:50 }}</a></p>
 							</div>
 						</div>
+            {% endif %}
+            
+            {% if object.small_article_basic_section_3 %}
 						<div class="single_post widgets_small post_type5">
 							<div class="post_img">
 								<div class="img_wrap">
 									<a href="#">
-										<img src="{% static 'assets/img/header/slider/190x140.jpg' %}" alt="">
+										<img src="{{ object.small_article_basic_section_3.img_190x140.url }}" alt="">
 									</a>
 								</div>
 							</div>
 							<div class="single_post_text">
-								<h4><a href="post1.html">3Konferencja prasowa nieudana agitacja</a></h4>
-								<p>Wzięli w niej także udział prezydent...</p>
+								<h4><a href="#">{{ object.small_article_basic_section_3.title|truncatechars:24 }}</a></h4>
+								<p><a href="#">{{ object.small_article_basic_section_3.subtitle|truncatechars:50 }}</a></p>
 							</div>
 						</div>
+            {% endif %}
+            
+            {% if object.small_article_basic_section_4 %}
 						<div class="single_post widgets_small post_type5">
 							<div class="post_img">
 								<div class="img_wrap">
 									<a href="#">
-										<img src="{% static 'assets/img/header/slider/190x140.jpg' %}" alt="">
+										<img src="{{ object.small_article_basic_section_4.img_190x140.url }}" alt="">
 									</a>
 								</div>
 							</div>
 							<div class="single_post_text">
-								<h4><a href="post1.html">4U.S. Response subash says he will label regions by risk of…</a></h4>
-								<p>People have been infected </p>
+								<h4><a href="#">{{ object.small_article_basic_section_4.title|truncatechars:24 }}</a></h4>
+								<p><a href="#">{{ object.small_article_basic_section_4.subtitle|truncatechars:50 }}</a></p>
 							</div>
 						</div>
+            {% endif %}
+            
+            {% if object.small_article_basic_section_5 %}
 						<div class="single_post widgets_small post_type5">
 							<div class="post_img">
 								<div class="img_wrap">
 									<a href="#">
-										<img src="{% static 'assets/img/header/slider/190x140.jpg' %}" alt="">
+										<img src="{{ object.small_article_basic_section_5.img_190x140.url }}" alt="">
 									</a>
 								</div>
 							</div>
 							<div class="single_post_text">
-								<h4><a href="post1.html">5U.S. Response subash says he will label regions by risk of…</a></h4>
-								<p>People have been infected</p>
+								<h4><a href="#">{{ object.small_article_basic_section_5.title|truncatechars:24 }}</a></h4>
+								<p><a href="#">{{ object.small_article_basic_section_5.subtitle|truncatechars:50 }}</a></p>
 							</div>
 						</div>
+            {% endif %}
+            
+            {% if object.small_article_basic_section_6 %}
 						<div class="single_post widgets_small post_type5">
 							<div class="post_img">
 								<div class="img_wrap">
 									<a href="#">
-										<img src="{% static 'assets/img/header/slider/190x140.jpg' %}" alt="">
+										<img src="{{ object.small_article_basic_section_6.img_190x140.url }}" alt="">
 									</a>
 								</div>
 							</div>
 							<div class="single_post_text">
-								<h4><a href="post1.html">6U.S. Response subash says he will label regions by risk of…</a></h4>
-								<p>People have been infected</p>
+								<h4><a href="#">{{ object.small_article_basic_section_6.title|truncatechars:24 }}</a></h4>
+								<p><a href="#">{{ object.small_article_basic_section_6.subtitle|truncatechars:50 }}</a></p>
 							</div>
 						</div>
+            {% endif %}
+            
+            {% if object.small_article_basic_section_7 %}
 						<div class="single_post widgets_small post_type5">
 							<div class="post_img">
 								<div class="img_wrap">
 									<a href="#">
-										<img src="{% static 'assets/img/header/slider/190x140.jpg' %}" alt="">
+										<img src="{{ object.small_article_basic_section_7.img_190x140.url }}" alt="">
 									</a>
 								</div>
 							</div>
 							<div class="single_post_text">
-								<h4><a href="post1.html">7U.S. Response subash says he will label regions by risk of…</a></h4>
-								<p>People have been infected </p>
+								<h4><a href="#">{{ object.small_article_basic_section_7.title|truncatechars:24 }}</a></h4>
+								<p><a href="#">{{ object.small_article_basic_section_7.subtitle|truncatechars:50 }}</a></p>
 							</div>
 						</div>
+            {% endif %}
+            
 					  </div>
           </div>
 					<!--CAROUSEL END-->
@@ -145,155 +166,249 @@
 					<div class="row">
 						<div class="col-xl-8">
 							<div class="slider_demo2">
+              
+                {% if object.slider_lg_basic_1 %}
 								<div class="single_post post_type6 xs-mb30">
-									<div class="post_img gradient1">
-										<img src="{% static 'assets/img/header/1460x1000.jpg' %}" alt="">
-									</div>
+                  <a href="#">
+                    <div class="post_img gradient1">
+                      <img src="{{ object.slider_lg_basic_1.basic_img.url }}" alt="">
+                    </div>
+                  </a>
 									<div class="single_post_text">
-										<div class="meta meta_separator1">	<a href="#">Nowości</a>
-											<a href="#">Maj 26, 2020</a>
+										<div class="meta meta_separator1">	<a href="#">{{ object.slider_lg_basic_1.category }}</a>
+											<a href="#">{{ object.slider_lg_basic_1.date_of_publication }}</a>
 										</div>
-										<h4><a class="play_btn" href="video_post1.html">Pracownicy Chipity zarażeni koronowirusem?</a></h4>
+										<h4><a class="play_btn" href="#">{{ object.slider_lg_basic_1.title|truncatechars:30 }}</a></h4>
 										<div class="space-10"></div>
-										<p class="post-p">Do naszej redakcji zgłosiło się kilkunastu pracowników Chipity, twierdząc, że w firmie, w której pracują, jest ogromne …</p>
+                    <a href="#">
+										  <p class="post-p">{{ object.slider_lg_basic_1.subtitle|truncatechars:120 }}</p>
+                    </a>
 									</div>
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_2 %}
 								<div class="single_post post_type6 xs-mb30">
-									<div class="post_img gradient1">
-										<img src="{% static 'assets/img/header/1460x1000.jpg' %}" alt="">	
-									</div>
+                  <a href="#">
+                    <div class="post_img gradient1">
+                      <img src="{{ object.slider_lg_basic_2.basic_img.url }}" alt="">
+                    </div>
+                  </a>
 									<div class="single_post_text">
-										<div class="meta meta_separator1">	<a href="#">TECHNOLOGY</a>
-											<a href="#">March 26, 2020</a>
+										<div class="meta meta_separator1">	<a href="#">{{ object.slider_lg_basic_2.category }}</a>
+											<a href="#">{{ object.slider_lg_basic_2.date_of_publication }}</a>
 										</div>
-										<h4><a class="play_btn" href="video_post1.html">CopaA America: Luis Suarez from devastated US America</a></h4>
+										<h4><a class="play_btn" href="#">{{ object.slider_lg_basic_2.title|truncatechars:30 }}</a></h4>
 										<div class="space-10"></div>
-										<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
+                    <a href="#">
+										  <p class="post-p">{{ object.slider_lg_basic_2.subtitle|truncatechars:120 }}</p>
+                    </a>
 									</div>
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_3 %}
 								<div class="single_post post_type6 xs-mb30">
-									<div class="post_img gradient1">
-										<img src="{% static 'assets/img/header/1460x1000.jpg' %}" alt="">	
-									</div>
+                  <a href="#">
+                    <div class="post_img gradient1">
+                      <img src="{{ object.slider_lg_basic_3.basic_img.url }}" alt="">
+                    </div>
+                  </a>
 									<div class="single_post_text">
-										<div class="meta meta_separator1">	<a href="#">TECHNOLOGY</a>
-											<a href="#">March 26, 2020</a>
+										<div class="meta meta_separator1">	<a href="#">{{ object.slider_lg_basic_3.category }}</a>
+											<a href="#">{{ object.slider_lg_basic_3.date_of_publication }}</a>
 										</div>
-										<h4><a class="play_btn" href="video_post1.html">Copa America: Luis Suarez from devastated US America</a></h4>
+										<h4><a class="play_btn" href="#">{{ object.slider_lg_basic_3.title|truncatechars:30 }}</a></h4>
 										<div class="space-10"></div>
-										<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
+                    <a href="#">
+										  <p class="post-p">{{ object.slider_lg_basic_3.subtitle|truncatechars:120 }}</p>
+                    </a>
 									</div>
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_4 %}
 								<div class="single_post post_type6 xs-mb30">
-									<div class="post_img gradient1">
-										<img src="{% static 'assets/img/header/1460x1000.jpg' %}" alt="">	
-									</div>
+                  <a href="#">
+                    <div class="post_img gradient1">
+                      <img src="{{ object.slider_lg_basic_4.basic_img.url }}" alt="">
+                    </div>
+                  </a>
 									<div class="single_post_text">
-										<div class="meta meta_separator1">	<a href="#">TECHNOLOGY</a>
-											<a href="#">March 26, 2020</a>
+										<div class="meta meta_separator1">	<a href="#">{{ object.slider_lg_basic_4.category }}</a>
+											<a href="#">{{ object.slider_lg_basic_4.date_of_publication }}</a>
 										</div>
-										<h4><a class="play_btn" href="video_post1.html">Japan’s virus success has puzzled the world. Is its luck running out?</a></h4>
+										<h4><a class="play_btn" href="#">{{ object.slider_lg_basic_4.title|truncatechars:30 }}</a></h4>
 										<div class="space-10"></div>
-										<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
+                    <a href="#">
+										  <p class="post-p">{{ object.slider_lg_basic_4.subtitle|truncatechars:120 }}</p>
+                    </a>
 									</div>
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_5 %}
 								<div class="single_post post_type6 xs-mb30">
-									<div class="post_img gradient1">
-										<img src="{% static 'assets/img/header/1460x1000.jpg' %}" alt="">	
-									</div>
+                  <a href="#">
+                    <div class="post_img gradient1">
+                      <img src="{{ object.slider_lg_basic_5.basic_img.url }}" alt="">
+                    </div>
+                  </a>
 									<div class="single_post_text">
-										<div class="meta meta_separator1">	<a href="#">TECHNOLOGY</a>
-											<a href="#">March 26, 2020</a>
+										<div class="meta meta_separator1">	<a href="#">{{ object.slider_lg_basic_5.category }}</a>
+											<a href="#">{{ object.slider_lg_basic_5.date_of_publication }}</a>
 										</div>
-										<h4><a class="play_btn" href="video_post1.html">Copa America: Luis Suarez from devastated US America</a></h4>
+										<h4><a class="play_btn" href="#">{{ object.slider_lg_basic_5.title|truncatechars:30 }}</a></h4>
 										<div class="space-10"></div>
-										<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
+                    <a href="#">
+										  <p class="post-p">{{ object.slider_lg_basic_5.subtitle|truncatechars:120 }}</p>
+                    </a>
 									</div>
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_6 %}
 								<div class="single_post post_type6 xs-mb30">
-									<div class="post_img gradient1">
-										<img src="{% static 'assets/img/header/1460x1000.jpg' %}" alt="">	
-									</div>
+                  <a href="#">
+                    <div class="post_img gradient1">
+                      <img src="{{ object.slider_lg_basic_6.basic_img.url }}" alt="">
+                    </div>
+                  </a>
 									<div class="single_post_text">
-										<div class="meta meta_separator1">	<a href="#">TECHNOLOGY</a>
-											<a href="#">March 26, 2020</a>
+										<div class="meta meta_separator1">	<a href="#">{{ object.slider_lg_basic_6.category }}</a>
+											<a href="#">{{ object.slider_lg_basic_6.date_of_publication }}</a>
 										</div>
-										<h4><a class="play_btn" href="video_post1.html">Japan’s virus success has puzzled the world. Is its luck running out?</a></h4>
+										<h4><a class="play_btn" href="#">{{ object.slider_lg_basic_6.title|truncatechars:30 }}</a></h4>
 										<div class="space-10"></div>
-										<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
+                    <a href="#">
+										  <p class="post-p">{{ object.slider_lg_basic_6.subtitle|truncatechars:120 }}</p>
+                    </a>
 									</div>
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_7 %}
 								<div class="single_post post_type6 xs-mb30">
-									<div class="post_img gradient1">
-										<img src="{% static 'assets/img/header/1460x1000.jpg' %}" alt="">	
-									</div>
+                  <a href="#">
+                    <div class="post_img gradient1">
+                      <img src="{{ object.slider_lg_basic_7.basic_img.url }}" alt="">
+                    </div>
+                  </a>
 									<div class="single_post_text">
-										<div class="meta meta_separator1">	<a href="#">TECHNOLOGY</a>
-											<a href="#">March 26, 2020</a>
+										<div class="meta meta_separator1">	<a href="#">{{ object.slider_lg_basic_7.category }}</a>
+											<a href="#">{{ object.slider_lg_basic_7.date_of_publication }}</a>
 										</div>
-										<h4><a class="play_btn" href="video_post1.html">Copa America: Luis Suarez from devastated US America</a></h4>
+										<h4><a class="play_btn" href="#">{{ object.slider_lg_basic_7.title|truncatechars:30 }}</a></h4>
 										<div class="space-10"></div>
-										<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
+                    <a href="#">
+										  <p class="post-p">{{ object.slider_lg_basic_7.subtitle|truncatechars:120 }}</p>
+                    </a>
 									</div>
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_8 %}
 								<div class="single_post post_type6 xs-mb30">
-									<div class="post_img gradient1">
-										<img src="{% static 'assets/img/header/1460x1000.jpg' %}" alt="">	
-									</div>
+                  <a href="#">
+                    <div class="post_img gradient1">
+                      <img src="{{ object.slider_lg_basic_8.basic_img.url }}" alt="">
+                    </div>
+                  </a>
 									<div class="single_post_text">
-										<div class="meta meta_separator1">	<a href="#">TECHNOLOGY</a>
-											<a href="#">March 26, 2020</a>
+										<div class="meta meta_separator1">	<a href="#">{{ object.slider_lg_basic_8.category }}</a>
+											<a href="#">{{ object.slider_lg_basic_8.date_of_publication }}</a>
 										</div>
-										<h4><a class="play_btn" href="video_post1.html">Japan’s virus success has puzzled the world. Is its luck running out?</a></h4>
+										<h4><a class="play_btn" href="#">{{ object.slider_lg_basic_8.title|truncatechars:30 }}</a></h4>
 										<div class="space-10"></div>
-										<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
+                    <a href="#">
+										  <p class="post-p">{{ object.slider_lg_basic_8.subtitle|truncatechars:120 }}</p>
+                    </a>
 									</div>
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_9 %}
 								<div class="single_post post_type6 xs-mb30">
-									<div class="post_img gradient1">
-										<img src="{% static 'assets/img/header/1460x1000.jpg' %}" alt="">	
-									</div>
+                  <a href="#">
+                    <div class="post_img gradient1">
+                      <img src="{{ object.slider_lg_basic_9.basic_img.url }}" alt="">
+                    </div>
+                  </a>
 									<div class="single_post_text">
-										<div class="meta meta_separator1">	<a href="#">TECHNOLOGY</a>
-											<a href="#">March 26, 2020</a>
+										<div class="meta meta_separator1">	<a href="#">{{ object.slider_lg_basic_9.category }}</a>
+											<a href="#">{{ object.slider_lg_basic_9.date_of_publication }}</a>
 										</div>
-										<h4><a class="play_btn" href="video_post1.html">Copa America: Luis Suarez from devastated US America</a></h4>
+										<h4><a class="play_btn" href="#">{{ object.slider_lg_basic_9.title|truncatechars:30 }}</a></h4>
 										<div class="space-10"></div>
-										<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
+                    <a href="#">
+										  <p class="post-p">{{ object.slider_lg_basic_9.subtitle|truncatechars:120 }}</p>
+                    </a>
 									</div>
 								</div>
+                {% endif %}
+                
 							</div>
-							<div class="slider_demo1">
+              
+							<div class="slider_demo1 d-none d-md-block">
+              
+                {% if object.slider_lg_basic_1 %}
 								<div class="single_gallary_item">
-									<img src="{% static 'assets/img/blog/95x70.jpg' %}" alt="image">
+									<img src="{{ object.slider_lg_basic_1.img_95x70.url }}" alt="image">
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_2 %}
 								<div class="single_gallary_item">
-									<img src="{% static 'assets/img/blog/95x70.jpg' %}" alt="image">
+									<img src="{{ object.slider_lg_basic_2.img_95x70.url }}" alt="image">
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_3 %}
 								<div class="single_gallary_item">
-									<img src="{% static 'assets/img/blog/95x70.jpg' %}" alt="image">
+									<img src="{{ object.slider_lg_basic_3.img_95x70.url }}" alt="image">
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_4 %}
 								<div class="single_gallary_item">
-									<img src="{% static 'assets/img/blog/95x70.jpg' %}" alt="image">
+									<img src="{{ object.slider_lg_basic_4.img_95x70.url }}" alt="image">
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_5 %}
 								<div class="single_gallary_item">
-									<img src="{% static 'assets/img/blog/95x70.jpg' %}" alt="image">
+									<img src="{{ object.slider_lg_basic_5.img_95x70.url }}" alt="image">
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_6 %}
 								<div class="single_gallary_item">
-									<img src="{% static 'assets/img/blog/95x70.jpg' %}" alt="image">
+									<img src="{{ object.slider_lg_basic_6.img_95x70.url }}" alt="image">
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_7 %}
 								<div class="single_gallary_item">
-									<img src="{% static 'assets/img/blog/95x70.jpg' %}" alt="image">
+									<img src="{{ object.slider_lg_basic_7.img_95x70.url }}" alt="image">
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_8 %}
 								<div class="single_gallary_item">
-									<img src="{% static 'assets/img/blog/95x70.jpg' %}" alt="">
+									<img src="{{ object.slider_lg_basic_8.img_95x70.url }}" alt="image">
 								</div>
+                {% endif %}
+                
+                {% if object.slider_lg_basic_9 %}
 								<div class="single_gallary_item">
-									<img src="{% static 'assets/img/blog/95x70.jpg' %}" alt="">
+									<img src="{{ object.slider_lg_basic_9.img_95x70.url }}" alt="image">
 								</div>
+                {% endif %}
 							</div>
-						</div>
-						<div class="col-xl-4">
+              <a class="btn btn-block btn-danger d-md-none" href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">Kup najnowsze wydanie TIT w PDF!</a>
+              <div class="space-30 d-md-none"></div>
+            </div>
+						<div class="col-xl-4 d-none d-md-block">
 							<div class="widget_tab md-mt-30">
 								<ul class="nav nav-tabs dark_element">
                   <!--
@@ -301,51 +416,56 @@
                   <button class="btn btn-dark" style="margin-left: 10px;">Popularne</button>
                   <button class="btn btn-dark" style="margin-left: 10px;">Wydarzenia</button>-->
 
-									<li style="background-color:#17222b;"><a style="background-color:#17222b;" data-toggle="tab" href="#post1">Nowości</a>
+									<li style="background-color:#17222b;"><a style="background-color:#17222b;" data-toggle="tab" href="#post1">{% if object.button_1 %}{{ object.button_1 }}{% else %}Przycisk_1{% endif %}</a>
 									</li>
-									<li style="background-color:#17222b;"><a data-toggle="tab" href="#post2" style="background-color:#17222b;">Popularne</a>
+									<li style="background-color:#17222b;"><a data-toggle="tab" href="#post2" style="background-color:#17222b;">{% if object.button_2 %}{{ object.button_2 }}{% else %}Przycisk_2{% endif %}</a>
 									</li>
-									<li style="background-color:#17222b;"><a data-toggle="tab" href="#post3" style="background-color:#17222b;">Wydarzenia</a>
+									<li style="background-color:#17222b;"><a data-toggle="tab" href="#post3" style="background-color:#17222b;">{% if object.button_3 %}{{ object.button_3 }}{% else %}Przycisk_3{% endif %}</a>
 									</li>
 								</ul>
 								<div class="tab-content">
 									<div id="post1" class="tab-pane fade show in active">
 										<div class="widget tab_widgets mb30">
                     
-											<div class="single_post widgets_small">
+                      {% if object.slider_sm_basic_1 %}
+											<div class="single_post widgets_small" >
 												<div class="post_img">
 													<div class="img_wrap">
 														<a href="#">
-															<img src="{% static 'assets/img/header/widget/6.jpg' %}" alt="">
+															<img src="{{ object.slider_sm_basic_1.img_200x154.url }}" alt="">
 														</a>
 													</div>
 												</div>
 												<div class="single_post_text">
-													<div class="meta2 meta_separator1">	<a href="#">NOWOŚCI</a>
-														<a href="#">Maj 26, 2020</a>
+													<div class="meta2 meta_separator1">	<a href="#">{{ object.slider_sm_basic_1.category }}</a>
+														<a href="#">{{ object.slider_sm_basic_1.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 													</div>
-													<h4><a href="post1.html">Copa America: Luis Suarez from devastated US</a></h4>
+													<h4><a href="#">{{ object.slider_sm_basic_1.title|truncatechars:30 }}</a></h4>
 												</div>
 											</div>
+                      {% endif %}
+                      
 											<div class="space-15"></div>
 											<div class="border_black"></div>
 											<div class="space-15"></div>
                       
-											<div class="single_post widgets_small">
+                      {% if object.slider_sm_basic_2 %}
+											<div class="single_post widgets_small" >
 												<div class="post_img">
 													<div class="img_wrap">
 														<a href="#">
-															<img src="{% static 'assets/img/header/widget/6.jpg' %}" alt="">
+															<img src="{{ object.slider_sm_basic_2.img_200x154.url }}" alt="">
 														</a>
 													</div>
 												</div>
 												<div class="single_post_text">
-													<div class="meta2 meta_separator1">	<a href="#">NOWOŚCI</a>
-														<a href="#">Maj 26, 2020</a>
+													<div class="meta2 meta_separator1">	<a href="#">{{ object.slider_sm_basic_2.category }}</a>
+														<a href="#">{{ object.slider_sm_basic_2.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 													</div>
-													<h4><a href="post1.html">Nancy Zhang a Chinese busy woman and Dhaka</a></h4>
+													<h4><a href="#">{{ object.slider_sm_basic_2.title|truncatechars:30 }}</a></h4>
 												</div>
 											</div>
+                      {% endif %}
 											<div class="space-15"></div>
 											<div class="border_black"></div>
 											<div class="space-15"></div>
@@ -360,96 +480,116 @@
 									</div>
 									<div id="post2" class="tab-pane fade">
 										<div class="widget tab_widgets mb30">
-											<div class="single_post widgets_small">
+                    
+                      {% if object.slider_sm_basic_3 %}
+											<div class="single_post widgets_small" >
 												<div class="post_img">
 													<div class="img_wrap">
 														<a href="#">
-															<img src="{% static 'assets/img/header/widget/6.jpg' %}" alt="">
+															<img src="{{ object.slider_sm_basic_3.img_200x154.url }}" alt="">
 														</a>
 													</div>
 												</div>
 												<div class="single_post_text">
-													<div class="meta2 meta_separator1">	<a href="#">TECHNOLOGY</a>
-														<a href="#">March 26, 2020</a>
+													<div class="meta2 meta_separator1">	<a href="#">{{ object.slider_sm_basic_3.category }}</a>
+														<a href="#">{{ object.slider_sm_basic_3.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 													</div>
-													<h4><a href="post1.html">Copa America: Luis Suarez from devastated US</a></h4>
+													<h4><a href="#">{{ object.slider_sm_basic_3.title|truncatechars:30 }}</a></h4>
 												</div>
 											</div>
-											<div class="space-15"></div>
-											<div class="border_black"></div>
-											<div class="space-15"></div>
-											<div class="single_post widgets_small">
-												<div class="post_img">
-													<div class="img_wrap">
-														<a href="#">
-															<img src="{% static 'assets/img/header/widget/6.jpg' %}" alt="">
-														</a>
-													</div>
-												</div>
-												<div class="single_post_text">
-													<div class="meta2 meta_separator1">	<a href="#">TECHNOLOGY</a>
-														<a href="#">March 26, 2020</a>
-													</div>
-													<h4><a href="post1.html">Nancy Zhang a Chinese busy woman and Dhaka</a></h4>
-												</div>
-											</div>
+                      {% endif %}
 											<div class="space-15"></div>
 											<div class="border_black"></div>
 											<div class="space-15"></div>
                       
-                      <img src="{% static 'assets/img/gallary/1g.jpg' %}" alt="">
-                      <button class="btn btn-block btn-danger mt10">Kup najnowsze wydanie TIT w PDF!</button>
+                      {% if object.slider_sm_basic_4 %}
+											<div class="single_post widgets_small" >
+												<div class="post_img">
+													<div class="img_wrap">
+														<a href="#">
+															<img src="{{ object.slider_sm_basic_4.img_200x154.url }}" alt="">
+														</a>
+													</div>
+												</div>
+												<div class="single_post_text">
+													<div class="meta2 meta_separator1">	<a href="#">{{ object.slider_sm_basic_4.category }}</a>
+														<a href="#">{{ object.slider_sm_basic_4.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
+													</div>
+													<h4><a href="#">{{ object.slider_sm_basic_4.title|truncatechars:30 }}</a></h4>
+												</div>
+											</div>
+                      {% endif %}
+											<div class="space-15"></div>
+											<div class="border_black"></div>
+											<div class="space-15"></div>
+                      
+                      <a href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">
+                        <img src="{% static 'assets/img/gallary/1g.jpg' %}" alt="">
+                      </a>
+                      <a class="btn btn-block btn-danger mt10" href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">Kup najnowsze wydanie TIT w PDF!</a>
+
                       
 										</div>
 									</div>
 									<div id="post3" class="tab-pane fade">
 										<div class="widget tab_widgets mb30">
-											<div class="single_post widgets_small">
+                    
+                      {% if object.slider_sm_basic_5 %}
+											<div class="single_post widgets_small" >
 												<div class="post_img">
 													<div class="img_wrap">
 														<a href="#">
-															<img src="{% static 'assets/img/header/widget/6.jpg' %}" alt="">
+															<img src="{{ object.slider_sm_basic_5.img_200x154.url }}" alt="">
 														</a>
 													</div>
 												</div>
 												<div class="single_post_text">
-													<div class="meta2 meta_separator1">	<a href="#">TECHNOLOGY</a>
-														<a href="#">March 26, 2020</a>
+													<div class="meta2 meta_separator1">	<a href="#">{{ object.slider_sm_basic_5.category }}</a>
+														<a href="#">{{ object.slider_sm_basic_5.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 													</div>
-													<h4><a href="post1.html">Copa America: Luis Suarez from devastated US</a></h4>
+													<h4><a href="#">{{ object.slider_sm_basic_5.title|truncatechars:30 }}</a></h4>
 												</div>
 											</div>
-											<div class="space-15"></div>
-											<div class="border_black"></div>
-											<div class="space-15"></div>
-											<div class="single_post widgets_small">
-												<div class="post_img">
-													<div class="img_wrap">
-														<a href="#">
-															<img src="{% static 'assets/img/header/widget/6.jpg' %}" alt="">
-														</a>
-													</div>
-												</div>
-												<div class="single_post_text">
-													<div class="meta2 meta_separator1">	<a href="#">TECHNOLOGY</a>
-														<a href="#">March 26, 2020</a>
-													</div>
-													<h4><a href="post1.html">Nancy Zhang a Chinese busy woman and Dhaka</a></h4>
-												</div>
-											</div>
+                      {% endif %}
 											<div class="space-15"></div>
 											<div class="border_black"></div>
 											<div class="space-15"></div>
                       
-                      <img src="{% static 'assets/img/gallary/1g.jpg' %}" alt="">
-                      <button class="btn btn-block btn-danger mt10">Kup najnowsze wydanie TIT w PDF!</button>
+                      {% if object.slider_sm_basic_6 %}
+											<div class="single_post widgets_small" >
+												<div class="post_img">
+													<div class="img_wrap">
+														<a href="#">
+															<img src="{{ object.slider_sm_basic_6.img_200x154.url }}" alt="">
+														</a>
+													</div>
+												</div>
+												<div class="single_post_text">
+													<div class="meta2 meta_separator1">	<a href="#">{{ object.slider_sm_basic_6.category }}</a>
+														<a href="#">{{ object.slider_sm_basic_6.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
+													</div>
+													<h4><a href="#">{{ object.slider_sm_basic_6.title|truncatechars:30 }}</a></h4>
+												</div>
+											</div>
+                      {% endif %}
+											<div class="space-15"></div>
+											<div class="border_black"></div>
+											<div class="space-15"></div>
+                      
+                      <a href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">
+                        <img src="{% static 'assets/img/gallary/1g.jpg' %}" alt="">
+                      </a>
+                      <a class="btn btn-block btn-danger mt10" href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">Kup najnowsze wydanie TIT w PDF!</a>
+
 
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+
+					
+          </div>
 				</div>
 				
 			</div>
@@ -464,112 +604,147 @@
 				<h2 class="widget-title">Informacje rynkowe</h2>
 				<div class="carousel_post2_type3 nav_style1 owl-carousel">
 					<!--CAROUSEL START-->
+          
+          {% if object.section_second_1 %}
 					<div class="single_post post_type3">
 						<div class="post_img">
-							<div class="img_wrap">
-								<img src="{% static 'assets/img/trending/700x500.jpg' %}" alt="">
-							</div>
+              <a href="#">
+                <div class="img_wrap">
+                  <img src="{{ object.section_second_1.img_700x500.url }}" alt="">
+                </div>
+              </a>
 						</div>
 						<div class="single_post_text">
-							<div class="meta3">	<a href="#">TECHNOLOGY</a>
-								<a href="#">March 26, 2020</a>
+							<div class="meta3">	<a href="#">{{ object.section_second_1.category }}</a>
+								<a href="#">{{ object.section_second_1.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 							</div>
-							<h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
+							<h4><a href="#">{{ object.section_second_1.title|truncatechars:27 }}</a></h4>
 							<div class="space-10"></div>
-							<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
+							<p class="post-p">{{ object.section_second_1.subtitle|truncatechars:120 }}</p>
 						</div>
 					</div>
+          {% endif %}
+          
+          {% if object.section_second_2 %}
 					<div class="single_post post_type3">
 						<div class="post_img">
-							<div class="img_wrap">
-								<img src="{% static 'assets/img/trending/700x500.jpg' %}" alt="">
-							</div>
+              <a href="#">
+                <div class="img_wrap">
+                  <img src="{{ object.section_second_2.img_700x500.url }}" alt="">
+                </div>
+              </a>
 						</div>
 						<div class="single_post_text">
-							<div class="meta3">	<a href="#">TECHNOLOGY</a>
-								<a href="#">March 26, 2020</a>
+							<div class="meta3">	<a href="#">{{ object.section_second_2.category }}</a>
+								<a href="#">{{ object.section_second_2.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 							</div>
-							<h4><a href="post1.html">Japan’s virus success has puzzled the world. Is its luck running out?</a></h4>
+							<h4><a href="#">{{ object.section_second_2.title|truncatechars:27 }}</a></h4>
 							<div class="space-10"></div>
-							<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
+							<p class="post-p">{{ object.section_second_2.subtitle|truncatechars:120 }}</p>
 						</div>
 					</div>
+          {% endif %}
+          
 				</div>
 				<div class="border_black"></div>
 				<div class="space-30"></div>
 				<div class="row">
 					<div class="col-lg-6 mb-3">
+          
+            {% if object.small_section_second_1 %}
 						<div class="single_post widgets_small">
 							<div class="post_img">
-								<div class="img_wrap">
-									<img src="{% static 'assets/img/trending/200x154.jpg' %}" alt="">
-								</div>
+                <a href="#">
+								  <div class="img_wrap">
+									  <img src="{{ object.small_section_second_1.img_200x154.url }}" alt="">
+								  </div>
+                </a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta2">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta2">	<a href="#">{{ object.small_section_second_1.category }}</a>
+									<a href="#">{{ object.small_section_second_1.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
-								<h4><a href="post1.html">Nancy Zhang a Chinese busy woman and Dhaka</a></h4>
+								<h4><a href="#">{{ object.small_section_second_1.title|truncatechars:20 }}</a></h4>
 							</div>
 						</div>
+            {% endif %}
 						<div class="space-15"></div>
 						<div class="border_black"></div>
 						<div class="space-15"></div>
+            
+            {% if object.small_section_second_2 %}
 						<div class="single_post widgets_small">
 							<div class="post_img">
-								<div class="img_wrap">
-									<img src="{% static 'assets/img/trending/200x154.jpg' %}" alt="">
-								</div>
+                <a href="#">
+								  <div class="img_wrap">
+									  <img src="{{ object.small_section_second_2.img_200x154.url }}" alt="">
+								  </div>
+                </a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta2">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta2">	<a href="#">{{ object.small_section_second_2.category }}</a>
+									<a href="#">{{ object.small_section_second_2.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
-								<h4><a href="post1.html">U.S. Response subash says he will label regions by risk of…</a></h4>
+								<h4><a href="#">{{ object.small_section_second_2.title|truncatechars:20 }}</a></h4>
 							</div>
 						</div>
+            {% endif %}
 
 					</div>
 					<div class="col-lg-6">
+          
+            {% if object.small_section_second_3 %}
 						<div class="single_post widgets_small">
 							<div class="post_img">
-								<div class="img_wrap">
-									<img src="{% static 'assets/img/trending/200x154.jpg' %}" alt="">
-								</div>
+                <a href="#">
+								  <div class="img_wrap">
+									  <img src="{{ object.small_section_second_3.img_200x154.url }}" alt="">
+								  </div>
+                </a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta2">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta2">	<a href="#">{{ object.small_section_second_3.category }}</a>
+									<a href="#">{{ object.small_section_second_3.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
-								<h4><a href="post1.html">Nancy Zhang a Chinese busy woman and Dhaka</a></h4>
+								<h4><a href="#">{{ object.small_section_second_3.title|truncatechars:20 }}</a></h4>
 							</div>
 						</div>
+            {% endif %}
 						<div class="space-15"></div>
 						<div class="border_black"></div>
 						<div class="space-15"></div>
+            
+            {% if object.small_section_second_4 %}
 						<div class="single_post widgets_small">
 							<div class="post_img">
-								<div class="img_wrap">
-									<img src="{% static 'assets/img/trending/200x154.jpg' %}" alt="">
-								</div>
+                <a href="#">
+								  <div class="img_wrap">
+									  <img src="{{ object.small_section_second_4.img_200x154.url }}" alt="">
+								  </div>
+                </a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta2">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta2">	<a href="#">{{ object.small_section_second_4.category }}</a>
+									<a href="#">{{ object.small_section_second_4.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
-								<h4><a href="post1.html">U.S. Response subash says he will label regions by risk of…</a></h4>
+								<h4><a href="#">{{ object.small_section_second_4.title|truncatechars:20 }}</a></h4>
 							</div>
 						</div>
+            {% endif %}
 
 					</div>
 				</div>
 			</div>
 			<div class="col-md-12 col-lg-4">
 				<div class="follow_box widget mb30 mt-md-60">
-					<h2 class="widget-title">Sponsorowane</h2>
-					<div class="social_shares">
-						<img src="{% static 'assets/img/gallary/360x115.jpg' %}" alt="">
-					</div>
+					<h2 class="widget-title mt-3">{% if object.section_2 %}{{ object.section_2 }}{% else %}Sekcja_2{% endif %}</h2>
+          {% if object.add_navbar_sponsorowane %}
+          <a href="#">
+            <div class="social_shares">
+              <img src="{{ object.add_navbar_sponsorowane.img_360x115.url }}" alt="">
+            </div>
+          </a>
+          {% endif %}
 				</div>
 				<!--:::::: POST TYPE 2 START :::::::-->
 				<div class="widget tab_widgets mb30">
@@ -749,6 +924,9 @@
 								</div>
 							</div>
 						</div>
+						<div class="space-15"></div>
+						<div class="border_black"></div>
+						<div class="space-15"></div>
 					</div>
 					<div class="col-lg-4">
 						<div class="single_post widgets_small">
@@ -812,6 +990,9 @@
 								</div>
 							</div>
 						</div>
+						<div class="space-15"></div>
+						<div class="border_black"></div>
+						<div class="space-15"></div>
 					</div>
 					<div class="col-lg-4">
 						<div class="single_post widgets_small">
@@ -875,6 +1056,9 @@
 								</div>
 							</div>
 						</div>
+						<div class="space-15"></div>
+						<div class="border_black"></div>
+						<div class="space-15"></div>
 					</div>
         </div>
 			</div>

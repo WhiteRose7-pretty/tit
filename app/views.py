@@ -2,12 +2,18 @@ from django.shortcuts import render
 from .models import Article, Comment, Category
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
+from simple_cms.models import HomePage
 import html2text
+from datetime import datetime
+
+
 
 def home(request):
     categories = Category.objects.filter(menu=True)
+    home_page = HomePage.objects.filter(date_published__lte=datetime.now()).first()
 
-    context = {'categories': categories}
+    context = {'categories': categories,
+               'object': home_page}
     return render(request, 'app/home.html', context)
 
 

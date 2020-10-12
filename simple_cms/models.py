@@ -5,6 +5,7 @@ from imagekit.models import ProcessedImageField, ImageSpecField
 from imagekit.processors import ResizeToFill
 
 
+
 class HomePage(models.Model):
     #basic
     name = models.CharField(max_length=50, verbose_name='Nazwa strony')
