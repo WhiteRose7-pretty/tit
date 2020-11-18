@@ -148,3 +148,11 @@ class Comment(models.Model):
 class Add(models.Model):
     name = models.CharField(max_length=100)
 
+
+class PrivacyPolicy(models.Model):
+    privacy = RichTextField()
+    regulations = RichTextField()
+
+    class Meta:
+        verbose_name = 'Polityka prywatności i regulamin'
+        verbose_name_plural = 'Polityka prywatności i regulamin'

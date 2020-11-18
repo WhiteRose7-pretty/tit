@@ -3,7 +3,7 @@
 <html lang="pl">
 
 <head>
-  <title>{{ object.title }} - TIT - Tomaszowski Informator Tygodniowy</title>
+  <title>{{ obj.title }} - TIT - Tomaszowski Informator Tygodniowy</title>
   <!-- META -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -38,40 +38,40 @@
           <div class="row">
             <div class="col-4 align-self-center">
               <div class="page_category">
-                <h4>{{ object.category|capfirst  }}</h4>
+                <h4>{{ obj.category|capfirst  }}</h4>
               </div>
             </div>
             <div class="col-8 text-right">
               <div class="page_comments">
                 <ul class="inline">
-                  <li><i class="fas fa-comment"></i>{{ object.comments.all.count }}</li>
+                  <li><i class="fas fa-comment"></i>{{ obj.comments.all.count }}</li>
                 </ul>
               </div>
             </div>
           </div>
           <div class="space-30"></div>
           <div class="single_post_heading">
-            <h1>{{ object.title }}</h1>
+            <h1>{{ obj.title }}</h1>
             <div class="space-10"></div>
-            <p>{{ object.subtitle }}</p>
+            <p>{{ obj.subtitle }}</p>
           </div>
           <div class="space-40"></div>
-          <img src="{{ object.img.url }}" alt="image">
+          <img src="{{ obj.img.url }}" alt="image">
           <div class="space-20"></div>
           <div class="row">
             <div class="col-lg-6 align-self-center">
               <div class="author">
                 <div class="author_img">
                   <div class="author_img_wrap">
-                    {% if object.owner.show_img %}
-                    <img src="{{ object.owner.img.url }}" alt="">
+                    {% if obj.owner.show_img %}
+                    <img src="{{ obj.owner.img.url }}" alt="">
                     {% else %}
                     <img src="{% static 'assets/img/author/author2.png' %}" alt="">
                     {% endif %}
                   </div>
-                </div> <a href="#">{{ object.owner.name }}</a>
+                </div> <a href="#">{{ obj.owner.name }}</a>
                 <ul>
-                  <li><a href="#">{{ object.date_of_publication }}</a>
+                  <li><a href="#">{{ obj.date_of_publication }}</a>
                   </li>
                 </ul>
               </div>
@@ -94,15 +94,15 @@
 
           <div class="space-20"></div>
           {% if content_display %}
-          {{ object.content|safe }}
+          {{ obj.content|safe }}
           {% elif user.is_authenticated %}
-          {{ object.content|safe }}
+          {{ obj.content|safe }}
           {% else %}
           <div class="premium-text-show">
-            {{ object.content|safe|slice:":800"}}
+            {{ obj.content|safe|slice:":800"}}
           </div>
           <div class="premium-text fade-out-article">
-            {{ object.content|safe|slice:"400:600"}}
+            {{ obj.content|safe|slice:"400:600"}}
           </div>
 
           <div class="text-left mt-4">
@@ -175,418 +175,7 @@
         </div>
 
 
-        <div class="col-md-6 col-lg-4">
-          <div class="widget_tab md-mt-30">
-            <ul class="nav nav-tabs">
-              <li><a class="active" data-toggle="tab" href="#post1">RELATED</a>
-              </li>
-              <li><a data-toggle="tab" href="#post2" class="">RELATED</a>
-              </li>
-              <li><a data-toggle="tab" href="#post3" class="">POPULAR</a>
-              </li>
-            </ul>
-            <div class="tab-content">
-              <div id="post1" class="tab-pane fade in active show">
-                <div class="widget tab_widgets mb30">
-                  <div class="single_post widgets_small">
-                    <div class="post_img">
-                      <div class="img_wrap">
-                        <a href="#">
-                          <img src="{% static 'assets/img/header/widget/tab1.jpg' %}" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single_post_text">
-                      <div class="meta2 meta_separator1"> <a href="#">TECHNOLOGY</a>
-                        <a href="#">March 26, 2020</a>
-                      </div>
-                      <h4><a href="post1.html">Copa America: Luis Suarez from devastated US</a></h4>
-                    </div>
-                  </div>
-                  <div class="space-15"></div>
-                  <div class="border_black"></div>
-                  <div class="space-15"></div>
-                  <div class="single_post widgets_small">
-                    <div class="post_img">
-                      <div class="img_wrap">
-                        <a href="#">
-                          <img src="{% static 'assets/img/header/widget/tab2.jpg' %}" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single_post_text">
-                      <div class="meta2 meta_separator1"> <a href="#">TECHNOLOGY</a>
-                        <a href="#">March 26, 2020</a>
-                      </div>
-                      <h4><a href="post1.html">Nancy Zhang a Chinese busy woman and Dhaka</a></h4>
-                    </div>
-                  </div>
-                  <div class="space-15"></div>
-                  <div class="border_black"></div>
-                  <div class="space-15"></div>
-                  <div class="single_post widgets_small">
-                    <div class="post_img">
-                      <div class="img_wrap">
-                        <a href="#">
-                          <img src="{% static 'assets/img/header/widget/tab3.jpg' %}" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single_post_text">
-                      <div class="meta2 meta_separator1"> <a href="#">TECHNOLOGY</a>
-                        <a href="#">March 26, 2020</a>
-                      </div>
-                      <h4><a href="post1.html">U.S. Response subash says he will label regions by risk of…</a></h4>
-                    </div>
-                  </div>
-                  <div class="space-15"></div>
-                  <div class="border_black"></div>
-                  <div class="space-15"></div>
-                  <div class="single_post widgets_small">
-                    <div class="post_img">
-                      <div class="img_wrap">
-                        <a href="#">
-                          <img src="{% static 'assets/img/header/widget/tab4.jpg' %}" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single_post_text">
-                      <div class="meta2 meta_separator1"> <a href="#">TECHNOLOGY</a>
-                        <a href="#">March 26, 2020</a>
-                      </div>
-                      <h4><a href="post1.html">Venezuela elan govt and opposit the property collect</a></h4>
-                    </div>
-                  </div>
-                  <div class="space-15"></div>
-                  <div class="border_black"></div>
-                  <div class="space-15"></div>
-                  <div class="single_post widgets_small">
-                    <div class="post_img">
-                      <div class="img_wrap">
-                        <a href="#">
-                          <img src="{% static 'assets/img/header/widget/tab5.jpg' %}" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single_post_text">
-                      <div class="meta2 meta_separator1"> <a href="#">TECHNOLOGY</a>
-                        <a href="#">March 26, 2020</a>
-                      </div>
-                      <h4><a href="post1.html">Cheap smartphone sensor could help you old food safe</a></h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div id="post2" class="tab-pane fade">
-                <div class="widget tab_widgets mb30">
-                  <div class="single_post widgets_small">
-                    <div class="post_img">
-                      <div class="img_wrap">
-                        <a href="#">
-                          <img src="{% static 'assets/img/header/widget/tab1.jpg' %}" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single_post_text">
-                      <div class="meta2 meta_separator1"> <a href="#">TECHNOLOGY</a>
-                        <a href="#">March 26, 2020</a>
-                      </div>
-                      <h4><a href="post1.html">Copa America: Luis Suarez from devastated US</a></h4>
-                    </div>
-                  </div>
-                  <div class="space-15"></div>
-                  <div class="border_black"></div>
-                  <div class="space-15"></div>
-                  <div class="single_post widgets_small">
-                    <div class="post_img">
-                      <div class="img_wrap">
-                        <a href="#">
-                          <img src="{% static 'assets/img/header/widget/tab2.jpg' %}" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single_post_text">
-                      <div class="meta2 meta_separator1"> <a href="#">TECHNOLOGY</a>
-                        <a href="#">March 26, 2020</a>
-                      </div>
-                      <h4><a href="post1.html">Nancy Zhang a Chinese busy woman and Dhaka</a></h4>
-                    </div>
-                  </div>
-                  <div class="space-15"></div>
-                  <div class="border_black"></div>
-                  <div class="space-15"></div>
-                  <div class="single_post widgets_small">
-                    <div class="post_img">
-                      <div class="img_wrap">
-                        <a href="#">
-                          <img src="{% static 'assets/img/header/widget/tab3.jpg' %}" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single_post_text">
-                      <div class="meta2 meta_separator1"> <a href="#">TECHNOLOGY</a>
-                        <a href="#">March 26, 2020</a>
-                      </div>
-                      <h4><a href="post1.html">U.S. Response subash says he will label regions by risk of…</a></h4>
-                    </div>
-                  </div>
-                  <div class="space-15"></div>
-                  <div class="border_black"></div>
-                  <div class="space-15"></div>
-                  <div class="single_post widgets_small">
-                    <div class="post_img">
-                      <div class="img_wrap">
-                        <a href="#">
-                          <img src="{% static 'assets/img/header/widget/tab4.jpg' %}" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single_post_text">
-                      <div class="meta2 meta_separator1"> <a href="#">TECHNOLOGY</a>
-                        <a href="#">March 26, 2020</a>
-                      </div>
-                      <h4><a href="post1.html">Venezuela elan govt and opposit the property collect</a></h4>
-                    </div>
-                  </div>
-                  <div class="space-15"></div>
-                  <div class="border_black"></div>
-                  <div class="space-15"></div>
-                  <div class="single_post widgets_small">
-                    <div class="post_img">
-                      <div class="img_wrap">
-                        <a href="#">
-                          <img src="{% static 'assets/img/header/widget/tab5.jpg' %}" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single_post_text">
-                      <div class="meta2 meta_separator1"> <a href="#">TECHNOLOGY</a>
-                        <a href="#">March 26, 2020</a>
-                      </div>
-                      <h4><a href="post1.html">Cheap smartphone sensor could help you old food safe</a></h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div id="post3" class="tab-pane fade">
-                <div class="widget tab_widgets mb30">
-                  <div class="single_post widgets_small">
-                    <div class="post_img">
-                      <div class="img_wrap">
-                        <a href="#">
-                          <img src="{% static 'assets/img/header/widget/tab1.jpg' %}" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single_post_text">
-                      <div class="meta2 meta_separator1"> <a href="#">TECHNOLOGY</a>
-                        <a href="#">March 26, 2020</a>
-                      </div>
-                      <h4><a href="post1.html">Copa America: Luis Suarez from devastated US</a></h4>
-                    </div>
-                  </div>
-                  <div class="space-15"></div>
-                  <div class="border_black"></div>
-                  <div class="space-15"></div>
-                  <div class="single_post widgets_small">
-                    <div class="post_img">
-                      <div class="img_wrap">
-                        <a href="#">
-                          <img src="{% static 'assets/img/header/widget/tab2.jpg' %}" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single_post_text">
-                      <div class="meta2 meta_separator1"> <a href="#">TECHNOLOGY</a>
-                        <a href="#">March 26, 2020</a>
-                      </div>
-                      <h4><a href="post1.html">Nancy Zhang a Chinese busy woman and Dhaka</a></h4>
-                    </div>
-                  </div>
-                  <div class="space-15"></div>
-                  <div class="border_black"></div>
-                  <div class="space-15"></div>
-                  <div class="single_post widgets_small">
-                    <div class="post_img">
-                      <div class="img_wrap">
-                        <a href="#">
-                          <img src="{% static 'assets/img/header/widget/tab3.jpg' %}" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single_post_text">
-                      <div class="meta2 meta_separator1"> <a href="#">TECHNOLOGY</a>
-                        <a href="#">March 26, 2020</a>
-                      </div>
-                      <h4><a href="post1.html">U.S. Response subash says he will label regions by risk of…</a></h4>
-                    </div>
-                  </div>
-                  <div class="space-15"></div>
-                  <div class="border_black"></div>
-                  <div class="space-15"></div>
-                  <div class="single_post widgets_small">
-                    <div class="post_img">
-                      <div class="img_wrap">
-                        <a href="#">
-                          <img src="{% static 'assets/img/header/widget/tab4.jpg' %}" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single_post_text">
-                      <div class="meta2 meta_separator1"> <a href="#">TECHNOLOGY</a>
-                        <a href="#">March 26, 2020</a>
-                      </div>
-                      <h4><a href="post1.html">Venezuela elan govt and opposit the property collect</a></h4>
-                    </div>
-                  </div>
-                  <div class="space-15"></div>
-                  <div class="border_black"></div>
-                  <div class="space-15"></div>
-                  <div class="single_post widgets_small">
-                    <div class="post_img">
-                      <div class="img_wrap">
-                        <a href="#">
-                          <img src="{% static 'assets/img/header/widget/tab5.jpg' %}" alt="">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single_post_text">
-                      <div class="meta2 meta_separator1"> <a href="#">TECHNOLOGY</a>
-                        <a href="#">March 26, 2020</a>
-                      </div>
-                      <h4><a href="post1.html">Cheap smartphone sensor could help you old food safe</a></h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="follow_box widget mb30">
-            <h2 class="widget-title">Follow Us</h2>
-            <div class="social_shares">
-              <a class="single_social social_facebook" href="#"> <span class="follow_icon"><i class="fab fa-facebook-f"></i></span>
-                34,456 <span class="icon_text">Instagram</span>
-              </a>
-              <a class="single_social social_twitter" href="#"> <span class="follow_icon"><i class="fab fa-twitter"></i></span>
-                34,456 <span class="icon_text">Facebook</span>
-              </a>
-              <a class="single_social social_youtube" href="#"> <span class="follow_icon"><i class="fab fa-youtube"></i></span>
-                34,456 <span class="icon_text">YouTube</span>
-              </a>
-            </div>
-          </div>
-          <!--:::::: POST TYPE 3 START :::::::-->
-          <div class="carousel_post_type3_wrap mb30">
-            <h2 class="widget-title">Trending News</h2>
-            <div class="carousel_post_type3 nav_style1 owl-carousel">
-              <div class="single_post post_type3">
-                <div class="post_img">
-                  <img src="{% static 'assets/img/bg/video4.jpg' %}" alt=""> <span class="tranding">
-                    <i class="fas fa-bolt"></i>
-                  </span>
-                </div>
-                <div class="single_post_text">
-                  <div class="meta3"> <a href="#">TECHNOLOGY</a>
-                    <a href="#">March 26, 2020</a>
-                  </div>
-                  <h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-                  <div class="space-10"></div>
-                  <p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-                </div>
-              </div>
-              <div class="single_post post_type3">
-                <div class="post_img">
-                  <img src="{% static 'assets/img/bg/video4.jpg' %}" alt=""> <span class="tranding">
-                    <i class="fas fa-bolt"></i>
-                  </span>
-                </div>
-                <div class="single_post_text">
-                  <div class="meta3"> <a href="#">TECHNOLOGY</a>
-                    <a href="#">March 26, 2020</a>
-                  </div>
-                  <h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-                  <div class="space-10"></div>
-                  <p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--:::::: POST TYPE 3 END :::::::-->
-          <!--:::::: POST TYPE 2 START :::::::-->
-          <div class="widget tab_widgets mb30">
-            <div class="single_post widgets_small">
-              <div class="post_img">
-                <div class="img_wrap">
-                  <img src="{% static 'assets/img/blog/blog_small4.jpg' %}" alt="">
-                </div> <span class="tranding">
-                  <i class="fas fa-bolt"></i>
-                </span>
-              </div>
-              <div class="single_post_text">
-                <div class="meta2"> <a href="#">TECHNOLOGY</a>
-                  <a href="#">March 26, 2020</a>
-                </div>
-                <h4><a href="post1.html">Nancy Zhang a Chinese busy woman and Dhaka</a></h4>
-              </div>
-            </div>
-            <div class="space-15"></div>
-            <div class="border_black"></div>
-            <div class="space-15"></div>
-            <div class="single_post widgets_small">
-              <div class="post_img">
-                <div class="img_wrap">
-                  <img src="{% static 'assets/img/blog/blog_small4.jpg' %}" alt="">
-                </div> <span class="tranding">
-                  <i class="fas fa-bolt"></i>
-                </span>
-              </div>
-              <div class="single_post_text">
-                <div class="meta2"> <a href="#">TECHNOLOGY</a>
-                  <a href="#">March 26, 2020</a>
-                </div>
-                <h4><a href="post1.html">Nancy Zhang a Chinese busy woman and Dhaka</a></h4>
-              </div>
-            </div>
-            <div class="space-15"></div>
-            <div class="border_black"></div>
-            <div class="space-15"></div>
-            <div class="single_post widgets_small">
-              <div class="post_img">
-                <div class="img_wrap">
-                  <img src="{% static 'assets/img/blog/blog_small4.jpg' %}" alt="">
-                </div> <span class="tranding">
-                  <i class="fas fa-bolt"></i>
-                </span>
-              </div>
-              <div class="single_post_text">
-                <div class="meta2"> <a href="#">TECHNOLOGY</a>
-                  <a href="#">March 26, 2020</a>
-                </div>
-                <h4><a href="post1.html">Nancy Zhang a Chinese busy woman and Dhaka</a></h4>
-              </div>
-            </div>
-          </div>
-          <!--:::::: POST TYPE 2 END:::::::-->
-          <div class="banner2 mb30">
-            <a href="#">
-              <img src="{% static 'assets/img/bg/sidebar-1.png' %}" alt="">
-            </a>
-          </div>
-          <!--:::::: POST TYPE 4 END :::::::-->
-          <div class="box widget news_letter mb30">
-            <h2 class="widget-title">Newsletter</h2>
-            <p>Powiadomimy cię o nowych artykułach pojawiających się na łamach naszego tygodnika.</p>
-            <div class="space-20"></div>
-            <div class="signup_form">
-              <form action="index.html">
-                <input class="signup" type="email" placeholder="Twój adres email">
-                <input type="button" class="cbtn" value="Zapisz">
-              </form>
-              <div class="space-10"></div>
-              <p>Podając adres email, akceptujesz regulamin i politykę prywatności.</p>
-            </div>
-          </div>
-        </div>
+        {% include "app/basic/right-section.html" %}
       </div>
     </div>
   </div>
@@ -666,7 +255,7 @@
         <div class="col-12 col-lg-10 m-auto" id="formularzKomentarzy">
           <form action="/comment/" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input name="article_id" type="hidden" value="{{ object.id }}">
+            <input name="article_id" type="hidden" value="{{ obj.id }}">
             <div class="row">
               <div class="col-md-12">
                 <input name="full_name" type="text" placeholder="Imię lub pseudonim" required>

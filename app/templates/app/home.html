@@ -752,98 +752,108 @@
 					<div class="post_type2_carousel owl-carousel nav_style1">
 						<!--CAROUSEL START-->
 						<div class="single_post2_carousel">
-							<div class="single_post widgets_small type8">
+              {% if object.section_second_left_1 %}
+							<div class="single_post widgets_small type8 openModalClass">
 								<div class="post_img">
 									<div class="img_wrap">
-										<img src="{% static 'assets/img/most_view/160x128.jpg' %}" alt="">
+										<img src="{{ object.section_second_left_1.img_160x128.url }}" alt="">
 									</div>
 								</div>
 								<div class="single_post_text">
-									<div class="meta2">	<a href="#">TECHNOLOGY</a>
-										<a href="#">March 26, 2020</a>
+									<div class="meta2">	<a href="#" class="not-active">{{ object.section_second_left_1.category }}</a>
+										<a href="#" class="not-active">{{ object.section_second_left_1.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 									</div>
-									<h4><a href="post1.html">Nancy zhang a chinese busy woman and dhaka</a></h4>
+									<h4><a href="#" class="not-active">{{ object.section_second_left_1.title|truncatechars:20 }}</a></h4>
 								</div>
 								<div class="type8_count">
 									<h2>1</h2>
 								</div>
 							</div>
+              {% endif %}
 							<div class="space-15"></div>
 							<div class="border_black"></div>
 							<div class="space-15"></div>
-							<div class="single_post widgets_small type8">
+              {% if object.section_second_left_2 %}
+							<div class="single_post widgets_small type8 openModalClass">
 								<div class="post_img">
 									<div class="img_wrap">
-										<img src="{% static 'assets/img/most_view/160x128.jpg' %}" alt="">
+										<img src="{{ object.section_second_left_2.img_160x128.url }}" alt="">
 									</div>
 								</div>
 								<div class="single_post_text">
-									<div class="meta2">	<a href="#">TECHNOLOGY</a>
-										<a href="#">March 26, 2020</a>
+									<div class="meta2">	<a href="#" class="not-active">{{ object.section_second_left_2.category }}</a>
+										<a href="#" class="not-active">{{ object.section_second_left_2.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 									</div>
-									<h4><a href="post1.html">The billionaire Philan thropist read to learn</a></h4>
+									<h4><a href="#" class="not-active">{{ object.section_second_left_2.title|truncatechars:20 }}</a></h4>
 								</div>
 								<div class="type8_count">
 									<h2>2</h2>
 								</div>
 							</div>
+              {% endif %}
 							<div class="space-15"></div>
 							<div class="border_black"></div>
 							<div class="space-15"></div>
-							<div class="single_post widgets_small type8">
+              {% if object.section_second_left_3 %}
+							<div class="single_post widgets_small type8 openModalClass">
 								<div class="post_img">
 									<div class="img_wrap">
-										<img src="{% static 'assets/img/most_view/160x128.jpg' %}" alt="">
+										<img src="{{ object.section_second_left_3.img_160x128.url }}" alt="">
 									</div>
 								</div>
 								<div class="single_post_text">
-									<div class="meta2">	<a href="#">TECHNOLOGY</a>
-										<a href="#">March 26, 2020</a>
+									<div class="meta2">	<a href="#" class="not-active">{{ object.section_second_left_3.category }}</a>
+										<a href="#" class="not-active">{{ object.section_second_left_3.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 									</div>
-									<h4><a href="post1.html">Cheap smartphone sensor could help you</a></h4>
+									<h4><a href="#" class="not-active">{{ object.section_second_left_3.title|truncatechars:20 }}</a></h4>
 								</div>
 								<div class="type8_count">
 									<h2>3</h2>
 								</div>
 							</div>
+              {% endif %}
 							<div class="space-15"></div>
 							<div class="border_black"></div>
 							<div class="space-15"></div>
-							<div class="single_post widgets_small type8">
+              {% if object.section_second_left_4 %}
+							<div class="single_post widgets_small type8 openModalClass">
 								<div class="post_img">
 									<div class="img_wrap">
-										<img src="{% static 'assets/img/most_view/160x128.jpg' %}" alt="">
+										<img src="{{ object.section_second_left_4.img_160x128.url }}" alt="">
 									</div>
 								</div>
 								<div class="single_post_text">
-									<div class="meta2">	<a href="#">TECHNOLOGY</a>
-										<a href="#">March 26, 2020</a>
+									<div class="meta2">	<a href="#" class="not-active">{{ object.section_second_left_4.category }}</a>
+										<a href="#" class="not-active">{{ object.section_second_left_4.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 									</div>
-									<h4><a href="post1.html">Class property employ ancho red multi</a></h4>
+									<h4><a href="#" class="not-active">{{ object.section_second_left_4.title|truncatechars:20 }}</a></h4>
 								</div>
 								<div class="type8_count">
 									<h2>4</h2>
 								</div>
 							</div>
+              {% endif %}
 							<div class="space-15"></div>
 							<div class="border_black"></div>
 							<div class="space-15"></div>
-							<div class="single_post widgets_small type8">
+              {% if object.section_second_left_5 %}
+							<div class="single_post widgets_small type8 openModalClass">
 								<div class="post_img">
 									<div class="img_wrap">
-										<img src="{% static 'assets/img/most_view/160x128.jpg' %}" alt="">
+										<img src="{{ object.section_second_left_5.img_160x128.url }}" alt="">
 									</div>
 								</div>
 								<div class="single_post_text">
-									<div class="meta2">	<a href="#">TECHNOLOGY</a>
-										<a href="#">March 26, 2020</a>
+									<div class="meta2">	<a href="#" class="not-active">{{ object.section_second_left_5.category }}</a>
+										<a href="#" class="not-active">{{ object.section_second_left_5.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 									</div>
-									<h4><a href="post1.html">Best garden wing supplies for the horticu</a></h4>
+									<h4><a href="#" class="not-active">{{ object.section_second_left_5.title|truncatechars:20 }}</a></h4>
 								</div>
 								<div class="type8_count">
 									<h2>5</h2>
 								</div>
 							</div>
+              {% endif %}
 						</div>
           </div>
 					<!--CAROUSEL END-->
@@ -1075,36 +1085,40 @@
 					<div class="mix_carousel">
 						<!--CAROUSEL START-->
 						<div class="single_mix_carousel owl-carousel nav_style3">
-							<div class="single_post post_type6 post_type9">
+              {% if object.basic_center_1 %}
+							<div class="single_post post_type6 post_type9 openModalClass" onclick="passDataFunction('basic_center_1')">
 								<div class="post_img gradient1">
 									<div class="img_wrap">
-										<a class="play_btn" href="#">
-											<img src="{% static 'assets/img/bg/1080x840.jpg' %}" alt="">
+										<a class="" href="" onClick="return false;">
+											<img src="{{ object.basic_center_1.img_1080x840.url }}" alt="">
 										</a>
 									</div>
 								</div>
 								<div class="single_post_text">
-									<div class="meta">	<a href="#">TECHNOLOGY</a>
-										<a href="#">March 26, 2020</a>
+									<div class="meta">	<a href="#" onClick="return false;">{{ object.basic_center_1.category }}</a>
+										<a href="#" onClick="return false;">{{ object.basic_center_1.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 									</div>
-									<h4><a href="video_post1.html">Success is not a good food failure makes you humble</a></h4>
+									<h4><a href="#" onClick="return false;">{{ object.basic_center_1.title|truncatechars:40 }}</a></h4>
 								</div>
 							</div>
-							<div class="single_post post_type6 post_type9">
+              {% endif %}
+              {% if object.basic_center_2 %}
+							<div class="single_post post_type6 post_type9 openModalClass" onclick="passDataFunction('basic_center_2')">
 								<div class="post_img gradient1">
 									<div class="img_wrap">
-										<a href="#" class="play_btn">
-											<img src="{% static 'assets/img/bg/1080x840.jpg' %}" alt="">
+										<a class="" href="" onClick="return false;">
+											<img src="{{ object.basic_center_2.img_1080x840.url }}" alt="">
 										</a>
 									</div>
 								</div>
 								<div class="single_post_text">
-									<div class="meta">	<a href="#">TECHNOLOGY</a>
-										<a href="#">March 26, 2020</a>
+									<div class="meta">	<a href="#" onClick="return false;">{{ object.basic_center_2.category }}</a>
+										<a href="#" onClick="return false;">{{ object.basic_center_2.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 									</div>
-									<h4><a href="post1.html">Success is not a good food failure makes you humble</a></h4>
+									<h4><a href="#" onClick="return false;">{{ object.basic_center_2.title|truncatechars:40 }}</a></h4>
 								</div>
 							</div>
+              {% endif %}
 						</div>
 					</div>
 					<!--CAROUSEL END-->
@@ -1128,108 +1142,121 @@
 			<div class="space-50"></div>
 			<div class="viceo_posts_wrap">
 				<div class="row">
-					<div class="col-lg-8">
-						<div class="single_post post_type3 post_type11 margintop-60- xs-mb30">
+          {% if object.large_basic_under %}
+					<div class="col-lg-8 openModalClass" onclick="passDataFunction('large_basic_under')">
+						<div class="single_post post_type3 post_type11 margintop-60- xs-mb30 openModalClass" onclick="passDataFunction('large_basic_under')">
 							<div class="post_img">
 								<div class="img_wrap">
-									<a href="#" class="play_btn">
-										<img src="{% static 'assets/img/video/1460x822.jpg' %}" alt="">
+									<a href="#" class="" onClick="return false;">
+										<img src="{{ object.large_basic_under.img_1460x822.url }}" alt="">
 									</a>
 								</div>
 							</div>
 							<div class="single_post_text padding30 fourth_bg">
-								<div class="meta3">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta3">	<a href="#" class="not-active">{{ object.large_basic_under.category }}</a>
+									<a href="#" onClick="return false;">{{ object.large_basic_under.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
-								<h4><a href="post1.html">Riots Report Shows London Needs To Maintain Police Numbers, Says Mayor</a></h4>
+								<h4 class="mt-3"><a href="#" onClick="return false;">{{ object.large_basic_under.title|truncatechars:45 }}</a></h4>
 							</div>
 						</div>
 					</div>
+          {% endif %}
 					<div class="col-lg-4">
 						<div class="popular_carousel_area mb30 md-mt-30">
 							<h2 class="widget-title">Popularne</h2>
 							<div class="popular_carousel owl-carousel nav_style1">
 								<!--CAROUSEL START-->
 								<div class="popular_items">
-									<div class="single_post type10 widgets_small mb15">
+                  {% if object.sm_basic_under_1 %}
+									<div class="single_post type10 widgets_small mb15 openModalClass" onclick="passDataFunction('sm_basic_under_1')">
 										<div class="post_img">
 											<div class="img_wrap">
-												<a href="#">
-													<img src="{% static 'assets/img/popular/6.jpg' %}" alt="">
+												<a href="#" class="not-active">
+													<img src="{{ object.sm_basic_under_1.img_200x113.url }}" alt="">
 												</a>
 											</div>	<span class="tranding tranding_border">
 												1
 											</span>
 										</div>
 										<div class="single_post_text">
-											<h4><a href="post1.html">The property complete with a 30 seat screen room.</a></h4>
-											<div class="meta4">	<a href="#">TECHNOLOGY</a>
+											<h4><a href="#" class="not-active">{{ object.sm_basic_under_1.title|truncatechars:20 }}</a></h4>
+											<div class="meta4">	<a href="#" class="not-active">{{ object.sm_basic_under_1.category }}</a>
 											</div>
 										</div>
 									</div>
-									<div class="single_post type10 widgets_small mb15">
+                  {% endif %}
+                  {% if object.sm_basic_under_2 %}
+									<div class="single_post type10 widgets_small mb15 openModalClass" onclick="passDataFunction('sm_basic_under_2')">
 										<div class="post_img">
 											<div class="img_wrap">
-												<a href="#">
-													<img src="{% static 'assets/img/popular/6.jpg' %}" alt="">
+												<a href="#" class="not-active">
+													<img src="{{ object.sm_basic_under_2.img_200x113.url }}" alt="">
 												</a>
 											</div>	<span class="tranding tranding_border">
 												2
 											</span>
 										</div>
 										<div class="single_post_text">
-											<h4><a href="post1.html">Cheap smartphone sensor could help you old.</a></h4>
-											<div class="meta4">	<a href="#">TECHNOLOGY</a>
+											<h4><a href="#" class="not-active">{{ object.sm_basic_under_2.title|truncatechars:20 }}</a></h4>
+											<div class="meta4">	<a href="#" class="not-active">{{ object.sm_basic_under_2.category }}</a>
 											</div>
 										</div>
 									</div>
-									<div class="single_post type10 widgets_small mb15">
+                  {% endif %}
+                  {% if object.sm_basic_under_3 %}
+									<div class="single_post type10 widgets_small mb15 openModalClass" onclick="passDataFunction('sm_basic_under_3')">
 										<div class="post_img">
 											<div class="img_wrap">
-												<a href="#">
-													<img src="{% static 'assets/img/popular/6.jpg' %}" alt="">
+												<a href="#" class="not-active">
+													<img src="{{ object.sm_basic_under_3.img_200x113.url }}" alt="">
 												</a>
 											</div>	<span class="tranding tranding_border">
 												3
 											</span>
 										</div>
 										<div class="single_post_text">
-											<h4><a href="post1.html">Harbour amid a Slowen the down in singer city</a></h4>
-											<div class="meta4">	<a href="#">TECHNOLOGY</a>
+											<h4><a href="#" class="not-active">{{ object.sm_basic_under_3.title|truncatechars:20 }}</a></h4>
+											<div class="meta4">	<a href="#" class="not-active">{{ object.sm_basic_under_3.category }}</a>
 											</div>
 										</div>
 									</div>
-									<div class="single_post type10 widgets_small mb15">
+                  {% endif %}
+                  {% if object.sm_basic_under_4 %}
+									<div class="single_post type10 widgets_small mb15 openModalClass" onclick="passDataFunction('sm_basic_under_4')">
 										<div class="post_img">
 											<div class="img_wrap">
-												<a href="#">
-													<img src="{% static 'assets/img/popular/6.jpg' %}" alt="">
+												<a href="#" class="not-active">
+													<img src="{{ object.sm_basic_under_4.img_200x113.url }}" alt="">
 												</a>
 											</div>	<span class="tranding tranding_border">
 												4
 											</span>
 										</div>
 										<div class="single_post_text">
-											<h4><a href="post1.html">The secret to moving this from sphinx screening</a></h4>
-											<div class="meta4">	<a href="#">TECHNOLOGY</a>
+											<h4><a href="#" class="not-active">{{ object.sm_basic_under_4.title|truncatechars:20 }}</a></h4>
+											<div class="meta4">	<a href="#" class="not-active">{{ object.sm_basic_under_4.category }}</a>
 											</div>
 										</div>
 									</div>
-									<div class="single_post type10 widgets_small ldnane">
+                  {% endif %}
+                  {% if object.sm_basic_under_5 %}
+									<div class="single_post type10 widgets_small mb15 openModalClass" onclick="passDataFunction('sm_basic_under_5')">
 										<div class="post_img">
 											<div class="img_wrap">
-												<a href="#">
-													<img src="{% static 'assets/img/popular/6.jpg' %}" alt="">
+												<a href="#" class="not-active">
+													<img src="{{ object.sm_basic_under_5.img_200x113.url }}" alt="">
 												</a>
 											</div>	<span class="tranding tranding_border">
-												5</span>
+												5
+											</span>
 										</div>
 										<div class="single_post_text">
-											<h4><a href="post1.html">The secret to moving this from sphinx screening</a></h4>
-											<div class="meta4">	<a href="#">TECHNOLOGY</a>
+											<h4><a href="#" class="not-active">{{ object.sm_basic_under_5.title|truncatechars:20 }}</a></h4>
+											<div class="meta4">	<a href="#" class="not-active">{{ object.sm_basic_under_5.category }}</a>
 											</div>
 										</div>
 									</div>
+                  {% endif %}
 								</div>
               </div>
 							<!--CAROUSEL END-->
@@ -1255,54 +1282,74 @@
 				<div class="col-12">
 					<div class="feature_carousel owl-carousel nav_style1">
 						<!--CAROUSEL START-->
-						<div class="single_post post_type6 post_type7">
+            {% if object.section_footer_1 %}
+						<div class="single_post post_type6 post_type7 openModalClass" onclick="passDataFunction('section_footer_1')">
 							<div class="post_img gradient1">
-								<a href="#">
-									<img src="{% static 'assets/img/feature/540x640.jpg' %}" alt="">
+								<a href="#" class="not-active">
+									<img src="{{ object.section_footer_1.img_540x640.url }}" alt="">
 								</a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta5">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta5">	<a href="#" class="not-active">{{ object.section_footer_1.category }}</a>
+									<a href="#" class="not-active">{{ object.section_footer_1.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
 								<h4>
-									<a href="post1.html">Best garden wing supplies for the horticu ltural</a>
+									<a href="#" class="not-active">{{ object.section_footer_1.title|truncatechars:30 }}</a>
 								</h4>
 							</div>
 						</div>
-						<div class="single_post post_type6 post_type7">
+            {% endif %}
+            {% if object.section_footer_2 %}
+						<div class="single_post post_type6 post_type7 openModalClass" onclick="passDataFunction('section_footer_2')">
 							<div class="post_img gradient1">
-								<img src="{% static 'assets/img/feature/540x640.jpg' %}" alt="">
+								<a href="#" class="not-active">
+									<img src="{{ object.section_footer_2.img_540x640.url }}" alt="">
+								</a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta5">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta5">	<a href="#" class="not-active">{{ object.section_footer_2.category }}</a>
+									<a href="#" class="not-active">{{ object.section_footer_2.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
-								<h4><a href="post1.html">Copa America: Luis Suarez from devastated US</a></h4>
+								<h4>
+									<a href="#" class="not-active">{{ object.section_footer_2.title|truncatechars:30 }}</a>
+								</h4>
 							</div>
 						</div>
-						<div class="single_post post_type6 post_type7">
+            {% endif %}
+            {% if object.section_footer_3 %}
+						<div class="single_post post_type6 post_type7 openModalClass" onclick="passDataFunction('section_footer_3')">
 							<div class="post_img gradient1">
-								<img src="{% static 'assets/img/feature/540x640.jpg' %}" alt="">
+								<a href="#" class="not-active">
+									<img src="{{ object.section_footer_3.img_540x640.url }}" alt="">
+								</a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta5">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta5">	<a href="#" class="not-active">{{ object.section_footer_3.category }}</a>
+									<a href="#" class="not-active">{{ object.section_footer_3.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
-								<h4><a href="post1.html">Best garden wing supplies for the horticu ltural</a></h4>
+								<h4>
+									<a href="#" class="not-active">{{ object.section_footer_3.title|truncatechars:30 }}</a>
+								</h4>
 							</div>
 						</div>
-						<div class="single_post post_type6 post_type7">
+            {% endif %}
+            {% if object.section_footer_4 %}
+						<div class="single_post post_type6 post_type7 openModalClass" onclick="passDataFunction('section_footer_4')">
 							<div class="post_img gradient1">
-								<img src="{% static 'assets/img/feature/540x640.jpg' %}" alt="">
+								<a href="#" class="not-active">
+									<img src="{{ object.section_footer_4.img_540x640.url }}" alt="">
+								</a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta5">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta5">	<a href="#" class="not-active">{{ object.section_footer_4.category }}</a>
+									<a href="#" class="not-active">{{ object.section_footer_4.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
-								<h4><a href="post1.html">Copa America: Luis Suarez from devastated US</a></h4>
+								<h4>
+									<a href="#" class="not-active">{{ object.section_footer_4.title|truncatechars:30 }}</a>
+								</h4>
 							</div>
 						</div>
+            {% endif %}
 					</div>
 					<!--CAROUSEL END-->
 				</div>
@@ -1325,54 +1372,74 @@
 				<div class="col-12">
 					<div class="feature_carousel owl-carousel nav_style1">
 						<!--CAROUSEL START-->
-						<div class="single_post post_type6 post_type7">
+            {% if object.section_footer_5 %}
+						<div class="single_post post_type6 post_type7 openModalClass" onclick="passDataFunction('section_footer_5')">
 							<div class="post_img gradient1">
-								<a href="#">
-									<img src="{% static 'assets/img/feature/540x640.jpg' %}" alt="">
+								<a href="#" class="not-active">
+									<img src="{{ object.section_footer_5.img_540x640.url }}" alt="">
 								</a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta5">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta5">	<a href="#" class="not-active">{{ object.section_footer_5.category }}</a>
+									<a href="#" class="not-active">{{ object.section_footer_5.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
 								<h4>
-									<a href="post1.html">Best garden wing supplies for the horticu ltural</a>
+									<a href="#" class="not-active">{{ object.section_footer_5.title|truncatechars:30 }}</a>
 								</h4>
 							</div>
 						</div>
-						<div class="single_post post_type6 post_type7">
+            {% endif %}
+            {% if object.section_footer_6 %}
+						<div class="single_post post_type6 post_type7 openModalClass" onclick="passDataFunction('section_footer_6')">
 							<div class="post_img gradient1">
-								<img src="{% static 'assets/img/feature/540x640.jpg' %}" alt="">
+								<a href="#" class="not-active">
+									<img src="{{ object.section_footer_6.img_540x640.url }}" alt="">
+								</a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta5">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta5">	<a href="#" class="not-active">{{ object.section_footer_6.category }}</a>
+									<a href="#" class="not-active">{{ object.section_footer_6.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
-								<h4><a href="post1.html">Copa America: Luis Suarez from devastated US</a></h4>
+								<h4>
+									<a href="#" class="not-active">{{ object.section_footer_6.title|truncatechars:30 }}</a>
+								</h4>
 							</div>
 						</div>
-						<div class="single_post post_type6 post_type7">
+            {% endif %}
+            {% if object.section_footer_7 %}
+						<div class="single_post post_type6 post_type7 openModalClass" onclick="passDataFunction('section_footer_7')">
 							<div class="post_img gradient1">
-								<img src="{% static 'assets/img/feature/540x640.jpg' %}" alt="">
+								<a href="#" class="not-active">
+									<img src="{{ object.section_footer_7.img_540x640.url }}" alt="">
+								</a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta5">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta5">	<a href="#" class="not-active">{{ object.section_footer_7.category }}</a>
+									<a href="#" class="not-active">{{ object.section_footer_7.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
-								<h4><a href="post1.html">Best garden wing supplies for the horticu ltural</a></h4>
+								<h4>
+									<a href="#" class="not-active">{{ object.section_footer_7.title|truncatechars:30 }}</a>
+								</h4>
 							</div>
 						</div>
-						<div class="single_post post_type6 post_type7">
+            {% endif %}
+            {% if object.section_footer_8 %}
+						<div class="single_post post_type6 post_type7 openModalClass" onclick="passDataFunction('section_footer_8')">
 							<div class="post_img gradient1">
-								<img src="{% static 'assets/img/feature/540x640.jpg' %}" alt="">
+								<a href="#" class="not-active">
+									<img src="{{ object.section_footer_8.img_540x640.url }}" alt="">
+								</a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta5">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta5">	<a href="#" class="not-active">{{ object.section_footer_8.category }}</a>
+									<a href="#" class="not-active">{{ object.section_footer_8.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
-								<h4><a href="post1.html">Copa America: Luis Suarez from devastated US</a></h4>
+								<h4>
+									<a href="#" class="not-active">{{ object.section_footer_8.title|truncatechars:30 }}</a>
+								</h4>
 							</div>
 						</div>
+            {% endif %}
 					</div>
 					<!--CAROUSEL END-->
 				</div>
@@ -1395,54 +1462,74 @@
 				<div class="col-12">
 					<div class="feature_carousel owl-carousel nav_style1">
 						<!--CAROUSEL START-->
-						<div class="single_post post_type6 post_type7">
+            {% if object.section_footer_9 %}
+						<div class="single_post post_type6 post_type7 openModalClass" onclick="passDataFunction('section_footer_9')">
 							<div class="post_img gradient1">
-								<a href="#">
-									<img src="{% static 'assets/img/feature/540x640.jpg' %}" alt="">
+								<a href="#" class="not-active">
+									<img src="{{ object.section_footer_9.img_540x640.url }}" alt="">
 								</a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta5">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta5">	<a href="#" class="not-active">{{ object.section_footer_9.category }}</a>
+									<a href="#" class="not-active">{{ object.section_footer_9.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
 								<h4>
-									<a href="post1.html">Best garden wing supplies for the horticu ltural</a>
+									<a href="#" class="not-active">{{ object.section_footer_9.title|truncatechars:30 }}</a>
 								</h4>
 							</div>
 						</div>
-						<div class="single_post post_type6 post_type7">
+            {% endif %}
+            {% if object.section_footer_10 %}
+						<div class="single_post post_type6 post_type7 openModalClass" onclick="passDataFunction('section_footer_10')">
 							<div class="post_img gradient1">
-								<img src="{% static 'assets/img/feature/540x640.jpg' %}" alt="">
+								<a href="#" class="not-active">
+									<img src="{{ object.section_footer_10.img_540x640.url }}" alt="">
+								</a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta5">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta5">	<a href="#" class="not-active">{{ object.section_footer_10.category }}</a>
+									<a href="#" class="not-active">{{ object.section_footer_10.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
-								<h4><a href="post1.html">Copa America: Luis Suarez from devastated US</a></h4>
+								<h4>
+									<a href="#" class="not-active">{{ object.section_footer_10.title|truncatechars:30 }}</a>
+								</h4>
 							</div>
 						</div>
-						<div class="single_post post_type6 post_type7">
+            {% endif %}
+            {% if object.section_footer_11 %}
+						<div class="single_post post_type6 post_type7 openModalClass" onclick="passDataFunction('section_footer_11')">
 							<div class="post_img gradient1">
-								<img src="{% static 'assets/img/feature/540x640.jpg' %}" alt="">
+								<a href="#" class="not-active">
+									<img src="{{ object.section_footer_11.img_540x640.url }}" alt="">
+								</a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta5">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta5">	<a href="#" class="not-active">{{ object.section_footer_11.category }}</a>
+									<a href="#" class="not-active">{{ object.section_footer_11.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
-								<h4><a href="post1.html">Best garden wing supplies for the horticu ltural</a></h4>
+								<h4>
+									<a href="#" class="not-active">{{ object.section_footer_11.title|truncatechars:30 }}</a>
+								</h4>
 							</div>
 						</div>
-						<div class="single_post post_type6 post_type7">
+            {% endif %}
+            {% if object.section_footer_12 %}
+						<div class="single_post post_type6 post_type7 openModalClass" onclick="passDataFunction('section_footer_12')">
 							<div class="post_img gradient1">
-								<img src="{% static 'assets/img/feature/540x640.jpg' %}" alt="">
+								<a href="#" class="not-active">
+									<img src="{{ object.section_footer_12.img_540x640.url }}" alt="">
+								</a>
 							</div>
 							<div class="single_post_text">
-								<div class="meta5">	<a href="#">TECHNOLOGY</a>
-									<a href="#">March 26, 2020</a>
+								<div class="meta5">	<a href="#" class="not-active">{{ object.section_footer_12.category }}</a>
+									<a href="#" class="not-active">{{ object.section_footer_12.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
 								</div>
-								<h4><a href="post1.html">Copa America: Luis Suarez from devastated US</a></h4>
+								<h4>
+									<a href="#" class="not-active">{{ object.section_footer_12.title|truncatechars:30 }}</a>
+								</h4>
 							</div>
 						</div>
+            {% endif %}
 					</div>
 					<!--CAROUSEL END-->
 				</div>

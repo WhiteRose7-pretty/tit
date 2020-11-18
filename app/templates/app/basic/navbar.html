@@ -34,18 +34,36 @@
 					<div class="trancarousel_area">
 						<p class="trand">Na bieżąco</p>
 						<div class="trancarousel owl-carousel nav_style1">
-							<div class="trancarousel_item">
-								<p><a href="#">Jeździł beemką na podwójnym gazie i z narkotykami</a>
+              {% if object.navbar_alert_1 %}
+							<div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_1')">
+								<p><a href="#">{{ object.navbar_alert_1.title|truncatechars:50 }}</a>
 								</p>
 							</div>
-							<div class="trancarousel_item">
-								<p><a href="#">Jeździł beemką na podwójnym gazie i z narkotykami</a>
+              {% endif %}
+              {% if object.navbar_alert_2 %}
+							<div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_2')">
+								<p><a href="#">{{ object.navbar_alert_1.title|truncatechars:50 }}</a>
 								</p>
 							</div>
-							<div class="trancarousel_item">
-								<p><a href="#">Jeździł beemką na podwójnym gazie i z narkotykami</a>
+              {% endif %}
+              {% if object.navbar_alert_3 %}
+							<div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_3')">
+								<p><a href="#">{{ object.navbar_alert_3.title|truncatechars:50 }}</a>
 								</p>
 							</div>
+              {% endif %}
+              {% if object.navbar_alert_4 %}
+							<div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_4')">
+								<p><a href="#">{{ object.navbar_alert_4.title|truncatechars:50 }}</a>
+								</p>
+							</div>
+              {% endif %}
+              {% if object.navbar_alert_5 %}
+							<div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_5')">
+								<p><a href="#">{{ object.navbar_alert_5.title|truncatechars:50 }}</a>
+								</p>
+							</div>
+              {% endif %}
 						</div>
 					</div>
 				</div>
@@ -144,10 +162,17 @@
 										{% endfor %}
 									</ul>
 								</li>
-								<li><a href="#">Kontakt</a></li>
+								<li><a href="{% url 'app:contact' %}">Kontakt</a></li>
 								<li><a href="#">Pełny dostęp</a></li>
-								<li><a href="#">Cennik</a></li>
-								<li><a href="#">Komunikaty</a></li>
+								<li><a href="#">Cennik <i class="fal fa-angle-down"></i></a>
+									<ul>
+										<li><a href="{% url 'app:pricing_paper' %}">Wydanie gazetowe</a>
+										</li>
+										<li><a href="{% url 'app:pricing_internet' %}">Wydanie internetowe</a>
+										</li>
+									</ul>
+								</li>
+								<li><a href="{% url 'app:articles' 1 %}">Komunikaty</a></li>
 							</ul>
 						</div>
 						
