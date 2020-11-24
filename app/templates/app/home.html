@@ -348,7 +348,9 @@
                         <div class="single_post widgets_small">
                             <div class="post_img">
                                 <div class="img_wrap">
-                                    <img src="{{ item.img_url }}" alt="">
+                                    <a href="/ogloszenia/{{ item.slug }}/">
+                                        <img src="{{ item.img_url }}" alt="">
+                                    </a>
                                 </div>
                             </div>
                             <div class="single_post_text">
@@ -390,18 +392,19 @@
                                      onclick="passDataFunction('basic_center_1')">
                                     <div class="post_img gradient1">
                                         <div class="img_wrap">
-                                            <a href="/artykul/{{ basic_center.slug }}" target="{{ basic_center.add|yesno:"_blank,_self" }}" onClick="return false;">
+                                            <a href="/artykul/{{ basic_center.slug }}" target="{{ basic_center.add|yesno:"_blank,_self" }}">
                                                 <img src="{{ basic_center.img_1080x840.url }}" alt="">
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="single_post_text">
+
+                                    <div class="single_post_text" href="#">
                                         <div class="meta">
-                                            <a href="/artykul/{{ basic_center.slug }}" target="{{ basic_center.add|yesno:"_blank,_self" }}" onClick="return false;">{{ basic_center.category }}</a>
-                                            <a href="/artykul/{{ basic_center.slug }}" target="{{ basic_center.add|yesno:"_blank,_self" }}" onClick="return false;">{{ basic_center.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
+                                            <a href="/artykul/{{ basic_center.slug }}" target="{{ basic_center.add|yesno:"_blank,_self" }}"  >{{ basic_center.category }}</a>
+                                            <a href="/artykul/{{ basic_center.slug }}" target="{{ basic_center.add|yesno:"_blank,_self" }}"  >{{ basic_center.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
                                         </div>
                                         <h4>
-                                            <a href="/artykul/{{ basic_center.slug }}" target="{{ basic_center.add|yesno:"_blank,_self" }}" onClick="return false;">{{ basic_center.title|truncatechars:40 }}</a>
+                                            <a href="/artykul/{{ basic_center.slug }}" target="{{ basic_center.add|yesno:"_blank,_self" }}"  >{{ basic_center.title|truncatechars:40 }}</a>
                                         </h4>
                                     </div>
                                 </div>
@@ -436,7 +439,7 @@
                              onclick="passDataFunction('large_basic_under')">
                             <div class="post_img">
                                 <div class="img_wrap">
-                                    <a href="/artykul/{{object.large_basic_under.slug }}" target="{{ object.large_basic_under.add|yesno:"_blank,_self" }}" class="" onClick="return false;">
+                                    <a href="/artykul/{{object.large_basic_under.slug }}" target="{{ object.large_basic_under.add|yesno:"_blank,_self" }}" class=""  >
                                         <img src="{{ object.large_basic_under.img_1460x822.url }}" alt="">
                                     </a>
                                 </div>
@@ -444,10 +447,10 @@
                             <div class="single_post_text padding30 fourth_bg">
                                 <div class="meta3">
                                     <a href="/artykul/{{object.large_basic_under.slug }}" target="{{ object.large_basic_under.add|yesno:"_blank,_self" }}" class="not-active">{{ object.large_basic_under.category }}</a>
-                                    <a href="/artykul/{{object.large_basic_under.slug }}" target="{{ object.large_basic_under.add|yesno:"_blank,_self" }}" onClick="return false;">{{ object.large_basic_under.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
+                                    <a href="/artykul/{{object.large_basic_under.slug }}" target="{{ object.large_basic_under.add|yesno:"_blank,_self" }}"  >{{ object.large_basic_under.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
                                 </div>
                                 <h4 class="mt-3">
-                                    <a href="/artykul/{{object.large_basic_under.slug }}" target="{{ object.large_basic_under.add|yesno:"_blank,_self" }}" onClick="return false;">{{ object.large_basic_under.title|truncatechars:45 }}</a>
+                                    <a href="/artykul/{{object.large_basic_under.slug }}" target="{{ object.large_basic_under.add|yesno:"_blank,_self" }}"  >{{ object.large_basic_under.title|truncatechars:45 }}</a>
                                 </h4>
                             </div>
                         </div>
@@ -572,6 +575,14 @@
     function passDataFunction(str) {
         return true;
     }
+    $(document).on('click', '.single_post_text', function () {
+        var link = $(this).find('a');
+        if(link.length > 0 ){
+            console.log(link[0].href);
+            link[0].click();
+        }
+    });
+
 </script>
 </body>
 

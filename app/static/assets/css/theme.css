@@ -14132,7 +14132,7 @@ a.social_medium {
 .gradient1:after {
   position: absolute;
   content: "";
-  height: 60%;
+  height: 30%;
   width: 100%;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), transparent);
   left: 0;
@@ -14571,6 +14571,7 @@ span.tranding {
   position: absolute;
   bottom: 0;
   z-index: 9;
+  width: 100%;
   padding: 40px 20px 20px 20px;
 }
 .post_type7 .single_post_text .meta {
