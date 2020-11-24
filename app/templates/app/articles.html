@@ -34,14 +34,17 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<div class="bridcrumb">	<a href="#">Strona główna</a> / Komunikaty</div>
+                    <div class="bridcrumb">	<a href="/">Strona główna</a> / <a href="/artykuly/">Artykuly </a>
+                        / <a href="/artykuly/{{ cur_category.slug }}">{{ cur_category.name }} </a> </div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!--::::: INNER TABLE AREA END :::::::-->
 	<!--::::: ARCHIVE AREA START :::::::-->
-	<div class="archives padding-top-30">
+
+	<!--::::: ARCHIVE AREA END :::::::-->
+    <div class="archives padding-top-30">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-lg-8">
@@ -49,7 +52,9 @@
 						<div class="row">
 							<div class="col-12 align-self-center">
 								<div class="categories_title ml-3">
-									<h5>Lista komunikatów</h5>
+                                    {% if request.GET.search  %}
+									    <h5>Search result by : {{ request.GET.search }}</h5>
+                                    {% endif %}
 								</div>
 							</div>
 						</div>
@@ -57,225 +62,82 @@
 					<div class="entertrainment_carousel mb30">
 						<!--CAROUSEL START-->
 						<div class="entertrainment_item">
-							<div class="row justify-content-center">
-								<div class="col-lg-6">
-									<div class="single_post post_type3 mb30">
-										<div class="post_img">
-											<div class="img_wrap">
-												<a href="#">
-													<img src="{% static 'assets/img/entertrainment/enter1.jpg' %}" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="single_post_text">
-											<div class="meta3">	<a href="#">TECHNOLOGY</a>
-												<a href="#">March 26, 2020</a>
-											</div>
-											<h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-											<div class="space-10"></div>
-											<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="single_post post_type3 mb30">
-										<div class="post_img">
-											<div class="img_wrap">
-												<a href="#">
-													<img src="{% static 'assets/img/entertrainment/enter2.jpg' %}" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="single_post_text">
-											<div class="meta3">	<a href="#">TECHNOLOGY</a>
-												<a href="#">March 26, 2020</a>
-											</div>
-											<h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-											<div class="space-10"></div>
-											<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="single_post post_type3 mb30">
-										<div class="post_img">
-											<div class="img_wrap">
-												<a href="#">
-													<img src="{% static 'assets/img/entertrainment/enter3.jpg' %}" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="single_post_text">
-											<div class="meta3">	<a href="#">TECHNOLOGY</a>
-												<a href="#">March 26, 2020</a>
-											</div>
-											<h4><a href="post1.html">Copa America: Luis Suarez from devastated US</a></h4>
-											<div class="space-10"></div>
-											<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="single_post post_type3 mb30">
-										<div class="post_img">
-											<div class="img_wrap">
-												<a href="#">
-													<img src="{% static 'assets/img/entertrainment/enter4.jpg' %}" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="single_post_text">
-											<div class="meta3">	<a href="#">TECHNOLOGY</a>
-												<a href="#">March 26, 2020</a>
-											</div>
-											<h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-											<div class="space-10"></div>
-											<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="single_post post_type3 mb30">
-										<div class="post_img">
-											<div class="img_wrap">
-												<a href="#">
-													<img src="{% static 'assets/img/entertrainment/enter1.jpg' %}" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="single_post_text">
-											<div class="meta3">	<a href="#">TECHNOLOGY</a>
-												<a href="#">March 26, 2020</a>
-											</div>
-											<h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-											<div class="space-10"></div>
-											<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="single_post post_type3 mb30">
-										<div class="post_img">
-											<div class="img_wrap">
-												<a href="#">
-													<img src="{% static 'assets/img/entertrainment/enter2.jpg' %}" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="single_post_text">
-											<div class="meta3">	<a href="#">TECHNOLOGY</a>
-												<a href="#">March 26, 2020</a>
-											</div>
-											<h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-											<div class="space-10"></div>
-											<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="single_post post_type3 mb30">
-										<div class="post_img">
-											<div class="img_wrap">
-												<a href="#">
-													<img src="{% static 'assets/img/entertrainment/enter2.jpg' %}" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="single_post_text">
-											<div class="meta3">	<a href="#">TECHNOLOGY</a>
-												<a href="#">March 26, 2020</a>
-											</div>
-											<h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-											<div class="space-10"></div>
-											<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="single_post post_type3 mb30">
-										<div class="post_img">
-											<div class="img_wrap">
-												<a href="#">
-													<img src="{% static 'assets/img/entertrainment/enter2.jpg' %}" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="single_post_text">
-											<div class="meta3">	<a href="#">TECHNOLOGY</a>
-												<a href="#">March 26, 2020</a>
-											</div>
-											<h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-											<div class="space-10"></div>
-											<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="single_post post_type3 mb30">
-										<div class="post_img">
-											<div class="img_wrap">
-												<a href="#">
-													<img src="{% static 'assets/img/entertrainment/enter2.jpg' %}" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="single_post_text">
-											<div class="meta3">	<a href="#">TECHNOLOGY</a>
-												<a href="#">March 26, 2020</a>
-											</div>
-											<h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-											<div class="space-10"></div>
-											<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6">
-									<div class="single_post post_type3 mb30">
-										<div class="post_img">
-											<div class="img_wrap">
-												<a href="#">
-													<img src="{% static 'assets/img/entertrainment/enter2.jpg' %}" alt="">
-												</a>
-											</div>
-										</div>
-										<div class="single_post_text">
-											<div class="meta3">	<a href="#">TECHNOLOGY</a>
-												<a href="#">March 26, 2020</a>
-											</div>
-											<h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-											<div class="space-10"></div>
-											<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-										</div>
-									</div>
-								</div>
-								
+							<div class="row">
+                                {% for item in article_lists %}
+                                    <div class="col-lg-6">
+                                        <div class="single_post post_type3 mb30">
+                                            <div class="post_img">
+                                                <div class="img_wrap">
+                                                    <a href="/artykul/{{ item.slug }}/" target="{{ item.add|yesno:"_blank,_self" }}">
+                                                    {% if item.img_700x500 %}
+                                                        <img src="{{ item.img_700x500.url }}" alt="">
+                                                    {% else %}
+                                                        <img src="{% static 'assets/img/entertrainment/enter2.jpg' %}" alt="">
+                                                    {% endif %}
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="single_post_text">
+                                                <div class="meta3">	<a href="#">{{ item.category.name }}</a>
+                                                    <a href="/artykul/{{ item.slug }}/" target="{{ item.add|yesno:"_blank,_self" }}">{{ item.updated_at|date:' M,  d,  Y' }}</a>
+                                                </div>
+                                                <h4><a href="/artykul/{{ item.slug }}/" target="{{ item.add|yesno:"_blank,_self" }}">{{ item.title }}</a></h4>
+                                                <div class="space-10"></div>
+                                                <p class="post-p">{{ item.subtitle|truncatechars:200 }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
 							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-12">
-							<div class="cpagination padding5050">
-								<nav aria-label="Page navigation example">
-									<ul class="pagination">
-										<li class="page-item">
-											<a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true"><i class="fas fa-caret-left"></i></span>
-											</a>
-										</li>
-										<li class="page-item"><a class="page-link" href="#">1</a>
-										</li>
-										<li class="page-item"><a class="page-link" href="#">..</a>
-										</li>
-										<li class="page-item"><a class="page-link" href="#">5</a>
-										</li>
-										<li class="page-item">
-											<a class="page-link" href="#" aria-label="Next"> <span aria-hidden="true"><i class="fas fa-caret-right"></i></span>
-											</a>
-										</li>
-									</ul>
-								</nav>
-							</div>
-						</div>
-					</div>
+					{% if article_lists.paginator.num_pages > 1 %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="cpagination mb50 ">
+                                    <nav aria-label="Page navigation example ">
+                                        <ul class="pagination">
+                                         <li class="page-item">
+                                                <a class="page-link" href="?page=" aria-label="Previous">
+                                                    <span aria-hidden="true"><i class="fas fa-angle-double-left"></i></span>
+                                                </a>
+                                            </li>
+                                        {% if article_lists.has_previous %}
+                                            <li class="page-item">
+                                                <a class="page-link" href="?page={{ article_lists.previous_page_number }}" aria-label="Previous">
+                                                    <span aria-hidden="true"><i class="fas fa-angle-left"></i></span>
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item">
+                                                <a class="page-link" href="" aria-label="Previous"> <span aria-hidden="true"><i class="fas fa-angle-left"></i></span>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+
+                                            <li class="page-item"><a class="page-link page-current" href="#">{{ article_lists.number }}</a>
+                                            </li>
+
+                                        {% if article_lists.has_next  %}
+                                            <li class="page-item">
+                                                <a class="page-link" href="?page={{ article_lists.next_page_number }}" aria-label="Next"> <span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item">
+                                                <a class="page-link" href="" aria-label="Next"> <span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                            <li class="page-item">
+                                                <a class="page-link" href="?page={{ article_lists.paginator.num_pages }}" aria-label="Next"> <span aria-hidden="true"><i class="fas fa-angle-double-right"></i></span></a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
 				</div>
 				<div class="col-md-6 col-lg-4">
 						<div class="widget_tab md-mt-30">
@@ -287,7 +149,7 @@
 								<li><a data-toggle="tab" href="#post3" class="">POPULAR</a>
 								</li>
 							</ul>
-	
+
 							<div class="tab-content">
 								<div id="post1" class="tab-pane fade in active show">
 									<div class="widget tab_widgets mb30">
@@ -564,8 +426,8 @@
 								</div>
 							</div>
 						</div>
-	
-	
+
+
 						<div class="trending_widget mb30">
 								<h2 class="widget-title">Tending News</h2>
 							<div class="single_post post_type3">
@@ -585,7 +447,7 @@
 									<p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
 								</div>
 							</div>
-	
+
 							<div class="space-15"></div>
 							<div class="border_black"></div>
 							<div class="space-30"></div>
@@ -625,7 +487,7 @@
 							<div class="space-15"></div>
 							<div class="border_black"></div>
 							<div class="space-15"></div>
-	
+
 							<div class="single_post widgets_small">
 								<div class="post_img">
 									<div class="img_wrap">
@@ -690,7 +552,6 @@
 			</div>
 		</div>
 	</div>
-	<!--::::: ARCHIVE AREA END :::::::-->
 	<!--::::: BANNER AREA START :::::::-->
 	<div class="padding5050 fourth_bg">
 		<div class="container">

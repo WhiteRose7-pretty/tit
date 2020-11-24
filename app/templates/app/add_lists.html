@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title>Tomaszów Mazowiecki - TIT - Tomaszowski Informator Tygodniowy</title>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--::::: FABICON ICON :::::::-->
+    <link rel="icon" href="{% static 'assets/img/icon/fabicon.png' %}">
+    <!--::::: ALL CSS FILES :::::::-->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/modal-video.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/stellarnav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/theme.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+    <style>
+        .myDiv {
+            background: #1191ff;
+        }
+    </style>
+</head>
+
+<body class="theme-1">
+{% include "app/basic/navbar.html" %}
+
+<!--::::: ARCHIVE AREA START :::::::-->
+<div class="archives post post1 padding-top-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bridcrumb"><a href="/">Strona główna</a> / Ogłoszenia / {{ cur_category.name }} </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="archives padding-top-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-12 align-self-center">
+                            <div class="categories_title ml-3">
+                                <h5>{{ cur_category.name }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% if add_lists|length %}
+                <div class="entertrainment_carousel">
+                    <!--CAROUSEL START-->
+                    <div class="entertrainment_item">
+                        <div class="row">
+
+                        {% for item in add_lists %}
+                            <div class="col-lg-4">
+                                <div class="single_post post_type3 mb30">
+                                    <div class="post_img">
+                                        <div class="img_wrap">
+                                            <a href="/ogloszenia_detail/{{ item.slug }}/" >
+                                            {% if item.background_img %}
+                                                <img src="{{ item.background_img.url }}" alt="">
+                                            {% else %}
+                                                <img src="{% static 'assets/img/entertrainment/enter1.jpg' %}" alt="">
+                                            {% endif %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="single_post_text">
+                                        <div class="meta3">	<a href="#">{{ item.category.name }}</a>
+                                            <a href="/ogloszenia_detail/{{ item.slug }}/">{{ item.created_at|date:' M,  d,  Y' }}</a>
+                                        </div>
+                                        <h4><a href="/ogloszenia_detail/{{ item.slug }}/">{{ item.name }}</a></h4>
+                                        <div class="space-10"></div>
+                                        <p class="post-p">{{ item.description|truncatechars:200 }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+                {% if add_lists.paginator.num_pages > 1 %}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="cpagination mb50 ">
+                                <nav aria-label="Page navigation example ">
+                                    <ul class="pagination">
+                                     <li class="page-item">
+                                            <a class="page-link" href="?page=" aria-label="Previous">
+                                                <span aria-hidden="true"><i class="fas fa-angle-double-left"></i></span>
+                                            </a>
+                                        </li>
+                                    {% if add_lists.has_previous %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ add_lists.previous_page_number }}" aria-label="Previous">
+                                                <span aria-hidden="true"><i class="fas fa-angle-left"></i></span>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="" aria-label="Previous"> <span aria-hidden="true"><i class="fas fa-angle-left"></i></span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+                                        <li class="page-item"><a class="page-link page-current" href="#">{{ add_lists.number }}</a>
+                                        </li>
+
+                                    {% if add_lists.has_next  %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ add_lists.next_page_number }}" aria-label="Next"> <span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="" aria-label="Next"> <span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ add_lists.paginator.num_pages }}" aria-label="Next"> <span aria-hidden="true"><i class="fas fa-angle-double-right"></i></span></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="mb50">
+                    <h5>Sorry! There are not data what you require</h5>
+                </div>
+            {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--::::: ARCHIVE AREA END :::::::-->
+
+
+{% include "app/basic/footer.html" %}
+<!--::::: FOOTER AREA END :::::::-->
+<!--::::: ALL JS FILES :::::::-->
+<script src="{% static 'assets/js/plugins/jquery.2.1.0.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.nav.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery-modal-video.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/owl.carousel.js' %}"></script>
+<script src="{% static 'assets/js/plugins/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/circle-progress.js' %}"></script>
+<script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/stellarnav.js' %}"></script>
+<script src="{% static 'assets/js/plugins/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+</html>

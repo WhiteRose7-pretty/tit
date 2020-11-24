@@ -122,3 +122,12 @@
         font-size: 12px;
     }
 }
+
+.cpagination li a.page-current{
+    color: #fff;
+    background: #1091FF;
+}
+
+.chosen-container {
+    font-size: 16px;
+}

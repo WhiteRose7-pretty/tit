@@ -12,6 +12,9 @@
 	<link rel="icon" href="{% static 'assets/img/icon/fabicon.png' %}">
 	<!--::::: ALL CSS FILES :::::::-->
 	<link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.min.css">
+{#    <link rel="stylesheet" href="{% static 'assets/libs/bootstrap-select/dist/css/bootstrap-select.min.css' %}">#}
 	<link rel="stylesheet" href="{% static 'assets/css/plugins/animate.min.css' %}">
 	<link rel="stylesheet" href="{% static 'assets/css/plugins/fontawesome.css' %}">
 	<link rel="stylesheet" href="{% static 'assets/css/plugins/modal-video.min.css' %}">
@@ -19,17 +22,20 @@
 	<link rel="stylesheet" href="{% static 'assets/css/plugins/slick.css' %}">
 	<link rel="stylesheet" href="{% static 'assets/css/plugins/stellarnav.css' %}">
 	<link rel="stylesheet" href="{% static 'assets/css/theme.css' %}">
-  <style>
-  .myDiv{
-  	background:#1191ff;
-  }
-  .not-active {
-    pointer-events: none;
-    cursor: default;
-    text-decoration: none;
-    color: black;
-  }
-  </style>
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+
+    <style>
+        .myDiv{
+            background:#1191ff;
+        }
+        .not-active {
+            pointer-events: none;
+            cursor: default;
+            text-decoration: none;
+            color: black;
+        }
+    </style>
 </head>
 
 <body class="theme-1">
@@ -2874,11 +2880,13 @@
       </div>
     </div>
   </div>
+
+    {{ form.name }}
   
 	<!--::::: FOOTER AREA END :::::::-->
 	<!--::::: ALL JS FILES :::::::-->
 	<script src="{% static 'assets/js/plugins/jquery.2.1.0.min.js' %}"></script>
-	<script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
+ 	<script src="{% static 'assets/js/plugins/bootstrap.bundle.min.js' %}"></script>
 	<script src="{% static 'assets/js/plugins/jquery.nav.js' %}"></script>
 	<script src="{% static 'assets/js/plugins/jquery.waypoints.min.js' %}"></script>
 	<script src="{% static 'assets/js/plugins/jquery-modal-video.min.js' %}"></script>
@@ -2888,12 +2896,20 @@
 	<script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
 	<script src="{% static 'assets/js/plugins/stellarnav.js' %}"></script>
 	<script src="{% static 'assets/js/plugins/wow.min.js' %}"></script>
+{#    <script src="{% static 'assets/libs/bootstrap-select/dist/js/bootstrap-select.min.js' %}"></script>#}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.min.js"></script>
 	<script src="{% static 'assets/js/main.js' %}"></script>
   <script>
    $( ".openModalClass" ).click(function() {
-      $('#modalEditArticle').modal({backdrop: 'static', keyboard: false})
+      $('#modalEditArticle').modal({backdrop: 'static', keyboard: false, height:"500px"});
+      {#$('.selectpicker').selectpicker();#}
     });
-    
+
+   $(document).on('show.bs.modal', function (e) {
+       $('.selectpicker', this).chosen({width: "100%"});
+       {#$('.selectpicker').selectpicker();#}
+   });
+
     function passDataFunction(name_field) {
       document.getElementById('field_name').value = name_field;
     }

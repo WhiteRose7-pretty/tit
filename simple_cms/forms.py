@@ -14,19 +14,18 @@ class NewPostForm(forms.Form):
                                                            'placeholder': '2020-01-01 00:00:00'}))
 
 
-
 class FindArticleForm(forms.Form):
     name = forms.ModelChoiceField(queryset=Article.objects.all(),
                                   empty_label='Wybierz artykuł...',
                                   required=False,
-                                  widget=forms.Select(attrs={'data-toggle': 'select',
-                                                             'class': 'form-control'}))
-
+                                  widget=forms.Select(
+                                           attrs={'class': 'form-control selectpicker ',
+                                                  'data-live-search': 'true',
+                                                  }))
 
 
 class UploadImageForm(forms.Form):
     img = forms.ImageField(widget=FileInput(attrs={'class': 'custom-input-file','accept': '.jpg, .jpeg',}))
-
 
 
 class ChangeLabelOnPage(forms.Form):

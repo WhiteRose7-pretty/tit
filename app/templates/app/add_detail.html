@@ -29,8 +29,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-            <div class="bridcrumb"> <a href="/">Strona główna</a> / <a href="/artykuly/"> Artykuły </a>
-                / <a href="/artykuly/{{ obj.category.slug }}/">{{ obj.category }} </a> / {{ obj.title }} </div>
+          <div class="bridcrumb"> <a href="#">Strona główna</a> / ogloszenia / {{ obj.category.name }} / {{ obj.title }} </div>
         </div>
       </div>
       <div class="space-30"></div>
@@ -39,14 +38,7 @@
           <div class="row">
             <div class="col-4 align-self-center">
               <div class="page_category">
-                <h4>{{ obj.category|capfirst  }}</h4>
-              </div>
-            </div>
-            <div class="col-8 text-right">
-              <div class="page_comments">
-                <ul class="inline">
-                  <li><i class="fas fa-comment"></i>{{ obj.comments.all.count }}</li>
-                </ul>
+                <h4>{{ obj.category.name|capfirst  }}</h4>
               </div>
             </div>
           </div>
@@ -54,28 +46,17 @@
           <div class="single_post_heading">
             <h1>{{ obj.title }}</h1>
             <div class="space-10"></div>
-            <p>{{ obj.subtitle }}</p>
           </div>
           <div class="space-40"></div>
-          <img src="{{ obj.img.url }}" alt="image">
+          {% if obj.background_img %}
+            <img src="{{ obj.background_img.url }}" alt="image">
+          {% else %}
+            <img src="{% static 'assets/img/entertrainment/enter1.jpg' %}" alt="image">
+          {% endif %}
           <div class="space-20"></div>
           <div class="row">
             <div class="col-lg-6 align-self-center">
-              <div class="author">
-                <div class="author_img">
-                  <div class="author_img_wrap">
-                    {% if obj.owner.show_img %}
-                    <img src="{{ obj.owner.img.url }}" alt="">
-                    {% else %}
-                    <img src="{% static 'assets/img/author/author2.png' %}" alt="">
-                    {% endif %}
-                  </div>
-                </div> <a href="#">{{ obj.owner.name }}</a>
-                <ul>
-                  <li><a href="#">{{ obj.date_of_publication }}</a>
-                  </li>
-                </ul>
-              </div>
+
             </div>
             <div class="col-lg-6 align-self-center">
               <div class="author_social inline text-right">
@@ -93,85 +74,9 @@
             </div>
           </div>
 
-          <div class="space-20"></div>
-          {% if content_display %}
-          {{ obj.content|safe }}
-          {% elif user.is_authenticated %}
-          {{ obj.content|safe }}
-          {% else %}
-          <div class="premium-text-show">
-            {{ obj.content|safe|slice:":800"}}
+          <div class="mt-5">
+              {{ obj.description }}
           </div>
-          <div class="premium-text fade-out-article">
-            {{ obj.content|safe|slice:"400:600"}}
-          </div>
-
-          <div class="text-left mt-4">
-            <div class="text-left-desc">
-              <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit; color: #000; font-size:14px; font-weight: bold;">86% pozostało tekstu</font>
-              </font>
-            </div>
-            <div class="text-left-bar">
-              <div class="text-left-bar-bkg"></div>
-              <div class="text-left-bar-progress" style="width: 14%"></div>
-            </div>
-          </div>
-          <div class="premium-frm mt-2">
-            <div class="premium-header">
-              <img class="d-inline" src="{% static 'assets/img/diamond.svg' %}" width="20px" alt="">
-              <span>Możesz czytać ten i inne teksty napisane przez nas po dokonaniu subskrybcji.</span>
-            </div>
-            <div class="premium-frm-content">
-              <div class="premium-body-container">
-                <div class="body-header">
-                  <h3>Pierwszy miesiąc 0 PLN! Kolejne miesiące 19zł/m-c.</h3>
-                </div>
-
-                <div class="body-content">
-                  <p>
-                    Dowiedz się o najnowyszych informacjach w Tomaszów Mazowiecki. Dostarczamy rzetelnych informacji i dogłębnych analiz, ujawniamy kolejne skandale.
-                  </p>
-                </div>
-
-                <div class="body-action">
-                  <a href="{% url 'authentication:login' %}?next=/artykul/{{ slug }}/" class="btn btn-primary get-premium">Zostań użytkownikiem preium i czytaj pozostałą część artykułu.</a>
-                </div>
-
-                <div class="body-footer">
-                  <ul>
-                    <li>
-                      <a href="{% url 'authentication:login' %}?next=/artykul/{{ slug }}/">LOGOWANIE</a>
-                    </li>
-                    <li>
-                      <a href="#">KONTAKT</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          {% endif %}
-          <div class="space-80"></div>
-
-          <div class="next_prev">
-            <div class="row">
-              <div class="col-lg-6 align-self-center">
-                <div class="next_prv_single border_left3">
-                  <p>PREVIOUS NEWS</p>
-                  <h3><a href="#">Kushner puts himself in middle of white house’s chaotic coronavirus response.</a></h3>
-                </div>
-              </div>
-              <div class="col-lg-6 align-self-center">
-                <div class="next_prv_single border_left3">
-                  <p>NEXT NEWS</p>
-                  <h3><a href="#">C.I.A. Hunts for authentic virus totals in china, dismissing government tallies</a></h3>
-                </div>
-              </div>
-            </div>
-          </div>
-
 
         </div>
 

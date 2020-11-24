@@ -7,6 +7,7 @@ app_name = 'app'
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('artykuly/', views.articles, name='article'),
     path('artykul/<slug:slug>/', views.article, name='article'),
     path('comment/', views.comment, name='comment'),
     path('drobne-ogloszenia/<slug:slug>/', views.small_ads, name='small_ads'),
@@ -18,4 +19,6 @@ urlpatterns = [
     path('kontakt/', views.contact, name='contact'),
     path('polityka-prywatnosci/', views.privacy, name='privacy'),
     path('regulamin-strony/', views.regulations, name='regulations'),
+    path('ogloszenia/<slug:slug>/', views.add_list, name='add_list'),
+    path('ogloszenia_detail/<slug:slug>/', views.add_detail, name='add_list'),
 ]

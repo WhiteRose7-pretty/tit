@@ -1,199 +1,190 @@
 {% load static %}
-	<!--::::: PRELOADER START :::::::-->
-	<div class="preloader">
-		<div>
-			<div class="nb-spinner"></div>
-		</div>
-	</div>
-	<!--::::: PRELOADER END :::::::-->
+{% load app_tags %}
+<!--::::: PRELOADER START :::::::-->
+<div class="preloader">
+    <div>
+        <div class="nb-spinner"></div>
+    </div>
+</div>
+<!--::::: PRELOADER END :::::::-->
 
-	<!--::::: SEARCH FORM START:::::::-->
-	<div class="searching">
-		<div class="container">
-			<div class="row">
-				<div class="col-8 text-center m-auto">
-					<div class="v1search_form">
-						<form action="#">
-							<input type="search" placeholder="Wpisz szukaną frazę...">
-							<button type="submit" class="cbtn1">Wyszukaj</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="close_btn">	<i class="fal fa-times"></i>
-		</div>
-	</div>
-	<!--:::::SEARCH FORM END :::::::-->
+<!--::::: SEARCH FORM START:::::::-->
+<div class="searching">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 text-center m-auto">
+                <div class="v1search_form">
+                    {% if request.path == '/' %}
+                        <form action="/artykuly/">
+                    {% else %}
+                        <form action="">
+                    {% endif %}
+                        <input type="search" name="search" placeholder="Wpisz szukaną frazę..."  >
+                        <button type="submit" class="cbtn1">Wyszukaj</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="close_btn"><i class="fal fa-times"></i>
+    </div>
+</div>
+<!--:::::SEARCH FORM END :::::::-->
 
-	<!--::::: TOP BAR START :::::::-->
-	<div class="topbar white_bg" id="top">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-lg-8 align-self-center">
-					<div class="trancarousel_area">
-						<p class="trand">Na bieżąco</p>
-						<div class="trancarousel owl-carousel nav_style1">
-              {% if object.navbar_alert_1 %}
-							<div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_1')">
-								<p><a href="#">{{ object.navbar_alert_1.title|truncatechars:50 }}</a>
-								</p>
-							</div>
-              {% endif %}
-              {% if object.navbar_alert_2 %}
-							<div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_2')">
-								<p><a href="#">{{ object.navbar_alert_1.title|truncatechars:50 }}</a>
-								</p>
-							</div>
-              {% endif %}
-              {% if object.navbar_alert_3 %}
-							<div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_3')">
-								<p><a href="#">{{ object.navbar_alert_3.title|truncatechars:50 }}</a>
-								</p>
-							</div>
-              {% endif %}
-              {% if object.navbar_alert_4 %}
-							<div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_4')">
-								<p><a href="#">{{ object.navbar_alert_4.title|truncatechars:50 }}</a>
-								</p>
-							</div>
-              {% endif %}
-              {% if object.navbar_alert_5 %}
-							<div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_5')">
-								<p><a href="#">{{ object.navbar_alert_5.title|truncatechars:50 }}</a>
-								</p>
-							</div>
-              {% endif %}
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-4 align-self-center">
-					<div class="top_date_social text-right">
-						<div class="paper_date">
-							<p><button class="btn btn-sm btn-danger">Dodaj ogłoszenie</button></p>
-						</div>
-						<div class="social1">
-							<ul class="inline">
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a>
-								</li>
-								<li><a href="#"><i class="fab fa-youtube"></i></a>
-								</li>
-								<li><a href="#"><i class="fab fa-instagram"></i></a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--::::: TOP BAR END :::::::-->
+<!--::::: TOP BAR START :::::::-->
+<div class="topbar white_bg" id="top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-8 align-self-center">
+                <div class="trancarousel_area">
+                    <p class="trand">Na bieżąco</p>
+                    <div class="trancarousel owl-carousel nav_style1">
+                        {% if object.navbar_alert_1 %}
+                            <div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_1')">
+                                <p><a href="#">{{ object.navbar_alert_1.title|truncatechars:50 }}</a>
+                                </p>
+                            </div>
+                        {% endif %}
+                        {% if object.navbar_alert_2 %}
+                            <div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_2')">
+                                <p><a href="#">{{ object.navbar_alert_1.title|truncatechars:50 }}</a>
+                                </p>
+                            </div>
+                        {% endif %}
+                        {% if object.navbar_alert_3 %}
+                            <div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_3')">
+                                <p><a href="#">{{ object.navbar_alert_3.title|truncatechars:50 }}</a>
+                                </p>
+                            </div>
+                        {% endif %}
+                        {% if object.navbar_alert_4 %}
+                            <div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_4')">
+                                <p><a href="#">{{ object.navbar_alert_4.title|truncatechars:50 }}</a>
+                                </p>
+                            </div>
+                        {% endif %}
+                        {% if object.navbar_alert_5 %}
+                            <div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_5')">
+                                <p><a href="#">{{ object.navbar_alert_5.title|truncatechars:50 }}</a>
+                                </p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 align-self-center">
+                <div class="top_date_social text-right">
+                    <div class="paper_date">
+                        <p>
+                            <button class="btn btn-sm btn-danger">Dodaj ogłoszenie</button>
+                        </p>
+                    </div>
+                    <div class="social1">
+                        <ul class="inline">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--::::: TOP BAR END :::::::-->
 
-	<div class="border_black"></div>
+<div class="border_black"></div>
 
-	<!--::::: LOGO AREA START  :::::::-->
-	<div class="logo_area white_bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 align-self-center">
-					<div class="">
-						<a href="{% url 'app:home' %}">
-							<img src="{% static 'assets/img/logo/TIT_kolor_logo.png' %}" alt="image" style="width:10000px;">
-						</a>
-					</div>
-				</div>
-				<div class="col-lg-8 align-self-center">
-          {% if object.add_navbar %}
-					<div class="banner1 openModalClass" onclick="passDataFunction('add_navbar')">
-						<a href="#" target="_blank">
-							<img src="{{ object.add_navbar.img_728x90.url }}" alt="">
-						</a>
-					</div>
-          {% endif %}
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--::::: LOGO AREA END :::::::-->
+<!--::::: LOGO AREA START  :::::::-->
+<div class="logo_area white_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 align-self-center">
+                <div class="">
+                    <a href="{% url 'app:home' %}">
+                        <img src="{% static 'assets/img/logo/TIT_kolor_logo.png' %}" alt="image" style="width:10000px;">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-8 align-self-center">
+                {% if object.add_navbar %}
+                    <div class="banner1 openModalClass" onclick="passDataFunction('add_navbar')">
+                        <a href="#" target="_blank">
+                            <img src="{{ object.add_navbar.img_728x90.url }}" alt="">
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<!--::::: LOGO AREA END :::::::-->
 
 
-	<!--::::: MENU AREA START  :::::::-->
-	<div class="main-menu otger_bg" id="header">	<a href="#top" class="up_btn up_btn1"><i class="far fa-chevron-double-up"></i></a>
-		<div class="main-nav clearfix is-ts-sticky">
-			<div class="container">
-				<div class="row justify-content-between">
-	
-					<div class="col-6 col-lg-8">
-						<div class="newsprk_nav stellarnav">
-							<ul id="newsprk_menu">
-								<li><a href="#">Ogłoszenia <i class="fal fa-angle-down"></i></a>
-									<ul>
-										<li><a href="#">Sprzedam pojazd</a>
-										</li>
-										<li><a href="#">Motoryzacyjne inne</a>
-										</li>
-										<li><a href="#">Usługi</a>
-										</li>
-										<li><a href="#">Medyczne</a>
-										</li>
-										<li><a href="#">Sprzedam</a>
-										</li>
-										<li><a href="#">Rolnicze sprzedam</a>
-										</li>
-										<li><a href="#">Nauka - praca</a>
-										</li>
-										<li><a href="#">Lokalne - nieruchomości</a>
-										</li>
-										<li><a href="#">Różne</a>
-										</li>
-										<li><a href="#">Matrymonialne</a>
-										</li>
-										<li><a href="#">Towarzystkie</a>
-										</li>
-										<li><a href="#">Turystyczne</a>
-										</li>
-									</ul>
-								</li>
-								<li><a href="#">Artykuły <i class="fal fa-angle-down"></i></a>
-									<ul>
-                    {% for object in categories %}
-										<li><a href="about.html">{{ object.name }}</a>
-										</li>
-										{% endfor %}
-									</ul>
-								</li>
-								<li><a href="{% url 'app:contact' %}">Kontakt</a></li>
-								<li><a href="#">Pełny dostęp</a></li>
-								<li><a href="#">Cennik <i class="fal fa-angle-down"></i></a>
-									<ul>
-										<li><a href="{% url 'app:pricing_paper' %}">Wydanie gazetowe</a>
-										</li>
-										<li><a href="{% url 'app:pricing_internet' %}">Wydanie internetowe</a>
-										</li>
-									</ul>
-								</li>
-								<li><a href="{% url 'app:articles' 1 %}">Komunikaty</a></li>
-							</ul>
-						</div>
-						
-					</div>
-					<div class="col-6 col-lg-4 align-self-center">
-						<div class="menu_right">
-							<div class="users_area">
-								<ul class="inline">
-									<li class="search_btn"><i class="far fa-search"></i>
-									</li>
-                  <a href="#">
-                    <li><i class="fal fa-user-circle"></i>
-                    </li>
-                  </a>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--::::: MENU AREA END :::::::-->
+<!--::::: MENU AREA START  :::::::-->
+<div class="main-menu otger_bg" id="header"><a href="#top" class="up_btn up_btn1"><i
+        class="far fa-chevron-double-up"></i></a>
+    <div class="main-nav clearfix is-ts-sticky">
+        <div class="container">
+            <div class="row justify-content-between">
+
+                <div class="col-6 col-lg-8">
+                    <div class="newsprk_nav stellarnav">
+                        <ul id="newsprk_menu">
+                            <li><a >Ogłoszenia <i class="fal fa-angle-down"></i></a>
+                                <ul>
+                                    {% get_add_category as app_category %}
+                                    {% for item in app_category %}
+                                        <li>
+                                            <a href="/ogloszenia/{{ item.slug }}/">{{ item.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li><a href="/artykuly/">Artykuły <i class="fal fa-angle-down"></i></a>
+                                <ul>
+                                    {% for cat in categories %}
+                                        <li>
+                                            <a href="/artykuly/{{ cat.slug }}/">{{ cat.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'app:contact' %}">Kontakt</a></li>
+                            <li><a href="#">Pełny dostęp</a></li>
+                            <li><a href="#">Cennik <i class="fal fa-angle-down"></i></a>
+                                <ul>
+                                    <li><a href="{% url 'app:pricing_paper' %}">Wydanie gazetowe</a>
+                                    </li>
+                                    <li><a href="{% url 'app:pricing_internet' %}">Wydanie internetowe</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'app:articles' 1 %}">Komunikaty</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-6 col-lg-4 align-self-center">
+                    <div class="menu_right">
+                        <div class="users_area">
+                            <ul class="inline">
+                                <li class="search_btn"><i class="far fa-search"></i>
+                                </li>
+                                <a href="#">
+                                    <li><i class="fal fa-user-circle"></i>
+                                    </li>
+                                </a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--::::: MENU AREA END :::::::-->
   

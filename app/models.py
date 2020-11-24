@@ -1,17 +1,16 @@
-from django.db import models
 from ckeditor.fields import RichTextField
-from django.utils.text import slugify
+from django.db import models
 from imagekit.models import ProcessedImageField, ImageSpecField
 from imagekit.processors import ResizeToFill
-from authentication.models import CustomUser
-import datetime
 from imagekit.processors import ResizeToFit
 
+from authentication.models import CustomUser
 
 
 class Category(models.Model):
     name = models.CharField(max_length=50, verbose_name='Nazwa kategorii')
     menu = models.BooleanField(default=False, verbose_name='Pokaż w menu')
+    slug = models.SlugField(unique=True, max_length=500, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Kategorie artykułów'
@@ -19,7 +18,6 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-
 
 
 class Autor(models.Model):
@@ -39,7 +37,6 @@ class Autor(models.Model):
 
     def __str__(self):
         return self.name
-
 
 
 class Article(models.Model):
@@ -145,8 +142,23 @@ class Comment(models.Model):
         return '%s - %s | Widoczny: %s'% (self.name, self.owner.title, self.display)
 
 
+class AddCategory(models.Model):
+    name = models.CharField(max_length=100, null=True)
+    slug = models.SlugField(verbose_name='slug for Category', unique=True, max_length=500)
+    img_url = models.CharField(max_length=200, null=True)
+
+
 class Add(models.Model):
     name = models.CharField(max_length=100)
+    category = models.ForeignKey(AddCategory, verbose_name="Category for Add", related_name='adds', on_delete=models.CASCADE)
+    slug = models.SlugField(verbose_name='slug for Add', unique=True, max_length=500)
+    background_img = ProcessedImageField(upload_to='add-pictures',
+                                         verbose_name='background image for Add',
+                                         processors=[ResizeToFill(1920, 1080)],
+                                         format='JPEG',
+                                         options={'quality': 100}, blank=True, null=True)
+    description = models.TextField(verbose_name="description for Add", blank=True, null=True, default='')
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class PrivacyPolicy(models.Model):
@@ -156,3 +168,4 @@ class PrivacyPolicy(models.Model):
     class Meta:
         verbose_name = 'Polityka prywatności i regulamin'
         verbose_name_plural = 'Polityka prywatności i regulamin'
+
