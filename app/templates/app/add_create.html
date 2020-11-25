@@ -1,0 +1,297 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title>{{ obj.title }} - TIT - Tomaszowski Informator Tygodniowy</title>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--::::: FABICON ICON :::::::-->
+    <link rel="icon" href="{% static 'assets/img/icon/fabicon.png' %}">
+    <!--::::: ALL CSS FILES :::::::-->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/stellarnav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/modal-video.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/theme.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+</head>
+
+<body class="theme-1">
+{% include "app/basic/navbar.html" %}
+
+<!--::::: ARCHIVE AREA START :::::::-->
+<div class="archives post post1 padding-top-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bridcrumb"><a href="#">Strona główna</a> / ogloszenia / create /</div>
+            </div>
+        </div>
+        <div class="space-30"></div>
+        <div class="row">
+            <div class="col-md-6 col-lg-8">
+                <span class="font14" >Word Limit: <span id="words-limits">{{ ads_setting.word_limit }}</span></span> <br>
+                <span class="font14">Price per Word: <span id="price-word">{{ ads_setting.price_word }}</span> zł <span class="multiple"> * </span><span class="weeks">1</span></span>
+
+                <div class="space-15"></div>
+                <div class="border_black"></div>
+                <div class="space-15"></div>
+
+                <span class="font14">Words count: <span id="id_words_count">0</span> </span> <br>
+                <span class="font14">Price for the words entered: <span id="price-word-all"></span>  zł  </span><br>
+
+                <div class="space-15"></div>
+                <div class="border_black"></div>
+                <div class="space-15"></div>
+
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for fields in form %}
+                        <label for="id_{{ fields.name }}">{{ fields.label }} </label>
+
+                        {% if fields.name == 'background_img' %}
+                            <div class="space-5"></div>
+                            <span class="font14">Price for an additional photo: <span id="price_image">{{ ads_setting.price_image }}</span> zł <span class="multiple"> * </span> <span class="weeks">1</span> </span><br>
+                            <div class="space-15"></div>
+                        {% endif %}
+
+                        {% if fields.name == 'time_of_broadcast' %}
+                            <select name="time_of_broadcast" class="form-control mb-4" id="id_{{ fields.name }}">
+                            {% for index in array_52 %}
+                                <option value="{{ index }}">{{ index }} </option>
+                            {% endfor %}
+                            </select>
+                        {% elif fields.name == 'background_img' %}
+                            <div class="custom-file mb-3">
+                              {{ fields | safe }}
+                              <label class="custom-file-label" for="customFile"></label>
+                            </div>
+                        {% else %}
+                            {{ fields | safe }}
+                        {% endif %}
+
+                    {% endfor %}
+
+                    <input type="text" name="words" class="form-control d-none" required="" id="id_words">
+                    <input type="text" name="price" class="form-control d-none" required="" id="id_price">
+                    <span class="font14">Total price is : <span id="total_price">0</span> zł </span> <br>
+                    <span id="words-limit-msg" class="text-danger">Words limit exceed! You can't submit!</span>
+                    <button type="submit" class="btn btn-primary" id="btn-submit" style="float:right;"> Submit </button>
+                </form>
+
+            </div>
+
+
+            {% include "app/basic/right-section.html" %}
+        </div>
+    </div>
+</div>
+<!--::::: ARCHIVE AREA END :::::::-->
+<div class="space-60"></div>
+<!--::::: LATEST BLOG AREA START :::::::-->
+<div class="fourth_bg padding6030">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="heading">
+                    <h2 class="widget-title">Najnowsze artykuły</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="single_post post_type3 mb30">
+                    <div class="post_img">
+                        <a href="#">
+                            <img src="{% static 'assets/img/bg/video4.jpg' %}" alt="">
+                        </a>
+                    </div>
+                    <div class="single_post_text">
+                        <div class="meta3"><a href="#">TECHNOLOGY</a>
+                            <a href="#">March 26, 2020</a>
+                        </div>
+                        <h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
+                        <div class="space-10"></div>
+                        <p class="post-p">The property, complete with 30-seat screening from room, a 100-seat
+                            amphitheater and a swimming pond with sandy shower…</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="single_post post_type3 mb30">
+                    <div class="post_img">
+                        <a href="#">
+                            <img src="{% static 'assets/img/bg/video4.jpg' %}" alt="">
+                        </a>
+                    </div>
+                    <div class="single_post_text">
+                        <div class="meta3"><a href="#">TECHNOLOGY</a>
+                            <a href="#">March 26, 2020</a>
+                        </div>
+                        <h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
+                        <div class="space-10"></div>
+                        <p class="post-p">The property, complete with 30-seat screening from room, a 100-seat
+                            amphitheater and a swimming pond with sandy shower…</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="single_post post_type3 mb30">
+                    <div class="post_img">
+                        <a href="#">
+                            <img src="{% static 'assets/img/bg/video4.jpg' %}" alt="">
+                        </a>
+                    </div>
+                    <div class="single_post_text">
+                        <div class="meta3"><a href="#">TECHNOLOGY</a>
+                            <a href="#">March 26, 2020</a>
+                        </div>
+                        <h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
+                        <div class="space-10"></div>
+                        <p class="post-p">The property, complete with 30-seat screening from room, a 100-seat
+                            amphitheater and a swimming pond with sandy shower…</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--:::::  COMMENT FORM AREA END :::::::-->
+<!--::::: BANNER AREA START :::::::-->
+<div class="padding5050 fourth_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 m-auto">
+                <div class="banner1">
+                    <a href="#">
+                        <img src="{% static 'assets/img/bg/banner1.png' %}" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--::::: BANNER AREA END :::::::-->
+<!--::::: FOOTER AREA START :::::::-->
+{% include "app/basic/footer.html" %}
+
+<!--::::: FOOTER AREA END :::::::-->
+<!--::::: ALL JS FILES :::::::-->
+<script src="{% static 'assets/js/plugins/jquery.2.1.0.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.nav.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery-modal-video.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/owl.carousel.js' %}"></script>
+<script src="{% static 'assets/js/plugins/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/circle-progress.js' %}"></script>
+<script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/stellarnav.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script>
+
+    var words_limit = parseInt($('#words-limits').text());
+
+    $(document).on('ready', function () {
+            $('.weeks').hide();
+            $('.multiple').hide();
+            $('#words-limit-msg').hide();
+    });
+
+    $(".custom-file-input").on("change", function() {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+      total_price();
+    });
+
+    $('#id_time_of_broadcast').on("change", function () {
+        let week = $(this).val();
+        $('.weeks').text(week);
+        if(week > 1){
+            $('.weeks').show();
+            $('.multiple').show();
+        }
+        else{
+            $('.weeks').hide();
+            $('.multiple').hide();
+        }
+
+        total_price();
+
+    });
+
+    $(document).on('keyup', '#id_content', function () {
+        let str = $(this).val();
+        $('#id_slug').val(string_to_slug(str));
+        $('#id_words_count').text(counts_word(str));
+        $('#id_words').val(counts_word(str));
+
+        if(counts_word(str) > words_limit){
+            $('#words-limit-msg').show();
+            document.getElementById("btn-submit").disabled = true;
+
+        }
+        else{
+            $('#words-limit-msg').hide();
+            document.getElementById("btn-submit").disabled = false;
+        }
+
+
+        total_price();
+    });
+
+    function total_price() {
+
+        let week = parseInt($('#id_time_of_broadcast').val());
+
+        let word_price =  parseFloat( $('#price-word').text() );
+        let word_counts = parseInt(  $('#id_words_count').text() );
+        let word_price_all = word_price * word_counts * week;
+        $('#price-word-all').text(word_price_all);
+
+
+        let image_price = 0;
+        if ($('#id_background_img').val()){
+            image_price = $('#price_image').text();
+        }
+
+        $('#id_price').val(parseFloat(word_price_all) + parseFloat(image_price) * week );
+        $('#total_price').text(parseFloat(word_price_all) + parseFloat(image_price) * week );
+        return parseFloat(word_price_all) + parseFloat(image_price);
+    }
+
+    function counts_word(str) {
+        str = str.replace(/(^\s*)|(\s*$)/gi,"");
+        str = str.replace(/[ ]{2,}/gi," ");
+        str = str.replace(/\n /,"\n");
+        return str.split(' ').length;
+    }
+
+    function string_to_slug(str) {
+        str = str.replace(/^\s+|\s+$/g, ''); // trim
+        str = str.toLowerCase();
+
+        // remove accents, swap ñ for n, etc
+        var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+        var to = "aaaaeeeeiiiioooouuuunc------";
+        for (var i = 0, l = from.length; i < l; i++) {
+            str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+        }
+
+        str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+            .replace(/\s+/g, '-') // collapse whitespace and replace by -
+            .replace(/-+/g, '-'); // collapse dashes
+
+        return str;
+    }
+</script>
+</body>
+
+</html>

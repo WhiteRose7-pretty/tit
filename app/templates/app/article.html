@@ -1,4 +1,5 @@
 {% load static %}
+{% load app_tags %}
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -95,63 +96,61 @@
 
           <div class="space-20"></div>
           {% if content_display %}
-          {{ obj.content|safe }}
-          {% elif user.is_authenticated %}
-          {{ obj.content|safe }}
+            {{ obj.content|safe }}
           {% else %}
-          <div class="premium-text-show">
-            {{ obj.content|safe|slice:":800"}}
-          </div>
-          <div class="premium-text fade-out-article">
-            {{ obj.content|safe|slice:"400:600"}}
-          </div>
+              <div class="premium-text-show">
+                {{ obj.content|safe|slice:":800"}}
+              </div>
+              <div class="premium-text fade-out-article">
+                {{ obj.content|safe|slice:"400:600"}}
+              </div>
 
-          <div class="text-left mt-4">
-            <div class="text-left-desc">
-              <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit; color: #000; font-size:14px; font-weight: bold;">86% pozostało tekstu</font>
-              </font>
-            </div>
-            <div class="text-left-bar">
-              <div class="text-left-bar-bkg"></div>
-              <div class="text-left-bar-progress" style="width: 14%"></div>
-            </div>
-          </div>
-          <div class="premium-frm mt-2">
-            <div class="premium-header">
-              <img class="d-inline" src="{% static 'assets/img/diamond.svg' %}" width="20px" alt="">
-              <span>Możesz czytać ten i inne teksty napisane przez nas po dokonaniu subskrybcji.</span>
-            </div>
-            <div class="premium-frm-content">
-              <div class="premium-body-container">
-                <div class="body-header">
-                  <h3>Pierwszy miesiąc 0 PLN! Kolejne miesiące 19zł/m-c.</h3>
+              <div class="text-left mt-4">
+                <div class="text-left-desc">
+                  <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit; color: #000; font-size:14px; font-weight: bold;">86% pozostało tekstu</font>
+                  </font>
                 </div>
-
-                <div class="body-content">
-                  <p>
-                    Dowiedz się o najnowyszych informacjach w Tomaszów Mazowiecki. Dostarczamy rzetelnych informacji i dogłębnych analiz, ujawniamy kolejne skandale.
-                  </p>
-                </div>
-
-                <div class="body-action">
-                  <a href="{% url 'authentication:login' %}?next=/artykul/{{ slug }}/" class="btn btn-primary get-premium">Zostań użytkownikiem preium i czytaj pozostałą część artykułu.</a>
-                </div>
-
-                <div class="body-footer">
-                  <ul>
-                    <li>
-                      <a href="{% url 'authentication:login' %}?next=/artykul/{{ slug }}/">LOGOWANIE</a>
-                    </li>
-                    <li>
-                      <a href="#">KONTAKT</a>
-                    </li>
-                  </ul>
+                <div class="text-left-bar">
+                  <div class="text-left-bar-bkg"></div>
+                  <div class="text-left-bar-progress" style="width: 14%"></div>
                 </div>
               </div>
-            </div>
+              <div class="premium-frm mt-2">
+                <div class="premium-header">
+                  <img class="d-inline" src="{% static 'assets/img/diamond.svg' %}" width="20px" alt="">
+                  <span>Możesz czytać ten i inne teksty napisane przez nas po dokonaniu subskrybcji.</span>
+                </div>
+                <div class="premium-frm-content">
+                  <div class="premium-body-container">
+                    <div class="body-header">
+                      <h3>Pierwszy miesiąc 0 PLN! Kolejne miesiące 19zł/m-c.</h3>
+                    </div>
 
-          </div>
+                    <div class="body-content">
+                      <p>
+                        Dowiedz się o najnowyszych informacjach w Tomaszów Mazowiecki. Dostarczamy rzetelnych informacji i dogłębnych analiz, ujawniamy kolejne skandale.
+                      </p>
+                    </div>
+
+                    <div class="body-action">
+                      <a href="{% url 'authentication:login' %}?next=/artykul/{{ slug }}/" class="btn btn-primary get-premium">Zostań użytkownikiem preium i czytaj pozostałą część artykułu.</a>
+                    </div>
+
+                    <div class="body-footer">
+                      <ul>
+                        <li>
+                          <a href="{% url 'authentication:login' %}?next=/artykul/{{ slug }}/">LOGOWANIE</a>
+                        </li>
+                        <li>
+                          <a href="#">KONTAKT</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
           {% endif %}
           <div class="space-80"></div>
 
@@ -175,78 +174,15 @@
 
         </div>
 
-
         {% include "app/basic/right-section.html" %}
+
       </div>
     </div>
   </div>
   <!--::::: ARCHIVE AREA END :::::::-->
   <div class="space-60"></div>
   <!--::::: LATEST BLOG AREA START :::::::-->
-  <div class="fourth_bg padding6030">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="heading">
-            <h2 class="widget-title">Najnowsze artykuły</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-6 col-lg-4">
-          <div class="single_post post_type3 mb30">
-            <div class="post_img">
-              <a href="#">
-                <img src="{% static 'assets/img/bg/video4.jpg' %}" alt="">
-              </a>
-            </div>
-            <div class="single_post_text">
-              <div class="meta3"> <a href="#">TECHNOLOGY</a>
-                <a href="#">March 26, 2020</a>
-              </div>
-              <h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-              <div class="space-10"></div>
-              <p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="single_post post_type3 mb30">
-            <div class="post_img">
-              <a href="#">
-                <img src="{% static 'assets/img/bg/video4.jpg' %}" alt="">
-              </a>
-            </div>
-            <div class="single_post_text">
-              <div class="meta3"> <a href="#">TECHNOLOGY</a>
-                <a href="#">March 26, 2020</a>
-              </div>
-              <h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-              <div class="space-10"></div>
-              <p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="single_post post_type3 mb30">
-            <div class="post_img">
-              <a href="#">
-                <img src="{% static 'assets/img/bg/video4.jpg' %}" alt="">
-              </a>
-            </div>
-            <div class="single_post_text">
-              <div class="meta3"> <a href="#">TECHNOLOGY</a>
-                <a href="#">March 26, 2020</a>
-              </div>
-              <h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-              <div class="space-10"></div>
-              <p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  {% include 'app/basic/latest_article.html' %}
   <!--::::: LATEST BLOG AREA END :::::::-->
   <div class="space-60"></div>
   <!--:::::  COMMENT FORM AREA START :::::::-->
@@ -302,7 +238,7 @@
             {% endfor %}
 
             {% else %}
-            <h6 class="text-primary">Nikt jeszcze nie skomentował artykułu<h6>
+            <h6 class="text-primary">Nikt jeszcze nie skomentował artykułu</h6>
                 {% endif %}
 
 
@@ -314,19 +250,7 @@
   <div class="space-100"></div>
   <!--:::::  COMMENT FORM AREA END :::::::-->
   <!--::::: BANNER AREA START :::::::-->
-  <div class="padding5050 fourth_bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 m-auto">
-          <div class="banner1">
-            <a href="#">
-              <img src="{% static 'assets/img/bg/banner1.png' %}" alt="">
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    {% include 'app/basic/footer_banner.html' %}
   <!--::::: BANNER AREA END :::::::-->
   <!--::::: FOOTER AREA START :::::::-->
   {% include "app/basic/footer.html" %}

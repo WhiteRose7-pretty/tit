@@ -1,0 +1,20 @@
+{% load app_tags %}
+
+<div class="padding5050 fourth_bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 m-auto">
+          <div class="banner1">
+             {% get_random_add  as random_add %}
+                {% if random_add %}
+                    {% for item in random_add %}
+                    <a href="/artykul/{{ item.slug }}/" target="{{ item.add|yesno:'_blank,_self' }}">
+                        <img src="{{ item.img_728x90.url }}" alt="{{ item.title }}">
+                    </a>
+                    {% endfor %}
+                {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

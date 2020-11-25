@@ -135,7 +135,11 @@
                     <div class="newsprk_nav stellarnav">
                         <ul id="newsprk_menu">
                             <li><a >Ogłoszenia <i class="fal fa-angle-down"></i></a>
+
                                 <ul>
+                                     <li>
+                                            <a href="/ogloszenia/create/">Add ads</a>
+                                     </li>
                                     {% get_add_category as app_category %}
                                     {% for item in app_category %}
                                         <li>

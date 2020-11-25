@@ -1,0 +1,38 @@
+{% load app_tags %}
+
+<div class="fourth_bg padding6030">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="heading">
+            <h2 class="widget-title">Najnowsze artykuły</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+          {% get_random_article as random_articles %}
+          {% if random_articles %}
+              {% for item in random_articles %}
+                  <div class="col-md-6 col-lg-4">
+                      <div class="single_post post_type3 mb30">
+                        <div class="post_img">
+                          <a href="/artykul/{{ item.slug }}/" target="{{ item.add|yesno:'_blank,_self' }}">
+                            <img src="{{ item.img_700x500.url }}" alt="{{ item.title }}">
+                          </a>
+                        </div>
+                        <div class="single_post_text">
+                          <div class="meta3"> <a href="/artykul/{{ item.slug }}/" target="{{ item.add|yesno:'_blank,_self' }}">{{ item.category.name }}</a>
+                            <a href="/artykul/{{ item.slug }}/" target="{{ item.add|yesno:'_blank,_self' }}">{{item.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
+                          </div>
+                          <h4><a href="/artykul/{{ item.slug }}/" target="{{ item.add|yesno:'_blank,_self' }}">{{ item.title |truncatechars:27}}</a></h4>
+                          <div class="space-10"></div>
+                          <p class="post-p">{{ item.subtitle|truncatechars:120 }}</p>
+                        </div>
+                      </div>
+                    </div>
+              {% endfor %}
+          {% endif %}
+
+      </div>
+    </div>
+  </div>

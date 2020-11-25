@@ -19,6 +19,8 @@ urlpatterns = [
     path('kontakt/', views.contact, name='contact'),
     path('polityka-prywatnosci/', views.privacy, name='privacy'),
     path('regulamin-strony/', views.regulations, name='regulations'),
+    path('ogloszenia/create/', views.add_create, name='add_create'),
     path('ogloszenia/<slug:slug>/', views.add_list, name='add_list'),
     path('ogloszenia_detail/<slug:slug>/', views.add_detail, name='add_list'),
+    path('subscribe_email/', views.subscribe_email, name='subscribe_email'),
 ]

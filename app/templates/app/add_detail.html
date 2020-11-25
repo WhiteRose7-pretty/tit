@@ -1,4 +1,5 @@
 {% load static %}
+{% load app_tags %}
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -35,19 +36,7 @@
       <div class="space-30"></div>
       <div class="row">
         <div class="col-md-6 col-lg-8">
-          <div class="row">
-            <div class="col-4 align-self-center">
-              <div class="page_category">
-                <h4>{{ obj.category.name|capfirst  }}</h4>
-              </div>
-            </div>
-          </div>
-          <div class="space-30"></div>
-          <div class="single_post_heading">
-            <h1>{{ obj.title }}</h1>
-            <div class="space-10"></div>
-          </div>
-          <div class="space-40"></div>
+
           {% if obj.background_img %}
             <img src="{{ obj.background_img.url }}" alt="image">
           {% else %}
@@ -75,7 +64,7 @@
           </div>
 
           <div class="mt-5">
-              {{ obj.description }}
+              {{ obj.content }}
           </div>
 
         </div>
@@ -88,150 +77,10 @@
   <!--::::: ARCHIVE AREA END :::::::-->
   <div class="space-60"></div>
   <!--::::: LATEST BLOG AREA START :::::::-->
-  <div class="fourth_bg padding6030">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="heading">
-            <h2 class="widget-title">Najnowsze artykuły</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-6 col-lg-4">
-          <div class="single_post post_type3 mb30">
-            <div class="post_img">
-              <a href="#">
-                <img src="{% static 'assets/img/bg/video4.jpg' %}" alt="">
-              </a>
-            </div>
-            <div class="single_post_text">
-              <div class="meta3"> <a href="#">TECHNOLOGY</a>
-                <a href="#">March 26, 2020</a>
-              </div>
-              <h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-              <div class="space-10"></div>
-              <p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="single_post post_type3 mb30">
-            <div class="post_img">
-              <a href="#">
-                <img src="{% static 'assets/img/bg/video4.jpg' %}" alt="">
-              </a>
-            </div>
-            <div class="single_post_text">
-              <div class="meta3"> <a href="#">TECHNOLOGY</a>
-                <a href="#">March 26, 2020</a>
-              </div>
-              <h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-              <div class="space-10"></div>
-              <p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="single_post post_type3 mb30">
-            <div class="post_img">
-              <a href="#">
-                <img src="{% static 'assets/img/bg/video4.jpg' %}" alt="">
-              </a>
-            </div>
-            <div class="single_post_text">
-              <div class="meta3"> <a href="#">TECHNOLOGY</a>
-                <a href="#">March 26, 2020</a>
-              </div>
-              <h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-              <div class="space-10"></div>
-              <p class="post-p">The property, complete with 30-seat screening from room, a 100-seat amphitheater and a swimming pond with sandy shower…</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  {% include 'app/basic/latest_article.html' %}
   <!--::::: LATEST BLOG AREA END :::::::-->
-  <div class="space-60"></div>
-  <!--:::::  COMMENT FORM AREA START :::::::-->
-  <div class="comment_form">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-lg-10 m-auto" id="formularzKomentarzy">
-          <form action="/comment/" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input name="article_id" type="hidden" value="{{ obj.id }}">
-            <div class="row">
-              <div class="col-md-12">
-                <input name="full_name" type="text" placeholder="Imię lub pseudonim" required>
-              </div>
-              <div class="col-12">
-                <textarea name="content" id="messege" cols="30" rows="5" placeholder="Treść dodawanego komentarza..." required></textarea>
-              </div>
-              <div class="col-12">
-                <small class="mb-2">*Komentarz pokaże się po zatwierdzeniu przez administratora</small>
-              </div>
-              <div class="col-12">
-                <input type="submit" value="Dodaj komentarz" class="cbtn2">
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="space-60"></div>
-      <div class="comment_list">
-        <div class="row">
-          <div class="col-12 col-lg-10 m-auto">
-            <h3 id="comment_list">Najnowsze komentarze</h3>
-            {% if comments %}
-            {% for comment in comments %}
-            <div class="single_comment">
-              <div class="comment_img">
-                <img src="{% static 'assets/img/author/author2.png' %}" alt="">
-              </div>
-              <div class="row">
-                <div class="col-sm-6"> <a href="#comment_list">{{ comment.name }}</a>
-                </div>
-                <div class="col-sm-6">
-                  <div class="replay text-right"> <a href="#formularzKomentarzy">Odpowiedz</a>
-                  </div>
-                </div>
-              </div>
-              <div class="space-5"></div>
-              <p>{{ comment.content}}</p>
-            </div>
-            <div class="space-15"></div>
-            <div class="border_black"></div>
-            <div class="space-15"></div>
-            {% endfor %}
-
-            {% else %}
-            <h6 class="text-primary">Nikt jeszcze nie skomentował artykułu<h6>
-                {% endif %}
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="space-100"></div>
-  <!--:::::  COMMENT FORM AREA END :::::::-->
   <!--::::: BANNER AREA START :::::::-->
-  <div class="padding5050 fourth_bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 m-auto">
-          <div class="banner1">
-            <a href="#">
-              <img src="{% static 'assets/img/bg/banner1.png' %}" alt="">
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    {% include 'app/basic/footer_banner.html' %}
   <!--::::: BANNER AREA END :::::::-->
   <!--::::: FOOTER AREA START :::::::-->
   {% include "app/basic/footer.html" %}

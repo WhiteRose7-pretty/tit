@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Category, Article, Autor, Comment, PrivacyPolicy, AddCategory, Add
+from .models import AdsSetting, SubscriberEmail
 
 
 class ArticleAdmin(admin.ModelAdmin):
@@ -10,6 +11,8 @@ admin.site.register(Article, ArticleAdmin)
 admin.site.register(Autor)
 admin.site.register(Comment)
 admin.site.register(PrivacyPolicy)
+admin.site.register(AdsSetting)
+admin.site.register(SubscriberEmail)
 
 
 class AddCategoryAdmin(admin.ModelAdmin):
@@ -20,7 +23,7 @@ class AddCategoryAdmin(admin.ModelAdmin):
 
 
 class AddAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('name',)}
+    prepopulated_fields = {'slug': ('content',)}
 
 
 class CategoryAdmin(admin.ModelAdmin):

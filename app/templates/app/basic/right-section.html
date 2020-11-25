@@ -1,238 +1,66 @@
 {% load static %}
-						<div class="col-md-6 col-lg-4">
-							<div class="widget_tab md-mt-30">
-                <ul class="nav nav-tabs">
-                  <li><a class="active" data-toggle="tab" href="#post1">RELATED</a>
-                  </li>
-                  <li><a data-toggle="tab" href="#post2" class="">RELATED</a>
-                  </li>
-                  <li><a data-toggle="tab" href="#post3" class="">POPULAR</a>
-                  </li>
-                </ul>
-								<div class="tab-content">
-									<div id="post1" class="tab-pane fade show in active">
-										<div class="widget tab_widgets mb30">
-                    
-                      {% if object.slider_sm_basic_1 %}
-											<div class="single_post widgets_small" >
-												<div class="post_img">
-													<div class="img_wrap">
-														<a href="#">
-															<img src="{{ object.slider_sm_basic_1.img_200x154.url }}" alt="">
-														</a>
-													</div>
-												</div>
-												<div class="single_post_text">
-													<div class="meta2 meta_separator1">	<a href="#">{{ object.slider_sm_basic_1.category }}</a>
-														<a href="#">{{ object.slider_sm_basic_1.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
-													</div>
-													<h4><a href="#">{{ object.slider_sm_basic_1.title|truncatechars:30 }}</a></h4>
-												</div>
-											</div>
-                      {% endif %}
-                      
-											<div class="space-15"></div>
-											<div class="border_black"></div>
-											<div class="space-15"></div>
-                      
-                      {% if object.slider_sm_basic_1 %}
-											<div class="single_post widgets_small" >
-												<div class="post_img">
-													<div class="img_wrap">
-														<a href="#">
-															<img src="{{ object.slider_sm_basic_1.img_200x154.url }}" alt="">
-														</a>
-													</div>
-												</div>
-												<div class="single_post_text">
-													<div class="meta2 meta_separator1">	<a href="#">{{ object.slider_sm_basic_1.category }}</a>
-														<a href="#">{{ object.slider_sm_basic_1.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
-													</div>
-													<h4><a href="#">{{ object.slider_sm_basic_1.title|truncatechars:30 }}</a></h4>
-												</div>
-											</div>
-                      {% endif %}
-                      
-											<div class="space-15"></div>
-											<div class="border_black"></div>
-											<div class="space-15"></div>
-                      
-                      {% if object.slider_sm_basic_1 %}
-											<div class="single_post widgets_small" >
-												<div class="post_img">
-													<div class="img_wrap">
-														<a href="#">
-															<img src="{{ object.slider_sm_basic_1.img_200x154.url }}" alt="">
-														</a>
-													</div>
-												</div>
-												<div class="single_post_text">
-													<div class="meta2 meta_separator1">	<a href="#">{{ object.slider_sm_basic_1.category }}</a>
-														<a href="#">{{ object.slider_sm_basic_1.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
-													</div>
-													<h4><a href="#">{{ object.slider_sm_basic_1.title|truncatechars:30 }}</a></h4>
-												</div>
-											</div>
-                      {% endif %}
-                      
-											<div class="space-15"></div>
-											<div class="border_black"></div>
-											<div class="space-15"></div>
-                      
-                      {% if object.slider_sm_basic_2 %}
-											<div class="single_post widgets_small" >
-												<div class="post_img">
-													<div class="img_wrap">
-														<a href="#">
-															<img src="{{ object.slider_sm_basic_2.img_200x154.url }}" alt="">
-														</a>
-													</div>
-												</div>
-												<div class="single_post_text">
-													<div class="meta2 meta_separator1">	<a href="#">{{ object.slider_sm_basic_2.category }}</a>
-														<a href="#">{{ object.slider_sm_basic_2.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
-													</div>
-													<h4><a href="#">{{ object.slider_sm_basic_2.title|truncatechars:30 }}</a></h4>
-												</div>
-											</div>
-                      {% endif %}
-											<div class="space-15"></div>
-											<div class="border_black"></div>
-											<div class="space-15"></div>
-                      
-                      <a href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">
+{% load app_tags %}
+
+<div class="col-md-6 col-lg-4">
+    <div class="widget_tab md-mt-30">
+
+        <div class="tab-content">
+            <div id="post1" class="tab-pane fade show in active">
+                <div class="widget tab_widgets mb30">
+
+                    <a href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">
                         <img src="{% static 'assets/img/gallary/1g.jpg' %}" alt="">
-                      </a>
-                      <a class="btn btn-block btn-danger mt10" href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">Kup najnowsze wydanie TIT w PDF!</a>
+                    </a>
+                    <a class="btn btn-block btn-primary mt10"
+                       href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">Kup najnowsze
+                        wydanie TIT w PDF!</a>
 
+                    <div class="space-15"></div>
+                    <div class="border_black"></div>
+                    <div class="space-15"></div>
 
-										</div>
-									</div>
-									<div id="post2" class="tab-pane fade">
-										<div class="widget tab_widgets mb30">
-                    
-                      {% if object.slider_sm_basic_3 %}
-											<div class="single_post widgets_small" >
-												<div class="post_img">
-													<div class="img_wrap">
-														<a href="#">
-															<img src="{{ object.slider_sm_basic_3.img_200x154.url }}" alt="">
-														</a>
-													</div>
-												</div>
-												<div class="single_post_text">
-													<div class="meta2 meta_separator1">	<a href="#">{{ object.slider_sm_basic_3.category }}</a>
-														<a href="#">{{ object.slider_sm_basic_3.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
-													</div>
-													<h4><a href="#">{{ object.slider_sm_basic_3.title|truncatechars:30 }}</a></h4>
-												</div>
-											</div>
-                      {% endif %}
-											<div class="space-15"></div>
-											<div class="border_black"></div>
-											<div class="space-15"></div>
-                      
-                      {% if object.slider_sm_basic_4 %}
-											<div class="single_post widgets_small" >
-												<div class="post_img">
-													<div class="img_wrap">
-														<a href="#">
-															<img src="{{ object.slider_sm_basic_4.img_200x154.url }}" alt="">
-														</a>
-													</div>
-												</div>
-												<div class="single_post_text">
-													<div class="meta2 meta_separator1">	<a href="#">{{ object.slider_sm_basic_4.category }}</a>
-														<a href="#">{{ object.slider_sm_basic_4.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
-													</div>
-													<h4><a href="#">{{ object.slider_sm_basic_4.title|truncatechars:30 }}</a></h4>
-												</div>
-											</div>
-                      {% endif %}
-											<div class="space-15"></div>
-											<div class="border_black"></div>
-											<div class="space-15"></div>
-                      
-                      <a href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">
-                        <img src="{% static 'assets/img/gallary/1g.jpg' %}" alt="">
-                      </a>
-                      <a class="btn btn-block btn-danger mt10" href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">Kup najnowsze wydanie TIT w PDF!</a>
-
-                      
-										</div>
-									</div>
-									<div id="post3" class="tab-pane fade">
-										<div class="widget tab_widgets mb30">
-                    
-                      {% if object.slider_sm_basic_5 %}
-											<div class="single_post widgets_small" >
-												<div class="post_img">
-													<div class="img_wrap">
-														<a href="#">
-															<img src="{{ object.slider_sm_basic_5.img_200x154.url }}" alt="">
-														</a>
-													</div>
-												</div>
-												<div class="single_post_text">
-													<div class="meta2 meta_separator1">	<a href="#">{{ object.slider_sm_basic_5.category }}</a>
-														<a href="#">{{ object.slider_sm_basic_5.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
-													</div>
-													<h4><a href="#">{{ object.slider_sm_basic_5.title|truncatechars:30 }}</a></h4>
-												</div>
-											</div>
-                      {% endif %}
-											<div class="space-15"></div>
-											<div class="border_black"></div>
-											<div class="space-15"></div>
-                      
-                      {% if object.slider_sm_basic_6 %}
-											<div class="single_post widgets_small" >
-												<div class="post_img">
-													<div class="img_wrap">
-														<a href="#">
-															<img src="{{ object.slider_sm_basic_6.img_200x154.url }}" alt="">
-														</a>
-													</div>
-												</div>
-												<div class="single_post_text">
-													<div class="meta2 meta_separator1">	<a href="#">{{ object.slider_sm_basic_6.category }}</a>
-														<a href="#">{{ object.slider_sm_basic_6.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
-													</div>
-													<h4><a href="#">{{ object.slider_sm_basic_6.title|truncatechars:30 }}</a></h4>
-												</div>
-											</div>
-                      {% endif %}
-											<div class="space-15"></div>
-											<div class="border_black"></div>
-											<div class="space-15"></div>
-                      
-                      <a href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">
-                        <img src="{% static 'assets/img/gallary/1g.jpg' %}" alt="">
-                      </a>
-                      <a class="btn btn-block btn-danger mt10" href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">Kup najnowsze wydanie TIT w PDF!</a>
-
-
-										</div>
-									</div>
-								</div>
-                <div class="banner2 mb30">
-                  <a href="#">
-                    <img src="{% static 'assets/img/bg/sidebar-1.png' %}" alt="">
-                  </a>
                 </div>
-                <!--:::::: POST TYPE 4 END :::::::-->
-                <div class="box widget news_letter mb30">
-                  <h2 class="widget-title">Newsletter</h2>
-                  <p>Powiadomimy cię o nowych artykułach pojawiających się na łamach naszego tygodnika.</p>
-                  <div class="space-20"></div>
-                  <div class="signup_form">
-                    <form action="index.html">
-                      <input class="signup" type="email" placeholder="Twój adres email">
-                      <input type="button" class="cbtn" value="Zapisz">
-                    </form>
-                    <div class="space-10"></div>
-                    <p>Podając adres email, akceptujesz regulamin i politykę prywatności.</p>
-                  </div>
-                </div>
-              </div>
-						</div>
+            </div>
+        </div>
+        <div class="banner2 mb30">
+            {% get_random_add  as random_add %}
+            {% if random_add %}
+                {% for item in random_add %}
+                <a href="/artykul/{{ item.slug }}/" target="{{ item.add|yesno:'_blank,_self' }}">
+                    <img src="{{ item.img_700x500.url }}" alt="{{ item.title }}">
+                </a>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <!--:::::: POST TYPE 4 END :::::::-->
+        <div class="box widget news_letter mb30">
+            <h2 class="widget-title">Newsletter</h2>
+            <p>Powiadomimy cię o nowych artykułach pojawiających się na łamach naszego tygodnika.</p>
+            <div class="space-20"></div>
+            <div class="signup_form">
+                {% get_subscribe_form as s_form %}
+                <form action="/subscribe_email/" method="post" id="subscribe_email" >
+                    {{ s_form.email }}
+                    {% csrf_token %}
+                    <input type="submit" class="cbtn" value="Zapisz" >
+
+                </form>
+                <div class="space-10"></div>
+                <span id="subscribe_msg" class="text-primary font14"></span>
+                <p>Podając adres email, akceptujesz regulamin i politykę prywatności.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'assets/js/plugins/jquery.2.1.0.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.form.js' %}"></script>
+<script>
+    $('#subscribe_email').ajaxForm({
+        success:function(data)
+        {
+            $('#subscribe_msg').text(data.status);
+        }
+    });
+
+</script>

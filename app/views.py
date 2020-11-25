@@ -1,12 +1,15 @@
 from django.shortcuts import render
-from .models import Article, Comment, Category, PrivacyPolicy, Add, AddCategory
+from .models import Article, Comment, Category, PrivacyPolicy, Add, AddCategory, AdsSetting
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from simple_cms.models import HomePage
 import html2text
 from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from .forms import NewAddForm, SubscribeForm
+from .models import SubscriberEmail
+
 
 
 def home(request):
@@ -17,6 +20,7 @@ def home(request):
     slider_lg_basic_numbers = []
     section_second_left = []
     sm_basic_under_numbers = []
+
     section_second_numbers = ['1', '2']
     basic_center_numbers = ['1', '2']
     tab_article_numbers = [
@@ -24,15 +28,18 @@ def home(request):
         ['3', '4'],
         ['5', '6'],
     ]
+
     small_section_second_numbers = [
         ['1', '2'],
         ['3', '4'],
     ]
+
     section_footer_numbers = [
         ['1', '2', '3', '4'],
         ['5', '6', '7', '8'],
         ['9', '10', '11', '12'],
     ]
+
     section_footer_title = [
         'Towarzyskie', 'Turystyczne', 'Naukowe',
     ]
@@ -245,4 +252,57 @@ def add_detail(request, slug):
                'object': home_page,
                }
     return render(request, 'app/add_detail.html', context)
+
+
+def add_create(request):
+
+    categories = Category.objects.filter(menu=True)
+    home_page = HomePage.objects.filter(date_published__lte=datetime.now()).first()
+    ads_setting = AdsSetting.objects.last()
+    array_52 = range(1, 53)
+    if request.method == "POST":
+        form = NewAddForm(request.POST, request.FILES)
+        if form.is_valid():
+            object = form.save(commit=False)
+            object.words = request.POST.get('words')
+            object.price = request.POST.get('price')
+            if request.user.is_authenticated():
+                object.user = request.user
+            object.save()
+
+            return HttpResponseRedirect('/')
+    else:
+        form = NewAddForm()
+
+    context = {
+               'categories': categories,
+               'object': home_page,
+               'form': form,
+               'ads_setting': ads_setting,
+               'array_52': array_52,
+               }
+
+    return render(request, 'app/add_create.html', context)
+
+
+def subscribe_email(request):
+    if not request.method == 'POST':
+        return HttpResponseRedirect('/')
+    subscribers = SubscriberEmail.objects.filter(email=request.POST.get('email'))
+    if len(subscribers) > 0:
+        output = {
+            'status': "Already Registered!",
+        }
+    else:
+        frm = SubscribeForm(request.POST)
+        if frm.is_valid():
+            obj = frm.save()
+        output = {
+            'status': "Successfullly Registered!",
+        }
+    return JsonResponse(output)
+
+
+
+
 
