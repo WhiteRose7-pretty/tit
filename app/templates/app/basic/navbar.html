@@ -41,31 +41,40 @@
                     <div class="trancarousel owl-carousel nav_style1">
                         {% if object.navbar_alert_1 %}
                             <div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_1')">
-                                <p><a href="#">{{ object.navbar_alert_1.title|truncatechars:50 }}</a>
+                                <p><a href="/artykuly/{{ object.navbar_alert_1.slug }}/" target="{{ object.navbar_alert_1.slug|yesno:'_self, _blank' }}">
+                                    {{ object.navbar_alert_1.title|truncatechars:50 }}</a>
                                 </p>
                             </div>
                         {% endif %}
                         {% if object.navbar_alert_2 %}
                             <div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_2')">
-                                <p><a href="#">{{ object.navbar_alert_1.title|truncatechars:50 }}</a>
+                                <p>
+                                    <a href="/artykuly/{{ object.navbar_alert_2.slug }}/" target="{{ object.navbar_alert_2.slug|yesno:'_self, _blank' }}">
+                                    {{ object.navbar_alert_1.title|truncatechars:50 }}</a>
                                 </p>
                             </div>
                         {% endif %}
                         {% if object.navbar_alert_3 %}
                             <div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_3')">
-                                <p><a href="#">{{ object.navbar_alert_3.title|truncatechars:50 }}</a>
+                                <p>
+                                    <a href="/artykuly/{{ object.navbar_alert_3.slug }}/" target="{{ object.navbar_alert_3.slug|yesno:'_self, _blank' }}">
+                                        {{ object.navbar_alert_3.title|truncatechars:50 }}</a>
                                 </p>
                             </div>
                         {% endif %}
                         {% if object.navbar_alert_4 %}
                             <div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_4')">
-                                <p><a href="#">{{ object.navbar_alert_4.title|truncatechars:50 }}</a>
+                                <p>
+                                    <a href="/artykuly/{{ object.navbar_alert_4.slug }}/" target="{{ object.navbar_alert_4.slug|yesno:'_self, _blank' }}">
+                                        {{ object.navbar_alert_4.title|truncatechars:50 }}</a>
                                 </p>
                             </div>
                         {% endif %}
                         {% if object.navbar_alert_5 %}
                             <div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_5')">
-                                <p><a href="#">{{ object.navbar_alert_5.title|truncatechars:50 }}</a>
+                                <p>
+                                    <a href="/artykuly/{{ object.navbar_alert_5.slug }}/" target="{{ object.navbar_alert_5.slug|yesno:'_self, _blank' }}">
+                                        {{ object.navbar_alert_5.title|truncatechars:50 }}</a>
                                 </p>
                             </div>
                         {% endif %}
@@ -76,7 +85,7 @@
                 <div class="top_date_social text-right">
                     <div class="paper_date">
                         <p>
-                            <button class="btn btn-sm btn-danger">Dodaj ogłoszenie</button>
+                            <a class="btn btn-sm btn-danger" href="/ogloszenia/create/" style="color:#fff">Dodaj ogłoszenie</a>
                         </p>
                     </div>
                     <div class="social1">
