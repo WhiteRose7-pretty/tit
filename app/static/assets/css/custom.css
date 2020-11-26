@@ -174,3 +174,27 @@
 .add-item-container a{
     color: black;
 }
+
+@media (max-width: 768px) {
+    .add-list{
+        display: block;
+        width: 100%;
+    }
+
+    .add-item-container{
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .add-item-container .image{
+        display: block;
+        width: 100%;
+    }
+
+    .add-item-container .text{
+        width: 100%;
+        display: block;
+    }
+
+}
