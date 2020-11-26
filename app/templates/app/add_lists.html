@@ -44,7 +44,7 @@
 <div class="archives padding-top-30">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-lg-12">
+            <div class="col-md-12 col-lg-8">
                 <div class="row">
                     <div class="row">
                         <div class="col-12 align-self-center">
@@ -58,32 +58,21 @@
                 <div class="entertrainment_carousel">
                     <!--CAROUSEL START-->
                     <div class="entertrainment_item">
-                        <div class="row">
-
+                        <div class="add-list">
                         {% for item in add_lists %}
-                            <div class="col-lg-4">
-                                <div class="single_post post_type3 mb30">
-                                    <div class="post_img">
-                                        <div class="img_wrap">
-                                            <a href="/ogloszenia_detail/{{ item.slug }}/" >
-                                            {% if item.background_img %}
-                                                <img src="{{ item.background_img.url }}" alt="">
-                                            {% else %}
-                                                <img src="{% static 'assets/img/entertrainment/enter1.jpg' %}" alt="">
-                                            {% endif %}
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="single_post_text">
-                                        <div class="meta3">	<a href="#">{{ item.category.name }}</a>
-                                            <a href="/ogloszenia_detail/{{ item.slug }}/">{{ item.created_at|date:' M,  d,  Y' }}</a>
-                                        </div>
-                                        <p class="post-p">{{ item.content|truncatechars:200 }}</p>
-                                    </div>
+                            <div class="add-item-container">
+                                <div class="image">
+                                    <a href="/ogloszenia_detail/{{ item.slug }}/">
+                                        {% if item.background_img %}
+                                        <img src="{{ item.background_img.url }}" width="200px">
+                                        {% endif %}
+                                    </a>
+                                </div>
+                                <div class="text">
+                                    <p><a href="/ogloszenia_detail/{{ item.slug }}/">{{ item.content }}</a></p>
                                 </div>
                             </div>
                         {% endfor %}
-
                         </div>
                     </div>
                 </div>
@@ -140,7 +129,7 @@
                 </div>
             {% endif %}
             </div>
-
+            {% include 'app/basic/right-section.html' %}
         </div>
     </div>
 </div>

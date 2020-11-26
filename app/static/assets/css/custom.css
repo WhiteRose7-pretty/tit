@@ -131,3 +131,46 @@
 .chosen-container {
     font-size: 16px;
 }
+
+.add-list{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border: none;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin: 0;
+}
+
+.add-item-container{
+    display: table-row;
+    width: 100%;
+    border: 1px solid grey;
+    background: #fbf9ce;
+}
+
+.add-item-container .image{
+    display: table-cell;
+    width: 140px;
+    border: 1px solid grey;
+    object-fit: cover;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.add-item-container .text{
+    display: table-cell;
+    font-size: 18px;
+    padding: 10px;
+    padding-left: 40px;
+    border: 1px solid grey;
+
+    text-align: left;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.add-item-container a{
+    color: black;
+}
