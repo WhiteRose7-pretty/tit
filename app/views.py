@@ -11,7 +11,6 @@ from .forms import NewAddForm, SubscribeForm
 from .models import SubscriberEmail
 
 
-
 def home(request):
     categories = Category.objects.filter(menu=True)
     home_page = HomePage.objects.filter(date_published__lte=datetime.now()).first()
@@ -266,7 +265,7 @@ def add_create(request):
             object = form.save(commit=False)
             object.words = request.POST.get('words')
             object.price = request.POST.get('price')
-            if request.user.is_authenticated():
+            if request.user.is_authenticated:
                 object.user = request.user
             object.save()
 
