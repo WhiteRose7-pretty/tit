@@ -167,6 +167,9 @@ class Add(models.Model):
     time_of_broadcast = models.IntegerField(verbose_name='Time of broadcast(weeks)', default=1)
     price = models.DecimalField(max_digits=5, decimal_places=1, default=0)
 
+    def __str__(self):
+        return self.content
+
 
 class PrivacyPolicy(models.Model):
     privacy = RichTextField()
@@ -179,6 +182,9 @@ class PrivacyPolicy(models.Model):
 
 class SubscriberEmail(models.Model):
     email = models.EmailField()
+
+    def __str__(self):
+        return self.email
 
 
 class AdsSetting(models.Model):

@@ -220,7 +220,7 @@ def add_list(request, slug):
     cur_category = AddCategory.objects.filter(slug=slug).first()
 
     page = request.GET.get('page', 1)
-    paginator = Paginator(add_lists_all, 3)
+    paginator = Paginator(add_lists_all, 12)
     try:
         add_lists = paginator.page(page)
     except PageNotAnInteger:
