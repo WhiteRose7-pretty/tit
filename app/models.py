@@ -160,6 +160,15 @@ class Add(models.Model):
                                          processors=[ResizeToFill(1920, 1080)],
                                          format='JPEG',
                                          options={'quality': 100}, blank=True, null=True)
+    img_300x170 = ImageSpecField(source='background_img',
+                               processors=[ResizeToFill(300, 170)],
+                               format='JPEG',
+                               options={'quality': 80})
+    img_730x411 = ImageSpecField(source='background_img',
+                                 processors=[ResizeToFill(730, 411)],
+                                 format='JPEG',
+                                 options={'quality': 80})
+
     content = models.TextField(verbose_name="Content", blank=True, null=True, default='')
     approved = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
