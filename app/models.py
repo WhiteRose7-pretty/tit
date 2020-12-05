@@ -239,55 +239,29 @@ class FullAccess(models.Model):
         return self.time_string
 
 
+class Przelewy24Transaction(models.Model):
+    amount = models.DecimalField(max_digits=5, decimal_places=2)
+    order_id = models.CharField(max_length=100, null=True, blank=True)
+    status = models.CharField(max_length=100, choices=const.P24_STATUS_CHOICES)
+    order_id_full = models.CharField(max_length=100, null=True, blank=True)
+    error_code = models.CharField(max_length=100, null=True, blank=True)
+    error_description = models.CharField(max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return self.pk
+
+
 class FullAccessSubscription(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     subscription_type = models.ForeignKey(FullAccess, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     paid = models.BooleanField(default=False)
     active = models.BooleanField(default=False)
+    transaction_id = models.ForeignKey(Przelewy24Transaction, on_delete=models.CASCADE,
+                                       null=True, blank=True)
 
 
-class Przelewy24Transaction(models.Model):
-    """
-        model for storing P24 transaction
-    """
-    p24_session_id = models.CharField(u"P24 session id", max_length=64)
-    p24_id_sprzedawcy = models.CharField(u"Vendor Id", max_length=10)
-    p24_email = models.EmailField(u'Vendor email')
-    p24_kwota = models.CharField(u"Amount", max_length=10)
-    p24_order_id = models.CharField(
-        u"Order ID", max_length=100, null=True, blank=True)
-    p24_order_id_full = models.CharField(
-        u"Order ID Full", max_length=100, null=True, blank=True)
 
-    p24_return_url_ok = models.URLField(u"Return URL OK")
-    p24_return_url_error = models.URLField(u"Return URL ERROR")
 
-    p24_karta = models.CharField(
-        u"CC?", max_length=10, blank=True, null=True)
-    p24_opis = models.TextField(u"Description", null=True, blank=True)
 
-    p24_crc = models.CharField(
-        u"CHECKSUM HASH", max_length=32,
-        help_text=u'In our request to P24 - will be verified by P24')
-    p24_crc2 = models.CharField(
-        u"CHECKSUM HASH 2", max_length=32,
-        help_text=u'In response from P24 - needs to be verified by us')
 
-    p24_error_code = models.CharField(u"Error code", max_length=7, blank=True)
-    p24_error_desc = models.CharField(u"Error description", max_length=255,
-                                      null=True, blank=True)
-
-    status = models.IntegerField(
-        u"Transaction status",
-        default=const.P24_STATUS_INITIATED,
-        choices=const.P24_STATUS_CHOICES)
-
-    created_at = models.DateTimeField(u"Created date", auto_now_add=True)
-    updated_at = models.DateTimeField(u"Updated date", auto_now=True)
-
-    class Meta:
-        ordering = ('-updated_at',)
-
-    def __unicode__(self):
-        return u'%s' % self.p24_session_id

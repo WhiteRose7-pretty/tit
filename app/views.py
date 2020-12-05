@@ -1,21 +1,23 @@
 from django.core.mail import send_mail
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Article, Comment, Category, PrivacyPolicy, Add, AddCategory, AdsSetting, FullAccess, \
     FullAccessSubscription
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect, JsonResponse, Http404
 from simple_cms.models import HomePage
 import html2text
 from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from .forms import NewAddForm, SubscribeForm, ContactForm, Przelewy24PrepareForm
-from .models import SubscriberEmail
+from .models import SubscriberEmail, Przelewy24Transaction
 from app_rama import settings
 import requests
 import hashlib
 from django.contrib.auth.decorators import login_required
 from app_rama import settings
+from . import const
+
 
 def home(request):
     categories = Category.objects.filter(menu=True)
@@ -331,8 +333,8 @@ def payment(request):
     crc_key = '8633d0e9f45f18cd'
 
     crc_hash = "%s|%s|%s|%s" % (
-                session_id, seller_id,
-                amount, crc_key)
+        session_id, seller_id,
+        amount, crc_key)
 
     print(crc_hash)
     m = hashlib.md5()
@@ -370,12 +372,19 @@ def subscribe(request):
     id = request.GET.get('id', False)
     user = request.user
     subscription_type = FullAccess.objects.filter(id=id).first()
+
+    transaction = Przelewy24Transaction()
+    transaction.amount = subscription_type.price
+    transaction.status = const.P24_STATUS_INITIATED
+    transaction.save()
+
     subscription = FullAccessSubscription()
     subscription.user = user
     subscription.subscription_type = subscription_type
+    subscription.transaction_id = transaction
     subscription.save()
 
-    session_id = 'sub_' + str(subscription.pk)
+    session_id = transaction.pk
     price = int(subscription_type.price * 100)
 
     form_ins = {
@@ -393,14 +402,15 @@ def subscribe(request):
         'p24_return_url_ok': 'https://www.tomaszow-tit.pl/prenumeraty/3-miesiace/sign-up',
         'p24_return_url_error': 'https://www.tomaszow-tit.pl/prenumeraty/3-miesiace/sign-up',
         'p24_crc': crc_code(session_id, settings.SELLER_ID, price, settings.CRC_KEY),
+        'telephone': user.telephone,
+        'business': user.business,
+        'tax_id': user.tax_id,
     }
 
     order_form = Przelewy24PrepareForm(form_ins)
-
     tax_rate = AdsSetting.objects.first().tax_rate
     tax_rule = tax_rate * subscription_type.price
-    print(tax_rate)
-    print(tax_rule)
+
     payment_ins = {
         'price': subscription_type.price - tax_rule,
         'tax_rule': tax_rule,
@@ -419,8 +429,8 @@ def subscribe(request):
 
 def crc_code(session_id, seller_id, amount, crc_key):
     crc_hash = "%s|%s|%s|%s" % (
-                session_id, seller_id,
-                amount, crc_key)
+        session_id, seller_id,
+        amount, crc_key)
 
     print(crc_hash)
     m = hashlib.md5()
@@ -436,9 +446,68 @@ def update_user(request):
     user.zip_code = request.POST.get('p24_kod')
     user.address = request.POST.get('p24_adres')
     user.city = request.POST.get('p24_miasto')
+    user.telephone = request.POST.get('telephone')
+    user.business = request.POST.get('business')
+    user.tax_id = request.POST.get('tax_id')
     user.save()
     data = {
         'status': True
     }
     return JsonResponse(data)
 
+
+def payment_ok(request):
+    if request.method == 'POST':
+        session_id = request.POST.get('p24_session_id')
+
+        transaction_obj = get_object_or_404(Przelewy24Transaction, pk=session_id)
+        transaction_obj.status = const.P24_STATUS_ACCEPTED_NOT_VERIFIED
+        transaction_obj.order_id = request.POST.get('p24_order_id')
+        transaction_obj.order_id_full = request.POST.get('p24_order_id_full')
+        transaction_obj.save()
+
+        confirmed, confirmation_response = p24_verify(settings.SELLER_ID,
+                                                      request.POST.get('p24_session_id'),
+                                                      request.POST.get('p24_order_id '),
+                                                      int(transaction_obj.amount * 100))
+
+        if not confirmed:
+            transaction_obj.status = const.P24_STATUS_ACCEPTED_NOT_VERIFIED
+            transaction_obj.error_code = confirmation_response[2]
+            transaction_obj.error_description = confirmation_response[3]
+
+        else:
+
+            transaction_obj.status = const.P24_STATUS_ACCEPTED_VERIFIED
+
+        context = {
+            'transaction': transaction_obj
+        }
+
+        return render(request, 'app/payment.html', context)
+
+
+def payment_error(request):
+    if request.method == 'POST':
+        pass
+
+
+def p24_verify(seller_id, session_id, order_id, amount):
+    url = 'https://sandbox.przelewy24.pl/transakcja.php'
+    headers = {
+        'accept': 'application/json',
+    }
+    data = {
+        'p24_id_sprzedawcy': seller_id,
+        'p24_session_id': session_id,
+        'p24_order_id': order_id,
+        'p24_kwota': amount,
+        'p24_crc': crc_code(session_id, order_id, amount, settings.CRC_KEY)
+    }
+    response = requests.post(url, data=data)
+    confirmation_response = list(response)
+    print(response.status_code)
+    if response.status_code == 200 and confirmation_response[1] == 'TRUE':
+        return True, confirmation_response
+
+    return False, confirmation_response

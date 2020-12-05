@@ -1,6 +1,6 @@
 from django.contrib import admin
 from app.models import Category, Article, Autor, Comment, PrivacyPolicy, AddCategory, Add
-from app.models import AdsSetting, SubscriberEmail, ContactMessage, FullAccess, FullAccessSubscription
+from app.models import AdsSetting, SubscriberEmail, ContactMessage, FullAccess, FullAccessSubscription, Przelewy24Transaction
 
 
 class ArticleAdmin(admin.ModelAdmin):
@@ -36,5 +36,6 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(Add, AddAdmin)
 admin.site.register(AddCategory, AddCategoryAdmin)
 admin.site.register(ContactMessage)
+admin.site.register(Przelewy24Transaction)
 
 

@@ -52,5 +52,5 @@ class Przelewy24PrepareForm(forms.Form):
     p24_return_url_error = forms.CharField(max_length=100, label='', widget=forms.HiddenInput())
     p24_crc = forms.CharField(max_length=100, label='', widget=forms.HiddenInput())
     telephone = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    bussiness = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    business = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
     tax_id = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
