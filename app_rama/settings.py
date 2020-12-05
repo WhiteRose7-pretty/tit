@@ -141,6 +141,7 @@ EMAIL_HOST_USER = 'benjamin.langeriaf7@gmail.com'
 EMAIL_HOST_PASSWORD = 'vjab48tzdz'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+ADMIN_EMAIL = 'timurkju@gmail.com'
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -164,3 +165,6 @@ LOGIN_REDIRECT_URL = 'app:home' #redirect
 ACCOUNT_LOGOUT_REDIRECT_URL = 'app:home' #rediect
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+SELLER_ID = '66809'
+CRC_KEY = '8633d0e9f45f18cd'

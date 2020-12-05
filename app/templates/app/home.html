@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/slick.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/plugins/stellarnav.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-scroll/1.3.3/slimscroll.min.js"></script>
     <link rel="stylesheet" href="{% static 'assets/css/theme.css' %}">
     <style>
         .myDiv {
@@ -44,7 +45,8 @@
                                 <div class="single_post widgets_small post_type5">
                                     <div class="post_img">
                                         <div class="img_wrap">
-                                            <a href="/artykul/{{ model_field.slug }}"
+                                            {% with model_field.url|add:',/artykul/'|add:model_field.slug  as url_str%}
+                                            <a href="{{ model_field.add|yesno:url_str}}"
                                                target="{{ model_field.add|yesno:"_blank,_self" }}">
                                                 <img src="{{ model_field.img_190x140.url }}" alt="">
                                             </a>
@@ -52,11 +54,14 @@
                                     </div>
                                     <div class="single_post_text">
                                         <h4>
-                                            <a href="/artykul/{{ model_field.slug }}" target="{{ model_field.add|yesno:"_blank,_self" }}">{{ model_field.title|truncatechars:24 }}</a>
+                                            <a href="{{ model_field.add|yesno:url_str }}"
+                                               target="{{ model_field.add|yesno:"_blank,_self" }}">{{ model_field.title|truncatechars:24 }}</a>
                                         </h4>
                                         <p>
-                                            <a href="/artykul/{{ model_field.slug }}" target="{{ model_field.add|yesno:"_blank,_self" }}">{{ model_field.subtitle|truncatechars:50 }}</a>
+                                            <a href="{{ model_field.add|yesno:url_str }}"
+                                               target="{{ model_field.add|yesno:"_blank,_self" }}">{{ model_field.subtitle|truncatechars:50 }}</a>
                                         </p>
+                                        {% endwith %}
                                     </div>
                                 </div>
                             {% endif %}
@@ -81,25 +86,27 @@
                             {% for item in slider_lg_basic_numbers %}
                                 {% get_field object 'slider_lg_basic_'|add:item as slider_lg_basic %}
                                 {% if slider_lg_basic %}
+                                    {% with slider_lg_basic.url|add:',/artykul/'|add:slider_lg_basic.slug  as url_str %}
                                     <div class="single_post post_type6 xs-mb30">
-                                        <a href="/artykul/{{ slider_lg_basic.slug }}" target="{{ slider_lg_basic.add|yesno:"_blank,_self" }}">
+                                        <a href="{{ slider_lg_basic.add|yesno:url_str }}" target="{{ slider_lg_basic.add|yesno:"_blank,_self" }}">
                                             <div class="post_img gradient1">
                                                 <img src="{{ slider_lg_basic.basic_img.url }}" alt="">
                                             </div>
                                         </a>
                                         <div class="single_post_text">
                                             <div class="meta meta_separator1">
-                                                <a href="/artykul/{{ slider_lg_basic.slug }}" target="{{ slider_lg_basic.add|yesno:"_blank,_self" }}">{{ slider_lg_basic.category }}</a>
-                                                <a href="/artykul/{{ slider_lg_basic.slug }}" target="{{ slider_lg_basic.add|yesno:"_blank,_self" }}">{{ slider_lg_basic.date_of_publication }}</a>
+                                                <a href="{{ slider_lg_basic.add|yesno:url_str }}"  target="{{ slider_lg_basic.add|yesno:"_blank,_self" }}">{{ slider_lg_basic.category }}</a>
+                                                <a href="{{ slider_lg_basic.add|yesno:url_str }}"  target="{{ slider_lg_basic.add|yesno:"_blank,_self" }}">{{ slider_lg_basic.date_of_publication }}</a>
                                             </div>
                                             <h4><a class="play_btn" target="{{ slider_lg_basic.add|yesno:"_blank,_self" }}"
-                                                   href="/artykul/{{ slider_lg_basic.slug }}">{{ slider_lg_basic.title|truncatechars:30 }}</a></h4>
+                                                   href="{{ slider_lg_basic.add|yesno:url_str }}" >{{ slider_lg_basic.title|truncatechars:30 }}</a></h4>
                                             <div class="space-10"></div>
-                                            <a href="/artykul/{{ slider_lg_basic.slug }}" target="{{ slider_lg_basic.add|yesno:"_blank,_self" }}">
+                                            <a href="{{ slider_lg_basic.add|yesno:url_str }}" target="{{ slider_lg_basic.add|yesno:"_blank,_self" }}">
                                                 <p class="post-p">{{ slider_lg_basic.subtitle|truncatechars:120 }}</p>
                                             </a>
                                         </div>
                                     </div>
+                                    {% endwith %}
                                 {% endif %}
                             {% endfor %}
                         </div>
@@ -151,10 +158,11 @@
                                             {% for item in item_set %}
                                                 {% get_field object 'slider_sm_basic_'|add:item as slider_sm_basic %}
                                                     {% if slider_sm_basic %}
+                                                        {% with slider_sm_basic.url|add:',/artykul/'|add:slider_sm_basic.slug  as url_str %}
                                                         <div class="single_post widgets_small">
                                                             <div class="post_img">
                                                                 <div class="img_wrap">
-                                                                    <a href="/artykul/{{ slider_sm_basic.slug }}" target="{{ slider_sm_basic.add|yesno:"_blank,_self" }}">
+                                                                    <a href="{{ slider_sm_basic.add|yesno:url_str }}" target="{{ slider_sm_basic.add|yesno:"_blank,_self" }}">
                                                                         <img src="{{ slider_sm_basic.img_200x154.url }}"
                                                                              alt="">
                                                                     </a>
@@ -162,17 +170,18 @@
                                                             </div>
                                                             <div class="single_post_text">
                                                                 <div class="meta2 meta_separator1">
-                                                                    <a href="/artykul/{{ slider_sm_basic.slug }}" target="{{ slider_sm_basic.add|yesno:"_blank,_self" }}">{{ slider_sm_basic.category }}</a>
-                                                                    <a href="/artykul/{{ slider_sm_basic.slug }}" target="{{ slider_sm_basic.add|yesno:"_blank,_self" }}">{{ slider_sm_basic.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
+                                                                    <a href="{{ slider_sm_basic.add|yesno:url_str }}" target="{{ slider_sm_basic.add|yesno:"_blank,_self" }}">{{ slider_sm_basic.category }}</a>
+                                                                    <a href="{{ slider_sm_basic.add|yesno:url_str }}" target="{{ slider_sm_basic.add|yesno:"_blank,_self" }}">{{ slider_sm_basic.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
                                                                 </div>
                                                                 <h4>
-                                                                    <a href="/artykul/{{ slider_sm_basic.slug }}" target="{{ slider_sm_basic.add|yesno:"_blank,_self" }}">{{ slider_sm_basic.title|truncatechars:30 }}</a>
+                                                                    <a href="{{ slider_sm_basic.add|yesno:url_str }}" target="{{ slider_sm_basic.add|yesno:"_blank,_self" }}">{{ slider_sm_basic.title|truncatechars:30 }}</a>
                                                                 </h4>
                                                             </div>
                                                         </div>
                                                         <div class="space-15"></div>
                                                         <div class="border_black"></div>
                                                         <div class="space-15"></div>
+                                                        {% endwith %}
                                                     {% endif %}
                                             {% endfor %}
 
@@ -202,15 +211,16 @@
 <div class="container mb40">
     <div class="row">
         <div class="col-lg-6 col-lg-8">
-            <h2 class="widget-title">Informacje rynkowe</h2>
+            <h2 class="widget-title">{{ object.section_1 }}</h2>
             <div class="carousel_post2_type3 nav_style1 owl-carousel">
                 <!--CAROUSEL START-->
                 {% for item_set in section_second_numbers %}
                     {% get_field object 'section_second_'|add:item_set as section_second %}
                     {% if section_second %}
+                        {% with section_second.url|add:',/artykul/'|add:section_second.slug  as url_str %}
                         <div class="single_post post_type3">
                             <div class="post_img">
-                                <a  href="/artykul/{{ section_second.slug }}" target="{{ section_second.add|yesno:"_blank,_self" }}">
+                                <a  href="{{ section_second.add|yesno:url_str }}" target="{{ section_second.add|yesno:"_blank,_self" }}">
                                     <div class="img_wrap">
                                         <img src="{{ section_second.img_700x500.url }}" alt="">
                                     </div>
@@ -218,16 +228,17 @@
                             </div>
                             <div class="single_post_text">
                                 <div class="meta3">
-                                    <a href="/artykul/{{ section_second.slug }}" target="{{ section_second.add|yesno:"_blank,_self" }}">{{ section_second.category }}</a>
-                                    <a href="/artykul/{{ section_second.slug }}" target="{{ section_second.add|yesno:"_blank,_self" }}">{{ section_second.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
+                                    <a  href="{{ section_second.add|yesno:url_str }}"  target="{{ section_second.add|yesno:"_blank,_self" }}">{{ section_second.category }}</a>
+                                    <a  href="{{ section_second.add|yesno:url_str }}"  target="{{ section_second.add|yesno:"_blank,_self" }}">{{ section_second.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
                                 </div>
                                 <h4>
-                                    <a href="/artykul/{{ section_second.slug }}" target="{{ section_second.add|yesno:"_blank,_self" }}">{{ section_second.title|truncatechars:27 }}</a>
+                                    <a  href="{{ section_second.add|yesno:url_str }}" target="{{ section_second.add|yesno:"_blank,_self" }}">{{ section_second.title|truncatechars:27 }}</a>
                                 </h4>
                                 <div class="space-10"></div>
                                 <p class="post-p">{{ section_second.subtitle|truncatechars:120 }}</p>
                             </div>
                         </div>
+                        {% endwith %}
                     {% endif %}
                 {% endfor %}
             </div>
@@ -239,9 +250,10 @@
                         {% for item in item_set %}
                             {% get_field object 'small_section_second_'|add:item as small_section_second %}
                             {% if small_section_second %}
+                                {% with small_section_second.url|add:',/artykul/'|add:small_section_second.slug  as url_str %}
                                 <div class="single_post widgets_small">
                                     <div class="post_img">
-                                        <a href="/artykul/{{ small_section_second.slug }}" target="{{ small_section_second.add|yesno:"_blank,_self" }}">
+                                        <a href="{{ small_section_second.add|yesno:url_str }}" target="{{ small_section_second.add|yesno:"_blank,_self" }}">
                                             <div class="img_wrap">
                                                 <img src="{{ small_section_second.img_200x154.url }}" alt="">
                                             </div>
@@ -249,12 +261,13 @@
                                     </div>
                                     <div class="single_post_text">
                                         <div class="meta2">
-                                            <a href="/artykul/{{ small_section_second.slug }}" target="{{ small_section_second.add|yesno:"_blank,_self" }}">{{ small_section_second.category }}</a>
-                                            <a href="/artykul/{{ small_section_second.slug }}" target="{{ small_section_second.add|yesno:"_blank,_self" }}">{{ small_section_second.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
+                                            <a href="{{ small_section_second.add|yesno:url_str }}" target="{{ small_section_second.add|yesno:"_blank,_self" }}">{{ small_section_second.category }}</a>
+                                            <a href="{{ small_section_second.add|yesno:url_str }}" target="{{ small_section_second.add|yesno:"_blank,_self" }}">{{ small_section_second.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
                                         </div>
-                                        <h4><a href="/artykul/{{ small_section_second.slug }}" target="{{ small_section_second.add|yesno:"_blank,_self" }}">{{ small_section_second.title|truncatechars:20 }}</a></h4>
+                                        <h4><a href="{{ small_section_second.add|yesno:url_str }}" target="{{ small_section_second.add|yesno:"_blank,_self" }}">{{ small_section_second.title|truncatechars:20 }}</a></h4>
                                     </div>
                                 </div>
+                                {% endwith %}
                             {% endif %}
                             {% if not forloop.counter0 %}
                                 <div class="space-15"></div>
@@ -277,37 +290,40 @@
                     {% endif %}
                 </h2>
                 {% if object.add_navbar_sponsorowane %}
-                    <a href="/artykul/{{ object.add_navbar_sponsorowane.slug }}" target="{{ object.add_navbar_sponsorowane.add|yesno:"_blank,_self" }}">
+                {% with object.add_navbar_sponsorowane.url|add:',/artykul/'|add:object.add_navbar_sponsorowane.slug  as url_str %}
+                    <a  href="{{ object.add_navbar_sponsorowane.add|yesno:url_str }}"  target="{{ object.add_navbar_sponsorowane.add|yesno:"_blank,_self" }}">
                         <div class="social_shares">
                             <img src="{{ object.add_navbar_sponsorowane.img_360x115.url }}" alt="">
                         </div>
                     </a>
+                {% endwith %}
                 {% endif %}
             </div>
             <!--:::::: POST TYPE 2 START :::::::-->
             <div class="widget tab_widgets mb30">
-                <h2 class="widget-title">Video relacje</h2>
+                <h2 class="widget-title">{{ object.section_3 }}</h2>
                 <div class="post_type2_carousel owl-carousel nav_style1">
                     <!--CAROUSEL START-->
                     <div class="single_post2_carousel">
                         {% for item in section_second_left_numbers %}
                             {% get_field object 'section_second_left_'|add:item as section_second_left %}
                             {% if section_second_left %}
+                            {% with section_second_left.url|add:',/artykul/'|add:section_second_left.slug  as url_str %}
                                 <div class="single_post widgets_small type8 openModalClass">
                                     <div class="post_img">
                                         <div class="img_wrap">
-                                            <a href="/artykul/{{ section_second_left.slug }}" target="{{ section_second_left.add|yesno:"_blank,_self" }}" >
+                                            <a href="{{ section_second_left.add|yesno:url_str }}" target="{{ section_second_left.add|yesno:"_blank,_self" }}" >
                                                 <img src="{{ section_second_left.img_160x128.url }}" alt="">
                                             </a>
                                         </div>
                                     </div>
                                     <div class="single_post_text">
                                         <div class="meta2">
-                                            <a href="/artykul/{{ section_second_left.slug }}" target="{{ section_second_left.add|yesno:"_blank,_self" }}" class="not-active">{{ section_second_left.category }}</a>
-                                            <a href="/artykul/{{ section_second_left.slug }}" target="{{ section_second_left.add|yesno:"_blank,_self" }}" class="not-active">{{ section_second_left.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
+                                            <a href="{{ section_second_left.add|yesno:url_str }}" target="{{ section_second_left.add|yesno:"_blank,_self" }}" class="not-active">{{ section_second_left.category }}</a>
+                                            <a href="{{ section_second_left.add|yesno:url_str }}" target="{{ section_second_left.add|yesno:"_blank,_self" }}" class="not-active">{{ section_second_left.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
                                         </div>
                                         <h4>
-                                            <a href="/artykul/{{ section_second_left.slug }}" target="{{ section_second_left.add|yesno:"_blank,_self" }}" class="not-active">{{ section_second_left.title|truncatechars:20 }}</a>
+                                            <a href="{{ section_second_left.add|yesno:url_str }}" target="{{ section_second_left.add|yesno:"_blank,_self" }}" class="not-active">{{ section_second_left.title|truncatechars:20 }}</a>
                                         </h4>
                                     </div>
                                     <div class="type8_count">
@@ -319,6 +335,7 @@
                                     <div class="border_black"></div>
                                     <div class="space-15"></div>
                                 {% endif %}
+                            {% endwith %}
                             {% endif %}
 
                         {% endfor %}
@@ -388,11 +405,12 @@
                         {% for item in basic_center_numbers %}
                             {% get_field object "basic_center_"|add:item as basic_center %}
                             {% if basic_center %}
+                                {% with basic_center.url|add:',/artykul/'|add:basic_center.slug  as url_str %}
                                 <div class="single_post post_type6 post_type9 openModalClass"
                                      onclick="passDataFunction('basic_center_1')">
                                     <div class="post_img gradient1">
                                         <div class="img_wrap">
-                                            <a href="/artykul/{{ basic_center.slug }}" target="{{ basic_center.add|yesno:"_blank,_self" }}">
+                                            <a href="{{ basic_center.add|yesno:url_str }}" target="{{ basic_center.add|yesno:"_blank,_self" }}">
                                                 <img src="{{ basic_center.img_1080x840.url }}" alt="">
                                             </a>
                                         </div>
@@ -400,14 +418,15 @@
 
                                     <div class="single_post_text" href="#">
                                         <div class="meta">
-                                            <a href="/artykul/{{ basic_center.slug }}" target="{{ basic_center.add|yesno:"_blank,_self" }}"  >{{ basic_center.category }}</a>
-                                            <a href="/artykul/{{ basic_center.slug }}" target="{{ basic_center.add|yesno:"_blank,_self" }}"  >{{ basic_center.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
+                                            <a href="{{ basic_center.add|yesno:url_str }}" target="{{ basic_center.add|yesno:"_blank,_self" }}"  >{{ basic_center.category }}</a>
+                                            <a href="{{ basic_center.add|yesno:url_str }}" target="{{ basic_center.add|yesno:"_blank,_self" }}"  >{{ basic_center.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
                                         </div>
                                         <h4>
-                                            <a href="/artykul/{{ basic_center.slug }}" target="{{ basic_center.add|yesno:"_blank,_self" }}"  >{{ basic_center.title|truncatechars:40 }}</a>
+                                            <a href="{{ basic_center.add|yesno:url_str }}" target="{{ basic_center.add|yesno:"_blank,_self" }}"  >{{ basic_center.title|truncatechars:40 }}</a>
                                         </h4>
                                     </div>
                                 </div>
+                                {% endwith %}
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -426,7 +445,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="heading white">
-                    <h2 class="widget-title">Z miasta</h2>
+                    <h2 class="widget-title">{{ object.section_4 }}</h2>
                 </div>
             </div>
         </div>
@@ -434,42 +453,45 @@
         <div class="viceo_posts_wrap">
             <div class="row">
                 {% if object.large_basic_under %}
+                    {% with object.large_basic_under.url|add:',/artykul/'|add:object.large_basic_under.slug  as url_str %}
                     <div class="col-lg-8 openModalClass" onclick="passDataFunction('large_basic_under')">
                         <div class="single_post post_type3 post_type11 margintop-60- xs-mb30 openModalClass"
                              onclick="passDataFunction('large_basic_under')">
                             <div class="post_img">
                                 <div class="img_wrap">
-                                    <a href="/artykul/{{object.large_basic_under.slug }}" target="{{ object.large_basic_under.add|yesno:"_blank,_self" }}" class=""  >
+                                    <a href="{{ object.large_basic_under.add|yesno:url_str }}" target="{{ object.large_basic_under.add|yesno:"_blank,_self" }}" class=""  >
                                         <img src="{{ object.large_basic_under.img_1460x822.url }}" alt="">
                                     </a>
                                 </div>
                             </div>
                             <div class="single_post_text padding30 fourth_bg">
                                 <div class="meta3">
-                                    <a href="/artykul/{{object.large_basic_under.slug }}" target="{{ object.large_basic_under.add|yesno:"_blank,_self" }}" class="not-active">{{ object.large_basic_under.category }}</a>
-                                    <a href="/artykul/{{object.large_basic_under.slug }}" target="{{ object.large_basic_under.add|yesno:"_blank,_self" }}"  >{{ object.large_basic_under.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
+                                    <a href="{{ object.large_basic_under.add|yesno:url_str }}" target="{{ object.large_basic_under.add|yesno:"_blank,_self" }}" class="not-active">{{ object.large_basic_under.category }}</a>
+                                    <a href="{{ object.large_basic_under.add|yesno:url_str }}" target="{{ object.large_basic_under.add|yesno:"_blank,_self" }}"  >{{ object.large_basic_under.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
                                 </div>
                                 <h4 class="mt-3">
-                                    <a href="/artykul/{{object.large_basic_under.slug }}" target="{{ object.large_basic_under.add|yesno:"_blank,_self" }}"  >{{ object.large_basic_under.title|truncatechars:45 }}</a>
+                                    <a href="{{ object.large_basic_under.add|yesno:url_str }}" target="{{ object.large_basic_under.add|yesno:"_blank,_self" }}"  >{{ object.large_basic_under.title|truncatechars:45 }}</a>
                                 </h4>
                             </div>
                         </div>
                     </div>
+                    {% endwith %}
                 {% endif %}
                 <div class="col-lg-4">
                     <div class="popular_carousel_area mb30 md-mt-30">
-                        <h2 class="widget-title">Popularne</h2>
+                        <h2 class="widget-title">{{ object.section_5 }}</h2>
                         <div class="popular_carousel owl-carousel nav_style1">
                             <!--CAROUSEL START-->
                             <div class="popular_items">
                                 {% for item in sm_basic_under_numbers  %}
                                     {% get_field object 'sm_basic_under_'|add:item as sm_basic_under %}
                                     {% if sm_basic_under %}
+                                        {% with sm_basic_under.url|add:',/artykul/'|add:sm_basic_under.slug  as url_str %}
                                         <div class="single_post type10 widgets_small mb15 openModalClass"
                                              onclick="passDataFunction('sm_basic_under_1')">
                                             <div class="post_img">
                                                 <div class="img_wrap">
-                                                    <a href="/artykul/{{sm_basic_under.slug }}" target="{{ sm_basic_under.add|yesno:"_blank,_self" }}" class="not-active">
+                                                    <a href="{{ sm_basic_under.add|yesno:url_str }}"  target="{{ sm_basic_under.add|yesno:"_blank,_self" }}" class="not-active">
                                                         <img src="{{ sm_basic_under.img_200x113.url }}" alt="">
                                                     </a>
                                                 </div>
@@ -479,15 +501,16 @@
                                             </div>
                                             <div class="single_post_text">
                                                 <h4>
-                                                    <a  href="/artykul/{{sm_basic_under.slug }}" target="{{ sm_basic_under.add|yesno:"_blank,_self" }}"
+                                                    <a href="{{ sm_basic_under.add|yesno:url_str }}" target="{{ sm_basic_under.add|yesno:"_blank,_self" }}"
                                                        class="not-active">{{ sm_basic_under.title|truncatechars:20 }}</a>
                                                 </h4>
                                                 <div class="meta4">
-                                                    <a  href="/artykul/{{sm_basic_under.slug }}" target="{{ sm_basic_under.add|yesno:"_blank,_self" }}"
+                                                    <a href="{{ sm_basic_under.add|yesno:url_str }}"  target="{{ sm_basic_under.add|yesno:"_blank,_self" }}"
                                                         class="not-active">{{ sm_basic_under.category }}</a>
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endwith %}
                                     {% endif %}
                                 {% endfor %}
                             </div>
@@ -509,7 +532,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="heading">
-                        <h2 class="widget-title">{% get_array section_footer_title forloop.counter0 %}</h2>
+                        {% get_array section_footer_title forloop.counter0 as title_field %}
+                        <h2 class="widget-title">{% get_field object title_field %}</h2>
                     </div>
                 </div>
             </div>
@@ -520,26 +544,28 @@
                         {% for item in item_set %}
                             {% get_field object 'section_footer_'|add:item as section_footer %}
                             {% if section_footer %}
+                                {% with section_footer.url|add:',/artykul/'|add:section_footer.slug  as url_str %}
                                 <div class="single_post post_type6 post_type7 openModalClass"
                                      onclick="passDataFunction('')">
                                     <div class="post_img gradient1">
-                                        <a href="/artykul/{{section_footer.slug }}" target="{{ section_footer.add|yesno:"_blank,_self" }}" class="not-active">
+                                        <a href="{{ section_footer.add|yesno:url_str }}" target="{{ section_footer.add|yesno:"_blank,_self" }}" class="not-active">
                                             <img src="{{ section_footer.img_540x640.url }}" alt="">
                                         </a>
                                     </div>
                                     <div class="single_post_text">
                                         <div class="meta5">
-                                            <a href="/artykul/{{section_footer.slug }}" target="{{ section_footer.add|yesno:"_blank,_self" }}"
+                                            <a href="{{ section_footer.add|yesno:url_str }}" target="{{ section_footer.add|yesno:"_blank,_self" }}"
                                                               class="not-active">{{ section_footer.category }}</a>
-                                            <a href="/artykul/{{section_footer.slug }}" target="{{ section_footer.add|yesno:"_blank,_self" }}"
+                                            <a href="{{ section_footer.add|yesno:url_str }}" target="{{ section_footer.add|yesno:"_blank,_self" }}"
                                                class="not-active">{{ section_footer.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
                                         </div>
                                         <h4>
-                                            <a href="/artykul/{{section_footer.slug }}" target="{{ section_footer.add|yesno:"_blank,_self" }}"
+                                            <a href="{{ section_footer.add|yesno:url_str }}" target="{{ section_footer.add|yesno:"_blank,_self" }}"
                                                class="not-active">{{ section_footer.title|truncatechars:30 }}</a>
                                         </h4>
                                     </div>
                                 </div>
+                                {% endwith %}
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -569,6 +595,7 @@
 <script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
 <script src="{% static 'assets/js/plugins/stellarnav.js' %}"></script>
 <script src="{% static 'assets/js/plugins/wow.min.js' %}"></script>
+
 <script src="{% static 'assets/js/main.js' %}"></script>
 
 <script>
@@ -582,6 +609,9 @@
             link[0].click();
         }
     });
+
+
+
 
 </script>
 </body>

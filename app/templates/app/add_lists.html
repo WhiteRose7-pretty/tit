@@ -35,7 +35,11 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="bridcrumb"><a href="/">Strona główna</a> / Ogłoszenia / {{ cur_category.name }} </div>
+                {% if cur_category %}
+                    <div class="bridcrumb"><a href="/">Strona główna</a> / Ogłoszenia / {{ cur_category.name}} </div>
+                {% else %}
+                    <div class="bridcrumb"><a href="/">Strona główna</a> / Ogłoszenia</div>
+                {% endif %}
             </div>
         </div>
     </div>

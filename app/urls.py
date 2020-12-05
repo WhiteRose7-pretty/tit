@@ -20,7 +20,12 @@ urlpatterns = [
     path('polityka-prywatnosci/', views.privacy, name='privacy'),
     path('regulamin-strony/', views.regulations, name='regulations'),
     path('ogloszenia/create/', views.add_create, name='add_create'),
+    path('ogloszenia/', views.add_list, name='add_list'),
     path('ogloszenia/<slug:slug>/', views.add_list, name='add_list'),
     path('ogloszenia_detail/<slug:slug>/', views.add_detail, name='add_list'),
     path('subscribe_email/', views.subscribe_email, name='subscribe_email'),
+    path('payment/', views.payment, name='payment'),
+    path('full_access/', views.full_access, name='full_access'),
+    path('subscribe/', views.subscribe, name="subscribe"),
+    path('update_user/', views.update_user, name='update_user'),
 ]

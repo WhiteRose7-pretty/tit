@@ -13,23 +13,25 @@
           {% get_random_article as random_articles %}
           {% if random_articles %}
               {% for item in random_articles %}
+                  {% with item.url|add:',/artykul/'|add:item.slug  as url_str %}
                   <div class="col-md-6 col-lg-4">
                       <div class="single_post post_type3 mb30">
                         <div class="post_img">
-                          <a href="/artykul/{{ item.slug }}/" target="{{ item.add|yesno:'_blank,_self' }}">
+                          <a  href="{{ item.add|yesno:url_str }}"  target="{{ item.add|yesno:'_blank,_self' }}">
                             <img src="{{ item.img_700x500.url }}" alt="{{ item.title }}">
                           </a>
                         </div>
                         <div class="single_post_text">
                           <div class="meta3"> <a href="/artykul/{{ item.slug }}/" target="{{ item.add|yesno:'_blank,_self' }}">{{ item.category.name }}</a>
-                            <a href="/artykul/{{ item.slug }}/" target="{{ item.add|yesno:'_blank,_self' }}">{{item.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
+                            <a  href="{{ item.add|yesno:url_str }}"  target="{{ item.add|yesno:'_blank,_self' }}">{{item.date_of_publication|date:"SHORT_DATE_FORMAT" }}</a>
                           </div>
-                          <h4><a href="/artykul/{{ item.slug }}/" target="{{ item.add|yesno:'_blank,_self' }}">{{ item.title |truncatechars:27}}</a></h4>
+                          <h4><a  href="{{ item.add|yesno:url_str }}"  target="{{ item.add|yesno:'_blank,_self' }}">{{ item.title |truncatechars:27}}</a></h4>
                           <div class="space-10"></div>
                           <p class="post-p">{{ item.subtitle|truncatechars:120 }}</p>
                         </div>
                       </div>
                     </div>
+                  {% endwith %}
               {% endfor %}
           {% endif %}
 

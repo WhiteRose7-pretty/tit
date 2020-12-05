@@ -1,0 +1,150 @@
+{% load static %}
+{% load app_tags %}
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<title>Tomaszów Mazowiecki - TIT - Lista artykułów.</title>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!--::::: FABICON ICON :::::::-->
+	<link rel="icon" href="{% static 'assets/img/icon/fabicon.png' %}">
+	<!--::::: ALL CSS FILES :::::::-->
+	<link rel="stylesheet" href="{% static 'assets/css/plugins/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/plugins/animate.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/plugins/fontawesome.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/plugins/modal-video.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/plugins/owl.carousel.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/plugins/slick.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/plugins/stellarnav.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/theme.css' %}">
+  <style>
+  .myDiv{
+  	background:#1191ff;
+  }
+  </style>
+</head>
+
+<body class="theme-1">
+	<!--::::: PRELOADER START :::::::-->
+  {% include "app/basic/navbar.html" %}
+
+	<!--::::: ARCHIVE AREA START :::::::-->
+
+	<!--::::: ARCHIVE AREA END :::::::-->
+    <div class="archives padding-top-30">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-lg-8">
+                    {% if article_lists|length > 0 %}
+                        <div class="entertrainment_carousel mb30">
+                            <!--CAROUSEL START-->
+                            <div class="entertrainment_item">
+                                <div class="row">
+                                    {% for item in article_lists %}
+                                        <div class="col-lg-4">
+                                            <div class="access-container mb-5">
+                                                <div class="time text-center bg-dark text-white py-2 font16">{{ item.time_string|upper }}</div>
+                                                <div class="price d-flex justify-content-center bg-success text-white align-items-center font42 bold text-center"
+                                                     style="height: 150px; line-height: 1.1;">{{ item.price }} zł</div>
+                                                <div class="d-flex justify-content-center align-items-center font14 text-center bg-light" style="height: 90px;">
+                                                    Access to the {{ item.type }} of articles for 1 month.
+                                                </div>
+                                                <div class="d-flex justify-content-center py-2">
+                                                    <button class="btn btn-primary" onclick="onClick_pay('{{ item.pk }}', '{{ request.user.is_authenticated }}')">I choose and pay</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        {% if article_lists.paginator.num_pages > 1 %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="cpagination mb50 ">
+                                        <nav aria-label="Page navigation example ">
+                                            <ul class="pagination">
+                                             <li class="page-item">
+                                                    <a class="page-link" href="?page=" aria-label="Previous">
+                                                        <span aria-hidden="true"><i class="fas fa-angle-double-left"></i></span>
+                                                    </a>
+                                                </li>
+                                            {% if article_lists.has_previous %}
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page={{ article_lists.previous_page_number }}" aria-label="Previous">
+                                                        <span aria-hidden="true"><i class="fas fa-angle-left"></i></span>
+                                                    </a>
+                                                </li>
+                                            {% else %}
+                                                <li class="page-item">
+                                                    <a class="page-link" href="" aria-label="Previous"> <span aria-hidden="true"><i class="fas fa-angle-left"></i></span>
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+
+                                                <li class="page-item"><a class="page-link page-current" href="#">{{ article_lists.number }}</a>
+                                                </li>
+
+                                            {% if article_lists.has_next  %}
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page={{ article_lists.next_page_number }}" aria-label="Next"> <span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
+                                                    </a>
+                                                </li>
+                                            {% else %}
+                                                <li class="page-item">
+                                                    <a class="page-link" href="" aria-label="Next"> <span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page={{ article_lists.paginator.num_pages }}" aria-label="Next"> <span aria-hidden="true"><i class="fas fa-angle-double-right"></i></span></a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+				{% include 'app/basic/right-section.html' %}
+			</div>
+		</div>
+	</div>
+	<!--::::: BANNER AREA START :::::::-->
+	{% include 'app/basic/footer_banner.html' %}
+	<!--::::: BANNER AREA END :::::::-->
+	<!--::::: FOOTER AREA START :::::::-->
+	{% include "app/basic/footer.html" %}
+  
+  <!--::::: FOOTER AREA END :::::::-->
+	<!--::::: ALL JS FILES :::::::-->
+	<script src="{% static 'assets/js/plugins/jquery.2.1.0.min.js' %}"></script>
+	<script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
+	<script src="{% static 'assets/js/plugins/jquery.nav.js' %}"></script>
+	<script src="{% static 'assets/js/plugins/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'assets/js/plugins/jquery-modal-video.min.js' %}"></script>
+	<script src="{% static 'assets/js/plugins/owl.carousel.js' %}"></script>
+	<script src="{% static 'assets/js/plugins/popper.min.js' %}"></script>
+	<script src="{% static 'assets/js/plugins/circle-progress.js' %}"></script>
+	<script src="{% static 'assets/js/plugins/slick.min.js' %}"></script>
+	<script src="{% static 'assets/js/plugins/stellarnav.js' %}"></script>
+	<script src="{% static 'assets/js/plugins/wow.min.js' %}"></script>
+	<script src="{% static 'assets/js/main.js' %}"></script>
+
+    <script>
+        function onClick_pay(subscription_id, auth) {
+            if(auth === "True"){
+                document.location.href = '/subscribe/?id=' + subscription_id;
+            }
+            else{
+                alert("Login Users only can subscribe, Please login and retry!");
+                document.location.href = '/uwierzytelnienie/'
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from .models import HomePage
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -32,10 +33,22 @@ def home(request):
 
 def edit_page(request, id):
     object = get_object_or_404(HomePage, pk=id)
-
+    label_object = {
+        'button_1': object.button_1,
+        'button_2': object.button_2,
+        'button_3': object.button_3,
+        'section_1': object.section_1,
+        'section_2': object.section_2,
+        'section_3': object.section_3,
+        'section_4': object.section_4,
+        'section_5': object.section_5,
+        'section_6': object.section_6,
+        'section_7': object.section_7,
+        'section_8': object.section_8,
+    }
+    label_form = ChangeLabelOnPage(request.POST or label_object)
     #edit labels
     if request.method == 'POST' and 'submit_section_labels' in request.POST:
-        label_form = ChangeLabelOnPage(request.POST)
         if label_form.is_valid():
             cd = label_form.cleaned_data
             object.button_1 = cd['button_1']
@@ -51,8 +64,6 @@ def edit_page(request, id):
             object.section_8 = cd['section_8']
             object.save()
             return HttpResponseRedirect(reverse('simple_cms:edit_page', args=[object.id]))
-    else:
-        label_form = ChangeLabelOnPage()
 
     #image edit
     if request.method == 'POST' and 'submit_img' in request.POST:

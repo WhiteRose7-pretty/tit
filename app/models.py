@@ -5,6 +5,7 @@ from imagekit.processors import ResizeToFill
 from imagekit.processors import ResizeToFit
 
 from authentication.models import CustomUser
+from . import const
 
 
 class Category(models.Model):
@@ -170,6 +171,8 @@ class Add(models.Model):
                                  options={'quality': 80})
 
     content = models.TextField(verbose_name="Content", blank=True, null=True, default='')
+    phone_number = models.CharField(blank=True, null=True, max_length=30)
+    featured = models.BooleanField(default=False)
     approved = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     words = models.IntegerField(default=0)
@@ -200,5 +203,91 @@ class AdsSetting(models.Model):
     word_limit = models.IntegerField(default=500)
     price_word = models.DecimalField(decimal_places=1, max_digits=2, default=1.0)
     price_image = models.DecimalField(decimal_places=1, max_digits=3, default=10.0)
+    tax_rate = models.DecimalField(decimal_places=3, max_digits=4, default=0.074)
 
 
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=100, null=True, )
+    email = models.EmailField(max_length=100, null=True,)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
+
+CHOICE_TIME_UNIT = [
+    ('week', 'week'),
+    ('month', 'month'),
+    ('year', 'year'),
+]
+
+CHOICE_ACCESS_TYPE = [
+    ('full content', 'full content'),
+    ('full text', 'full text')
+]
+
+
+class FullAccess(models.Model):
+    time_string = models.CharField(max_length=50, default='month')
+    unit = models.CharField(max_length=50, choices=CHOICE_TIME_UNIT)
+    time = models.IntegerField()
+    price = models.DecimalField(decimal_places=2, max_digits=4)
+    type = models.CharField(max_length=200, choices=CHOICE_ACCESS_TYPE)
+
+    def __str__(self):
+        return self.time_string
+
+
+class FullAccessSubscription(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    subscription_type = models.ForeignKey(FullAccess, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    paid = models.BooleanField(default=False)
+    active = models.BooleanField(default=False)
+
+
+class Przelewy24Transaction(models.Model):
+    """
+        model for storing P24 transaction
+    """
+    p24_session_id = models.CharField(u"P24 session id", max_length=64)
+    p24_id_sprzedawcy = models.CharField(u"Vendor Id", max_length=10)
+    p24_email = models.EmailField(u'Vendor email')
+    p24_kwota = models.CharField(u"Amount", max_length=10)
+    p24_order_id = models.CharField(
+        u"Order ID", max_length=100, null=True, blank=True)
+    p24_order_id_full = models.CharField(
+        u"Order ID Full", max_length=100, null=True, blank=True)
+
+    p24_return_url_ok = models.URLField(u"Return URL OK")
+    p24_return_url_error = models.URLField(u"Return URL ERROR")
+
+    p24_karta = models.CharField(
+        u"CC?", max_length=10, blank=True, null=True)
+    p24_opis = models.TextField(u"Description", null=True, blank=True)
+
+    p24_crc = models.CharField(
+        u"CHECKSUM HASH", max_length=32,
+        help_text=u'In our request to P24 - will be verified by P24')
+    p24_crc2 = models.CharField(
+        u"CHECKSUM HASH 2", max_length=32,
+        help_text=u'In response from P24 - needs to be verified by us')
+
+    p24_error_code = models.CharField(u"Error code", max_length=7, blank=True)
+    p24_error_desc = models.CharField(u"Error description", max_length=255,
+                                      null=True, blank=True)
+
+    status = models.IntegerField(
+        u"Transaction status",
+        default=const.P24_STATUS_INITIATED,
+        choices=const.P24_STATUS_CHOICES)
+
+    created_at = models.DateTimeField(u"Created date", auto_now_add=True)
+    updated_at = models.DateTimeField(u"Updated date", auto_now=True)
+
+    class Meta:
+        ordering = ('-updated_at',)
+
+    def __unicode__(self):
+        return u'%s' % self.p24_session_id

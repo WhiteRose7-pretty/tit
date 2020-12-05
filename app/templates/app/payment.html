@@ -1,0 +1,11 @@
+<form action="https://sandbox.przelewy24.pl/index.php" method="post" class="form">
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        {{ form.as_p }}
+      </div>
+    </div>
+ <input type="hidden" name="p24_crc" value="{{ crc_code }}" />
+ <input name="submit_send" value="wyślij" type="submit" />
+</form>
+
+

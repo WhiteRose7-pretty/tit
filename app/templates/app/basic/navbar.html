@@ -14,11 +14,7 @@
         <div class="row">
             <div class="col-8 text-center m-auto">
                 <div class="v1search_form">
-                    {% if request.path == '/' %}
-                        <form action="/artykuly/">
-                    {% else %}
-                        <form action="">
-                    {% endif %}
+                    <form action="/artykuly/">
                         <input type="search" name="search" placeholder="Wpisz szukaną frazę..."  >
                         <button type="submit" class="cbtn1">Wyszukaj</button>
                     </form>
@@ -41,40 +37,51 @@
                     <div class="trancarousel owl-carousel nav_style1">
                         {% if object.navbar_alert_1 %}
                             <div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_1')">
-                                <p><a href="/artykuly/{{ object.navbar_alert_1.slug }}/" target="{{ object.navbar_alert_1.slug|yesno:'_self, _blank' }}">
+                                <p>
+                                    {% with object.navbar_alert_1.url|add:',/artykul/'|add:object.navbar_alert_1.slug  as url_str %}
+                                    <a href="{{ object.navbar_alert_1.add|yesno:url_str }}"  target="{{ object.navbar_alert_1.add|yesno:'_blank,_self' }}">
                                     {{ object.navbar_alert_1.title|truncatechars:50 }}</a>
+                                    {% endwith %}
                                 </p>
                             </div>
                         {% endif %}
                         {% if object.navbar_alert_2 %}
                             <div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_2')">
                                 <p>
-                                    <a href="/artykuly/{{ object.navbar_alert_2.slug }}/" target="{{ object.navbar_alert_2.slug|yesno:'_self, _blank' }}">
+                                    {% with object.navbar_alert_2.url|add:',/artykul/'|add:object.navbar_alert_2.slug  as url_str %}
+                                    <a  href="{{ object.navbar_alert_2.add|yesno:url_str }}"  target="{{ object.navbar_alert_2.add|yesno:'_blank,_self' }}">
                                     {{ object.navbar_alert_1.title|truncatechars:50 }}</a>
+                                    {% endwith %}
                                 </p>
                             </div>
                         {% endif %}
                         {% if object.navbar_alert_3 %}
                             <div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_3')">
                                 <p>
-                                    <a href="/artykuly/{{ object.navbar_alert_3.slug }}/" target="{{ object.navbar_alert_3.slug|yesno:'_self, _blank' }}">
+                                    {% with object.navbar_alert_3.url|add:',/artykul/'|add:object.navbar_alert_3.slug  as url_str %}
+                                    <a href="{{ object.navbar_alert_3.add|yesno:url_str }}" target="{{ object.navbar_alert_3.add|yesno:'_blank,_self' }}">
                                         {{ object.navbar_alert_3.title|truncatechars:50 }}</a>
+                                    {% endwith %}
                                 </p>
                             </div>
                         {% endif %}
                         {% if object.navbar_alert_4 %}
                             <div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_4')">
                                 <p>
-                                    <a href="/artykuly/{{ object.navbar_alert_4.slug }}/" target="{{ object.navbar_alert_4.slug|yesno:'_self, _blank' }}">
+                                    {% with object.navbar_alert_4.url|add:',/artykul/'|add:object.navbar_alert_4.slug  as url_str %}
+                                    <a  href="{{ object.navbar_alert_4.add|yesno:url_str }}"  target="{{ object.navbar_alert_4.add|yesno:'_blank,_self' }}">
                                         {{ object.navbar_alert_4.title|truncatechars:50 }}</a>
+                                    {% endwith %}
                                 </p>
                             </div>
                         {% endif %}
                         {% if object.navbar_alert_5 %}
                             <div class="trancarousel_item openModalClass" onclick="passDataFunction('navbar_alert_5')">
                                 <p>
-                                    <a href="/artykuly/{{ object.navbar_alert_5.slug }}/" target="{{ object.navbar_alert_5.slug|yesno:'_self, _blank' }}">
-                                        {{ object.navbar_alert_5.title|truncatechars:50 }}</a>
+                                    {% with object.navbar_alert_5.url|add:',/artykul/'|add:object.navbar_alert_5.slug  as url_str %}
+                                        <a  href="{{ object.navbar_alert_5.add|yesno:url_str }}"  target="{{ object.navbar_alert_5.add|yesno:'_blank,_self' }}">
+                                            {{ object.navbar_alert_5.title|truncatechars:50 }}</a>
+                                    {% endwith %}
                                 </p>
                             </div>
                         {% endif %}
@@ -90,11 +97,14 @@
                     </div>
                     <div class="social1">
                         <ul class="inline">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <li>
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
                             </li>
-                            <li><a href="#"><i class="fab fa-youtube"></i></a>
+                            <li>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
                             </li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a>
+                            <li>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -167,7 +177,7 @@
                                 </ul>
                             </li>
                             <li><a href="{% url 'app:contact' %}">Kontakt</a></li>
-                            <li><a href="#">Pełny dostęp</a></li>
+                            <li><a href="/full_access/">Pełny dostęp</a></li>
                             <li><a href="#">Cennik <i class="fal fa-angle-down"></i></a>
                                 <ul>
                                     <li><a href="{% url 'app:pricing_paper' %}">Wydanie gazetowe</a>
@@ -188,7 +198,8 @@
                                 <li class="search_btn"><i class="far fa-search"></i>
                                 </li>
                                 <a href="#">
-                                    <li><i class="fal fa-user-circle"></i>
+                                    <li>
+                                        <i class="fal fa-user-circle"></i>
                                     </li>
                                 </a>
                             </ul>

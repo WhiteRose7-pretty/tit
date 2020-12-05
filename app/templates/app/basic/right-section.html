@@ -11,6 +11,25 @@
                     <a href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">
                         <img src="{% static 'assets/img/gallary/1g.jpg' %}" alt="">
                     </a>
+                    <a class="btn btn-block btn-danger mt10"
+                       href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">Kup najnowsze
+                        wydanie TIT w PDF!</a>
+
+                    <div class="space-15"></div>
+                    <div class="border_black"></div>
+                    <div class="space-15"></div>
+
+                </div>
+            </div>
+        </div>
+
+          <div class="tab-content">
+            <div class="tab-pane fade show in active">
+                <div class="widget tab_widgets mb30">
+
+                    <a href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">
+                        <img src="{% static 'assets/img/gallary/1g.jpg' %}" alt="">
+                    </a>
                     <a class="btn btn-block btn-primary mt10"
                        href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">Kup najnowsze
                         wydanie TIT w PDF!</a>
@@ -22,16 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="banner2 mb30">
-            {% get_random_add  as random_add %}
-            {% if random_add %}
-                {% for item in random_add %}
-                <a href="/artykul/{{ item.slug }}/" target="{{ item.add|yesno:'_blank,_self' }}">
-                    <img src="{{ item.img_700x500.url }}" alt="{{ item.title }}">
-                </a>
-                {% endfor %}
-            {% endif %}
-        </div>
+
         <!--:::::: POST TYPE 4 END :::::::-->
         <div class="box widget news_letter mb30">
             <h2 class="widget-title">Newsletter</h2>
@@ -40,10 +50,9 @@
             <div class="signup_form">
                 {% get_subscribe_form as s_form %}
                 <form action="/subscribe_email/" method="post" id="subscribe_email" >
-                    {{ s_form.email }}
                     {% csrf_token %}
+                    {{ s_form.email }}
                     <input type="submit" class="cbtn" value="Zapisz" >
-
                 </form>
                 <div class="space-10"></div>
                 <span id="subscribe_msg" class="text-primary font14"></span>

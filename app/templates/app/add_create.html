@@ -66,6 +66,8 @@
                                 <option value="{{ index }}">{{ index }} </option>
                             {% endfor %}
                             </select>
+                        {% elif fields.name == 'phone_number' %}
+                            <input type="text" name="phone_number" {{ request.user.is_authenticated|yesno:',required' }} class="form-control px-1  mb-4" maxlength="30" id="id_phone_number">
                         {% elif fields.name == 'background_img' %}
                             <div class="custom-file mb-3">
                               {{ fields | safe }}
@@ -74,7 +76,7 @@
                         {% else %}
                             {{ fields | safe }}
                         {% endif %}
-
+                        <br>
                     {% endfor %}
 
                     <input type="text" name="words" class="form-control d-none" required="" id="id_words">
@@ -94,89 +96,11 @@
 <!--::::: ARCHIVE AREA END :::::::-->
 <div class="space-60"></div>
 <!--::::: LATEST BLOG AREA START :::::::-->
-<div class="fourth_bg padding6030">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="heading">
-                    <h2 class="widget-title">Najnowsze artykuły</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4">
-                <div class="single_post post_type3 mb30">
-                    <div class="post_img">
-                        <a href="#">
-                            <img src="{% static 'assets/img/bg/video4.jpg' %}" alt="">
-                        </a>
-                    </div>
-                    <div class="single_post_text">
-                        <div class="meta3"><a href="#">TECHNOLOGY</a>
-                            <a href="#">March 26, 2020</a>
-                        </div>
-                        <h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-                        <div class="space-10"></div>
-                        <p class="post-p">The property, complete with 30-seat screening from room, a 100-seat
-                            amphitheater and a swimming pond with sandy shower…</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="single_post post_type3 mb30">
-                    <div class="post_img">
-                        <a href="#">
-                            <img src="{% static 'assets/img/bg/video4.jpg' %}" alt="">
-                        </a>
-                    </div>
-                    <div class="single_post_text">
-                        <div class="meta3"><a href="#">TECHNOLOGY</a>
-                            <a href="#">March 26, 2020</a>
-                        </div>
-                        <h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-                        <div class="space-10"></div>
-                        <p class="post-p">The property, complete with 30-seat screening from room, a 100-seat
-                            amphitheater and a swimming pond with sandy shower…</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="single_post post_type3 mb30">
-                    <div class="post_img">
-                        <a href="#">
-                            <img src="{% static 'assets/img/bg/video4.jpg' %}" alt="">
-                        </a>
-                    </div>
-                    <div class="single_post_text">
-                        <div class="meta3"><a href="#">TECHNOLOGY</a>
-                            <a href="#">March 26, 2020</a>
-                        </div>
-                        <h4><a href="post1.html">There may be no consoles in the future ea exec says</a></h4>
-                        <div class="space-10"></div>
-                        <p class="post-p">The property, complete with 30-seat screening from room, a 100-seat
-                            amphitheater and a swimming pond with sandy shower…</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+{% include 'app/basic/latest_article.html' %}
 
 <!--:::::  COMMENT FORM AREA END :::::::-->
 <!--::::: BANNER AREA START :::::::-->
-<div class="padding5050 fourth_bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 m-auto">
-                <div class="banner1">
-                    <a href="#">
-                        <img src="{% static 'assets/img/bg/banner1.png' %}" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+{% include 'app/basic/footer_banner.html' %}
 <!--::::: BANNER AREA END :::::::-->
 <!--::::: FOOTER AREA START :::::::-->
 {% include "app/basic/footer.html" %}
@@ -227,6 +151,10 @@
 
     });
 
+    $('#id_featured').on('change', function () {
+        total_price();
+    });
+
     $(document).on('keyup', '#id_content', function () {
         let str = $(this).val();
         $('#id_slug').val(string_to_slug(str));
@@ -248,12 +176,16 @@
     });
 
     function total_price() {
-
+        let featured = $('#id_featured').is(":checked");
+        console.log(featured);
+        let feature_val = ((featured) ? 2 : 1) ;
+        console.log(feature_val);
         let week = parseInt($('#id_time_of_broadcast').val());
+
 
         let word_price =  parseFloat( $('#price-word').text() );
         let word_counts = parseInt(  $('#id_words_count').text() );
-        let word_price_all = word_price * word_counts * week;
+        let word_price_all = word_price * word_counts * week * feature_val;
         $('#price-word-all').text(word_price_all);
 
 

@@ -8,9 +8,11 @@
              {% get_random_add  as random_add %}
                 {% if random_add %}
                     {% for item in random_add %}
-                    <a href="/artykul/{{ item.slug }}/" target="{{ item.add|yesno:'_blank,_self' }}">
-                        <img src="{{ item.img_728x90.url }}" alt="{{ item.title }}">
-                    </a>
+                        {% with item.url|add:',/artykul/'|add:item.slug  as url_str %}
+                        <a  href="{{ item.add|yesno:url_str }}"  target="{{ item.add|yesno:'_blank,_self' }}">
+                            <img src="{{ item.img_728x90.url }}" alt="{{ item.title }}">
+                        </a>
+                        {% endwith %}
                     {% endfor %}
                 {% endif %}
           </div>

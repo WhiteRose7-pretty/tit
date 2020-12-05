@@ -1,5 +1,7 @@
+from django.core.mail import send_mail
 from django.shortcuts import render
-from .models import Article, Comment, Category, PrivacyPolicy, Add, AddCategory, AdsSetting
+from .models import Article, Comment, Category, PrivacyPolicy, Add, AddCategory, AdsSetting, FullAccess, \
+    FullAccessSubscription
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect, JsonResponse
 from simple_cms.models import HomePage
@@ -7,9 +9,13 @@ import html2text
 from datetime import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
-from .forms import NewAddForm, SubscribeForm
+from .forms import NewAddForm, SubscribeForm, ContactForm, Przelewy24PrepareForm
 from .models import SubscriberEmail
-
+from app_rama import settings
+import requests
+import hashlib
+from django.contrib.auth.decorators import login_required
+from app_rama import settings
 
 def home(request):
     categories = Category.objects.filter(menu=True)
@@ -40,7 +46,7 @@ def home(request):
     ]
 
     section_footer_title = [
-        'Towarzyskie', 'Turystyczne', 'Naukowe',
+        'section_6', 'section_7', 'section_8',
     ]
 
     for item in range(1, 8):
@@ -127,13 +133,14 @@ def articles(request, slug=''):
     home_page = HomePage.objects.filter(date_published__lte=datetime.now()).first()
 
     if slug != '':
-        article_lists_all = Article.objects.filter(category__slug=slug)
+        article_lists_all = Article.objects.filter(category__slug=slug, add=False)
     else:
-        article_lists_all = Article.objects.all()
+        article_lists_all = Article.objects.filter(add=False)
 
-    q_search = request.GET.get('search', '')
-
-    article_lists_all = article_lists_all.filter(Q(title__contains=q_search) | Q(content__contains=q_search))
+    q_search = request.GET.get('search', False)
+    if q_search:
+        article_lists_all = article_lists_all.filter(add=False).filter(
+            Q(title__contains=q_search) | Q(content__contains=q_search))
 
     cur_category = Category.objects.filter(slug=slug).first()
     page = request.GET.get('page', 1)
@@ -185,9 +192,23 @@ def about(request):
 def contact(request):
     categories = Category.objects.filter(menu=True)
     home_page = HomePage.objects.filter(date_published__lte=datetime.now()).first()
+    contact_frm = ContactForm(request.POST or None)
+    if request.method == 'POST':
+        obj = contact_frm.save()
+        send_mail('Contact Us | ' + obj.name,
+                  obj.content,
+                  obj.email,
+                  [settings.ADMIN_EMAIL, ],
+                  fail_silently=True
+                  )
+        message = "Successfully submitted"
 
-    context = {'categories': categories,
-               'object': home_page}
+    context = {
+        'categories': categories,
+        'object': home_page,
+        'contact_frm': contact_frm,
+    }
+
     return render(request, 'app/contact.html', context)
 
 
@@ -213,12 +234,14 @@ def regulations(request):
     return render(request, 'app/regulations.html', context)
 
 
-def add_list(request, slug):
+def add_list(request, slug=''):
     categories = Category.objects.filter(menu=True)
     home_page = HomePage.objects.filter(date_published__lte=datetime.now()).first()
-    add_lists_all = Add.objects.filter(category__slug__exact=slug)
-    cur_category = AddCategory.objects.filter(slug=slug).first()
-
+    add_lists_all = Add.objects.filter(category__slug__exact=slug).order_by('-featured')
+    if slug != '':
+        cur_category = AddCategory.objects.filter(slug=slug).first()
+    else:
+        cur_category = None
     page = request.GET.get('page', 1)
     paginator = Paginator(add_lists_all, 12)
     try:
@@ -229,12 +252,12 @@ def add_list(request, slug):
         add_lists = paginator.page(paginator.num_pages)
 
     context = {
-               'categories': categories,
-               'object': home_page,
-               'add_lists_all': add_lists_all,
-               'add_lists': add_lists,
-               'cur_category': cur_category,
-               }
+        'categories': categories,
+        'object': home_page,
+        'add_lists_all': add_lists_all,
+        'add_lists': add_lists,
+        'cur_category': cur_category,
+    }
 
     return render(request, 'app/add_lists.html', context)
 
@@ -254,7 +277,6 @@ def add_detail(request, slug):
 
 
 def add_create(request):
-
     categories = Category.objects.filter(menu=True)
     home_page = HomePage.objects.filter(date_published__lte=datetime.now()).first()
     ads_setting = AdsSetting.objects.last()
@@ -274,12 +296,12 @@ def add_create(request):
         form = NewAddForm()
 
     context = {
-               'categories': categories,
-               'object': home_page,
-               'form': form,
-               'ads_setting': ads_setting,
-               'array_52': array_52,
-               }
+        'categories': categories,
+        'object': home_page,
+        'form': form,
+        'ads_setting': ads_setting,
+        'array_52': array_52,
+    }
 
     return render(request, 'app/add_create.html', context)
 
@@ -302,6 +324,121 @@ def subscribe_email(request):
     return JsonResponse(output)
 
 
+def payment(request):
+    session_id = '12345'
+    seller_id = '66809'
+    amount = '243'
+    crc_key = '8633d0e9f45f18cd'
+
+    crc_hash = "%s|%s|%s|%s" % (
+                session_id, seller_id,
+                amount, crc_key)
+
+    print(crc_hash)
+    m = hashlib.md5()
+    m.update(crc_hash.encode())
+    crc_code = m.hexdigest()
+    print(crc_code)
+
+    context = {
+        'session_id': session_id,
+        'seller_id': seller_id,
+        'amount': amount,
+        'crc_code': crc_code,
+    }
+
+    return render(request, 'app/payment.html', context)
 
 
+def full_access(request):
+    categories = Category.objects.filter(menu=True)
+    home_page = HomePage.objects.filter(date_published__lte=datetime.now()).first()
+    context = {
+        'categories': categories,
+        'object': home_page,
+        'article_all': Article.objects.all(),
+        'article_lists': FullAccess.objects.all(),
+        'cur_category': '',
+    }
+    return render(request, 'app/full_access.html', context)
+
+
+@login_required(login_url='/uwierzytelnienie/')
+def subscribe(request):
+    categories = Category.objects.filter(menu=True)
+    home_page = HomePage.objects.filter(date_published__lte=datetime.now()).first()
+    id = request.GET.get('id', False)
+    user = request.user
+    subscription_type = FullAccess.objects.filter(id=id).first()
+    subscription = FullAccessSubscription()
+    subscription.user = user
+    subscription.subscription_type = subscription_type
+    subscription.save()
+
+    session_id = 'sub_' + str(subscription.pk)
+    price = int(subscription_type.price * 100)
+
+    form_ins = {
+        'p24_session_id': session_id,
+        'p24_id_sprzedawcy': settings.SELLER_ID,
+        'p24_email': user.email,
+        'p24_kwota': price,
+        'p24_opis': '',
+        'p24_klient': user.first_name,
+        'p24_adres': user.address,
+        'p24_kod': user.zip_code,
+        'p24_miasto': user.city,
+        'p24_kraj': 'PL',
+        'p24_language': 'pl',
+        'p24_return_url_ok': 'https://www.tomaszow-tit.pl/prenumeraty/3-miesiace/sign-up',
+        'p24_return_url_error': 'https://www.tomaszow-tit.pl/prenumeraty/3-miesiace/sign-up',
+        'p24_crc': crc_code(session_id, settings.SELLER_ID, price, settings.CRC_KEY),
+    }
+
+    order_form = Przelewy24PrepareForm(form_ins)
+
+    tax_rate = AdsSetting.objects.first().tax_rate
+    tax_rule = tax_rate * subscription_type.price
+    print(tax_rate)
+    print(tax_rule)
+    payment_ins = {
+        'price': subscription_type.price - tax_rule,
+        'tax_rule': tax_rule,
+        'total': subscription_type.price,
+    }
+
+    context = {
+        'categories': categories,
+        'object': home_page,
+        'order_form': order_form,
+        'payment_ins': payment_ins,
+    }
+
+    return render(request, 'app/order.html', context)
+
+
+def crc_code(session_id, seller_id, amount, crc_key):
+    crc_hash = "%s|%s|%s|%s" % (
+                session_id, seller_id,
+                amount, crc_key)
+
+    print(crc_hash)
+    m = hashlib.md5()
+    m.update(crc_hash.encode())
+    crc_code = m.hexdigest()
+    print(crc_code)
+    return crc_code
+
+
+def update_user(request):
+    user = request.user
+    user.surname = request.POST.get('p24_klient')
+    user.zip_code = request.POST.get('p24_kod')
+    user.address = request.POST.get('p24_adres')
+    user.city = request.POST.get('p24_miasto')
+    user.save()
+    data = {
+        'status': True
+    }
+    return JsonResponse(data)
 
