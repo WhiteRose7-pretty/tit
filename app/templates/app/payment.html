@@ -42,8 +42,12 @@
         <div class="row">
             <div class="col-md-6 col-lg-8">
                 <h3>Payment Result</h3>
+                <p class="mt-3">{{ result }}</p>
+                {% if transaction.status == '4' and transaction.error_description%}
+                    <p>{{ transaction.error_description }}</p>
+                {% endif %}
+
             </div>
-            {{ transaction.status }}
 
             {% include 'app/basic/right-section.html' %}
         </div>

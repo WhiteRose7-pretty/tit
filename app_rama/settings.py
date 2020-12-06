@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = '!2^j9=6)r7v+9*6c2&y-7f%z*9c1o65joxs7*x9(uii**@zv(s'
 DEBUG = True
 
 ALLOWED_HOSTS = ['207.154.199.44', '0.0.0.0', '127.0.0.1', 'localhost']
-
 
 # Application definition
 
@@ -78,7 +76,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app_rama.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -88,7 +85,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -108,7 +104,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -121,7 +116,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -138,11 +132,12 @@ AUTH_USER_MODEL = 'authentication.CustomUser'
 
 # Send e-mail
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'benjamin.langeriaf7@gmail.com'
-EMAIL_HOST_PASSWORD = 'vjab48tzdz'
+EMAIL_HOST_USER = 'timurkju@gmail.com'
+EMAIL_HOST_PASSWORD = 'passion_star_1022'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 ADMIN_EMAIL = 'timurkju@gmail.com'
+DEFAULT_FROM_EMAIL = 'cholpine@outlook.com'
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -162,10 +157,13 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
 
 # ocpjonalnie emaillogin_project/settings.py
-LOGIN_REDIRECT_URL = 'app:home' #redirect
-ACCOUNT_LOGOUT_REDIRECT_URL = 'app:home' #rediect
+LOGIN_REDIRECT_URL = 'app:home'  # redirect
+ACCOUNT_LOGOUT_REDIRECT_URL = 'app:home'  # rediect
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 SELLER_ID = '66809'
 CRC_KEY = '8633d0e9f45f18cd'
+
+CELERY_BROKER_URL = 'amqp://localhost'
+

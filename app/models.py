@@ -6,6 +6,8 @@ from imagekit.processors import ResizeToFit
 
 from authentication.models import CustomUser
 from . import const
+import datetime
+from dateutil.relativedelta import *
 
 
 class Category(models.Model):
@@ -162,9 +164,9 @@ class Add(models.Model):
                                          format='JPEG',
                                          options={'quality': 100}, blank=True, null=True)
     img_300x170 = ImageSpecField(source='background_img',
-                               processors=[ResizeToFill(300, 170)],
-                               format='JPEG',
-                               options={'quality': 80})
+                                 processors=[ResizeToFill(300, 170)],
+                                 format='JPEG',
+                                 options={'quality': 80})
     img_730x411 = ImageSpecField(source='background_img',
                                  processors=[ResizeToFill(730, 411)],
                                  format='JPEG',
@@ -208,7 +210,7 @@ class AdsSetting(models.Model):
 
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100, null=True, )
-    email = models.EmailField(max_length=100, null=True,)
+    email = models.EmailField(max_length=100, null=True, )
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -246,22 +248,41 @@ class Przelewy24Transaction(models.Model):
     order_id_full = models.CharField(max_length=100, null=True, blank=True)
     error_code = models.CharField(max_length=100, null=True, blank=True)
     error_description = models.CharField(max_length=200, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.pk
+        return str(self.pk)
 
 
 class FullAccessSubscription(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     subscription_type = models.ForeignKey(FullAccess, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    paid = models.BooleanField(default=False)
-    active = models.BooleanField(default=False)
     transaction_id = models.ForeignKey(Przelewy24Transaction, on_delete=models.CASCADE,
-                                       null=True, blank=True)
+                                       null=True, blank=True, related_name='subscription')
+    active_at = models.DateTimeField(blank=True, null=True)
+    end_at = models.DateField(blank=True, null=True)
+    status = models.IntegerField( choices=const.SUBSCRIPTION_CHOICES)
+
+    def __str__(self):
+        return str(self.pk)
+
+    def save(self, *args, **kwargs):
+        if self.active_at and self.status == const.SUBSCRIPTION_ACTIVE:
+            unit = self.subscription_type.unit
+            time = self.subscription_type.time
+            if unit == 'week':
+                temp = self.active_at + relativedelta(weeks=time)
+            elif unit == 'month':
+                temp = self.active_at + relativedelta(months=time)
+            else:
+                temp = self.active_at + relativedelta(years=time)
+
+            self.end_at = temp.date()
+
+        super(FullAccessSubscription, self).save(*args, **kwargs)
 
 
-
-
-
-
+class AdminSetting(models.Model):
+    check_hour = models.IntegerField(default=1)

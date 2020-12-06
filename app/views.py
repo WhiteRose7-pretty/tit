@@ -367,6 +367,7 @@ def full_access(request):
 
 @login_required(login_url='/uwierzytelnienie/')
 def subscribe(request):
+    print(const.P24_STATUS_CHOICES[3][1])
     categories = Category.objects.filter(menu=True)
     home_page = HomePage.objects.filter(date_published__lte=datetime.now()).first()
     id = request.GET.get('id', False)
@@ -461,42 +462,38 @@ def payment_ok(request):
         session_id = request.POST.get('p24_session_id')
 
         transaction_obj = get_object_or_404(Przelewy24Transaction, pk=session_id)
-        transaction_obj.status = const.P24_STATUS_ACCEPTED_NOT_VERIFIED
         transaction_obj.order_id = request.POST.get('p24_order_id')
         transaction_obj.order_id_full = request.POST.get('p24_order_id_full')
         transaction_obj.save()
 
-        confirmed, confirmation_response = p24_verify(settings.SELLER_ID,
+        confirmed, confirmation_response = p24_verify(request.POST.get('p24_id_sprzedawcy'),
                                                       request.POST.get('p24_session_id'),
-                                                      request.POST.get('p24_order_id '),
-                                                      int(transaction_obj.amount * 100))
+                                                      request.POST.get('p24_order_id'),
+                                                      request.POST.get('p24_kwota'))
 
         if not confirmed:
             transaction_obj.status = const.P24_STATUS_ACCEPTED_NOT_VERIFIED
-            transaction_obj.error_code = confirmation_response[2]
-            transaction_obj.error_description = confirmation_response[3]
-
+            transaction_obj.error_code = confirmation_response[2].decode('cp1252')
+            transaction_obj.error_description = confirmation_response[3].decode('cp1252')
+            transaction_obj.save()
         else:
-
             transaction_obj.status = const.P24_STATUS_ACCEPTED_VERIFIED
+            transaction_obj.save()
+            subscription_obj = transaction_obj.subscription.all().first()
+            subscription_obj.active_at = transaction_obj.updated_at
+            subscription_obj.status = const.SUBSCRIPTION_ACTIVE
 
+        transaction_obj.save()
         context = {
+            'result': const.P24_STATUS_CHOICES[int(transaction_obj.status) - 1][1],
             'transaction': transaction_obj
         }
 
         return render(request, 'app/payment.html', context)
 
 
-def payment_error(request):
-    if request.method == 'POST':
-        pass
-
-
 def p24_verify(seller_id, session_id, order_id, amount):
     url = 'https://sandbox.przelewy24.pl/transakcja.php'
-    headers = {
-        'accept': 'application/json',
-    }
     data = {
         'p24_id_sprzedawcy': seller_id,
         'p24_session_id': session_id,
@@ -505,9 +502,14 @@ def p24_verify(seller_id, session_id, order_id, amount):
         'p24_crc': crc_code(session_id, order_id, amount, settings.CRC_KEY)
     }
     response = requests.post(url, data=data)
-    confirmation_response = list(response)
+    confirmation_response = list(response.iter_lines())
     print(response.status_code)
-    if response.status_code == 200 and confirmation_response[1] == 'TRUE':
+    print(data)
+    print(response)
+    print(confirmation_response[0])
+    print(confirmation_response[1])
+
+    if response.status_code == 200 and confirmation_response[1] == b'TRUE':
         return True, confirmation_response
 
     return False, confirmation_response

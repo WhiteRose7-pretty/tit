@@ -1,7 +1,7 @@
 from django.contrib import admin
 from app.models import Category, Article, Autor, Comment, PrivacyPolicy, AddCategory, Add
 from app.models import AdsSetting, SubscriberEmail, ContactMessage, FullAccess, FullAccessSubscription, Przelewy24Transaction
-
+from app.models import AdminSetting
 
 class ArticleAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
@@ -37,5 +37,6 @@ admin.site.register(Add, AddAdmin)
 admin.site.register(AddCategory, AddCategoryAdmin)
 admin.site.register(ContactMessage)
 admin.site.register(Przelewy24Transaction)
+admin.site.register(AdminSetting)
 
 
