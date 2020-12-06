@@ -483,6 +483,7 @@ def payment_ok(request):
             subscription_obj = transaction_obj.subscription.all().first()
             subscription_obj.active_at = transaction_obj.updated_at
             subscription_obj.status = const.SUBSCRIPTION_ACTIVE
+            subscription_obj.save()
 
         transaction_obj.save()
         context = {
