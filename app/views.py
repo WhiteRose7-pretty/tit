@@ -383,6 +383,7 @@ def subscribe(request):
     subscription.user = user
     subscription.subscription_type = subscription_type
     subscription.transaction_id = transaction
+    subscription.status = const.SUBSCRIPTION_READY
     subscription.save()
 
     session_id = transaction.pk

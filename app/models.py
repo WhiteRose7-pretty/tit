@@ -263,7 +263,7 @@ class FullAccessSubscription(models.Model):
                                        null=True, blank=True, related_name='subscription')
     active_at = models.DateTimeField(blank=True, null=True)
     end_at = models.DateField(blank=True, null=True)
-    status = models.IntegerField( choices=const.SUBSCRIPTION_CHOICES)
+    status = models.IntegerField(default=const.SUBSCRIPTION_READY, choices=const.SUBSCRIPTION_CHOICES)
 
     def __str__(self):
         return str(self.pk)
