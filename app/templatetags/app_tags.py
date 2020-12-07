@@ -58,3 +58,20 @@ def get_random_article_10():
     except:
         random_article = None
     return random_article
+
+
+@register.simple_tag
+def get_slider_lg_basic_lens(obj):
+    nums = range(1, 10)
+    lens = 0
+    for item in nums:
+        field_name = 'slider_lg_basic_'+str(item)
+        if getattr(obj, field_name):
+            lens = lens + 1
+    if lens > 8:
+        return True
+    else:
+        return False
+
+
+

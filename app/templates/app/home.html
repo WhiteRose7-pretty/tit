@@ -111,7 +111,8 @@
                             {% endfor %}
                         </div>
 
-                        <div class="slider_demo1 d-none d-md-block">
+                        {% get_slider_lg_basic_lens object as slider_show %}
+                        <div class="slider_demo1 d-none {{ slider_show|yesno:'d-md-block,' }}">
                             {% for item in slider_lg_basic_numbers %}
                                 {% get_field object 'slider_lg_basic_'|add:item as slider_lg_basic %}
                                 {% if slider_lg_basic %}
@@ -120,7 +121,6 @@
                                     </div>
                                 {% endif %}
                             {% endfor %}
-
                         </div>
                         <a class="btn btn-block btn-danger d-md-none"
                            href="https://www.sklep.tomaszow-tit.pl/tit-tomaszowski-informator-tygodniowy">Kup najnowsze
