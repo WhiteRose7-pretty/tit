@@ -81,6 +81,7 @@
                     <label for="id_{{ fields.name }}">{{ fields.label }} </label>
                     {{ fields | safe }}
                 {% endfor %}
+                <p class="text-primary">{{ message }}</p>
                 <button type="submit" class="btn btn-primary" style="float:right;">Submit</button>
                 </form>
             </div>

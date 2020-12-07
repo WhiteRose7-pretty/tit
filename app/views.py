@@ -195,13 +195,13 @@ def contact(request):
     categories = Category.objects.filter(menu=True)
     home_page = HomePage.objects.filter(date_published__lte=datetime.now()).first()
     contact_frm = ContactForm(request.POST or None)
+    message = ''
     if request.method == 'POST':
         obj = contact_frm.save()
         send_mail('Contact Us | ' + obj.name,
                   obj.content,
                   obj.email,
                   [settings.ADMIN_EMAIL, ],
-                  fail_silently=True
                   )
         message = "Successfully submitted"
 
@@ -209,6 +209,7 @@ def contact(request):
         'categories': categories,
         'object': home_page,
         'contact_frm': contact_frm,
+        'message': message,
     }
 
     return render(request, 'app/contact.html', context)

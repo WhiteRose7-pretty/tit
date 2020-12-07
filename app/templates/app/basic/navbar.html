@@ -131,9 +131,15 @@
             <div class="col-lg-8 align-self-center">
                 {% if object.add_navbar %}
                     <div class="banner1 openModalClass" onclick="passDataFunction('add_navbar')">
-                        <a href="#" target="_blank">
+                        {% if object.add_navbar.add %}
+                        <a href="{{ object.add_navbar.url }}" target="_blank">
                             <img src="{{ object.add_navbar.img_728x90.url }}" alt="">
                         </a>
+                        {% else %}
+                        <a href="/artykul/{{ object.add_navbar }}/" target="_self">
+                            <img src="{{ object.add_navbar.img_728x90.url }}" alt="">
+                        </a>
+                        {% endif %}
                     </div>
                 {% endif %}
             </div>
