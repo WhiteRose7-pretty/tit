@@ -242,8 +242,10 @@ def add_list(request, slug=''):
     add_lists_all = Add.objects.filter(category__slug__exact=slug).order_by('-featured')
     if slug != '':
         cur_category = AddCategory.objects.filter(slug=slug).first()
+        add_lists_all = Add.objects.filter(category__slug__exact=slug).order_by('-featured')
     else:
         cur_category = None
+        add_lists_all = Add.objects.all().order_by('-featured')
     page = request.GET.get('page', 1)
     paginator = Paginator(add_lists_all, 12)
     try:
