@@ -56,7 +56,7 @@
                     <div class="entertrainment_item">
                         <div class="add-list">
                         {% for item in add_lists %}
-                            <div class="add-item-container">
+                            <div class="add-item-container {{ item.featured|yesno:'featured,' }}">
                                 <div class="image">
                                     <a href="/ogloszenia_detail/{{ item.slug }}/">
                                         {% if item.img_300x170 %}
