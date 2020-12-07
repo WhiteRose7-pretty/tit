@@ -4,9 +4,6 @@
 
 jQuery(document).ready(function($) {
   
-
-  //OWL CAROUSEL VARIABLES
-
   var carousel_post_type3  = $('.carousel_post_type3');
   var carousel_post2_type3 = $('.carousel_post2_type3');
   var widget4_carousel     = $('.widget4_carousel');
@@ -26,14 +23,12 @@ jQuery(document).ready(function($) {
   var trancarousel         = $('.trancarousel');
 
 
-
     var stellarnav = $('.stellarnav');
     
     stellarnav.stellarNav({
       theme: 'light',
       breakpoint: 960,
       position: 'right',
-
     });
 
 
@@ -41,10 +36,11 @@ jQuery(document).ready(function($) {
     loop:true,
     nav:true,
     items:1,
+    autoplay: true,
+    autoplayTimeout:5000,
     margin:30,
     navText:["<i class=\'fal fa-angle-left\'></i>", "<i class=\'fal fa-angle-right\'></i>"],
-    
-  })
+  });
 
   top_carousel.owlCarousel({
     loop:true,
@@ -52,8 +48,7 @@ jQuery(document).ready(function($) {
     items:1,
     margin:30,
     navText:["<i class=\'fal fa-angle-left\'></i>", "<i class=\'fal fa-angle-right\'></i>"],
-  })
-
+  });
 
 
   if ($('.slider_demo2').length > 0) {
@@ -64,6 +59,8 @@ jQuery(document).ready(function($) {
       slidesToScroll: 1,
       arrows: false,
       fade: true,
+      loop:true,
+      infinite: true,
       asNavFor: '.slider_demo1'
     });
     slider_demo1.slick({
@@ -71,6 +68,7 @@ jQuery(document).ready(function($) {
       slidesToScroll: 1,
       asNavFor: '.slider_demo2',
       dots: false,
+      loop:true,
       prevArrow:"<div class='slider_arrow arrow_left'><i class='fal fa-angle-left'></i></div>",
       nextArrow:"<div class='slider_arrow arrow_right'><i class='fal fa-angle-right'></i></div>",
       centerMode: true,
