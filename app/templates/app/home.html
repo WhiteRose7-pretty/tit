@@ -45,7 +45,7 @@
                                 <div class="single_post widgets_small post_type5">
                                     <div class="post_img">
                                         <div class="img_wrap">
-                                            {% with model_field.url|add:',/artykul/'|add:model_field.slug  as url_str%}
+                                            {% with model_field.url|add:',/artykul/'|add:model_field.slug  as url_str %}
                                             <a href="{{ model_field.add|yesno:url_str}}"
                                                target="{{ model_field.add|yesno:"_blank,_self" }}">
                                                 <img src="{{ model_field.img_190x140.url }}" alt="">
